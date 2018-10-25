@@ -1,6 +1,6 @@
 <template>
   <div class="map">
-    <img src="/design/default/mapimg.jpg" alt="">
+    <img src="/design/images/default/mapimg.jpg" alt="">
     <div class="gothere">公司地址：{{pData.address}}</div>
     <div class="gothere">去这里：<i class="iconfont icon-dibiao"></i></div>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div id="userCenter">
-    <!--<img src="/design/static/images/userCenter.jpg" alt="">-->
+    <!--<img src="/design/images/static/images/userCenter.jpg" alt="">-->
     <div class="member-top">
       <div class="member-info">
         <a href="javascript:;" class="default-avatar"></a>
@@ -122,7 +122,7 @@
       }
     }
   }
-  .member-top { -webkit-animation:changeBg 20s infinite; -moz-animation:changeBg 20s infinite; animation:changeBg 20s infinite;background-color:#ED5564; background-image: url(/design/travel/member_top_bg.png); background-size: cover;  text-align: center; width: 100%; height: 10rem; position: relative; z-index: 1;}
+  .member-top { -webkit-animation:changeBg 20s infinite; -moz-animation:changeBg 20s infinite; animation:changeBg 20s infinite;background-color:#ED5564; background-image: url(/design/images/travel/member_top_bg.png); background-size: cover;  text-align: center; width: 100%; height: 10rem; position: relative; z-index: 1;}
   @-webkit-keyframes changeBg{
     0%{background-color:#ED5564;}
     10%{background-color:#FB6E52;}
@@ -169,7 +169,7 @@
     left: 50%;}
   .member-info .default-avatar {
     background-color: rgba(0,0,0,0.5);
-    background-image: url(/design/default/member_w.png);
+    background-image: url(/design/images/default/member_w.png);
     background-repeat: no-repeat;
     background-position: 50% 50%;
     background-size: 60%;

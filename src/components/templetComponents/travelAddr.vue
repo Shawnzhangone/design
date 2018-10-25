@@ -26,7 +26,7 @@
       return{
         nowClassify:0,
         items:["热门","上海","深圳","香港","澳门","台湾"],
-        imgs:["/design/travel/hot1.png","/design/travel/hot2.png","/design/travel/hot3.png","/design/travel/hot4.png"]
+        imgs:["/design/images/travel/hot1.png","/design/images/travel/hot2.png","/design/images/travel/hot3.png","/design/images/travel/hot4.png"]
 
       }
     },
@@ -49,7 +49,7 @@
 <style lang="scss" >
   .traveladdr{
     .bgtop{
-      background-image: url("/design/travel/addrbg.png");
+      background-image: url("/design/images/travel/addrbg.png");
       background-size: cover;  text-align: center; width: 100%; height: 10rem; position: relative; z-index: 1;
     }
     .addr{

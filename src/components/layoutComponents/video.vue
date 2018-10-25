@@ -3,9 +3,9 @@
     <div class="page-widget rightlayout" v-show="!$store.state.chooseBox.isShow">
       <div class="chooselaout_title">选择视频布局：</div>
       <ul class="chooselayout imagela clearfloat">
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vVideo__1'}"><img src="/design/default/imagetext1.png" @click="$store.commit('choose_layout','vVideo__1')"></li>
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vVideo__2'}"><img src="/design/default/imagetext2.png" @click="$store.commit('choose_layout','vVideo__2')" ></li>
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vVideo__3'}"><img src="/design/default/imagetext3.png" @click="$store.commit('choose_layout','vVideo__3')" ></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vVideo__1'}"><img src="/design/images/default/imagetext1.png" @click="$store.commit('choose_layout','vVideo__1')"></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vVideo__2'}"><img src="/design/images/default/imagetext2.png" @click="$store.commit('choose_layout','vVideo__2')" ></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vVideo__3'}"><img src="/design/images/default/imagetext3.png" @click="$store.commit('choose_layout','vVideo__3')" ></li>
       </ul>
     </div>
     <div class="rightlayout widget-widget" v-show="$store.state.chooseBox.isShow">

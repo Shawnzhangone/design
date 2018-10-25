@@ -3,9 +3,9 @@
     <div class="page-widget rightlayout" v-show="!$store.state.chooseBox.isShow">
       <div class="chooselaout_title">选择图片布局：</div>
       <ul class="chooselayout imagela clearfloat">
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vForm__1'}"><img src="/design/default/form1.png" @click="$store.commit('choose_layout','vForm__1')"></li>
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vForm__2'}"><img src="/design/default/form2.png" @click="$store.commit('choose_layout','vForm__2')" ></li>
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vForm__3'}"><img src="/design/default/form3.png" @click="$store.commit('choose_layout','vForm__3')" ></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vForm__1'}"><img src="/design/images/default/form1.png" @click="$store.commit('choose_layout','vForm__1')"></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vForm__2'}"><img src="/design/images/default/form2.png" @click="$store.commit('choose_layout','vForm__2')" ></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vForm__3'}"><img src="/design/images/default/form3.png" @click="$store.commit('choose_layout','vForm__3')" ></li>
       </ul>
     </div>
     <div class="rightlayout widget-widget" v-show="$store.state.chooseBox.isShow">

@@ -156,7 +156,7 @@
       /*background-color: #219831;*/
       margin: 80px auto 0;
       .phone-box{
-        background: url(/design/default/phone3.png);
+        background: url(/design/images/default/phone3.png);
         width: 320px;
         height: 581px;
         padding: 36px 7px 30px;

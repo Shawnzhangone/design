@@ -2,8 +2,8 @@
   <div class="leftbox-widget">
     <div class="page-widget rightlayout" v-show="!$store.state.chooseBox.isShow">
       <ul class="chooselayout">
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vSearch__1'}"><img src="/design/default/search1.png" alt="" @click="$store.commit('choose_layout','vSearch__1')"></li>
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vSearch__2'}"><img src="/design/default/search2.png" @click="$store.commit('choose_layout','vSearch__2')" alt=""></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vSearch__1'}"><img src="/design/images/default/search1.png" alt="" @click="$store.commit('choose_layout','vSearch__1')"></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vSearch__2'}"><img src="/design/images/default/search2.png" @click="$store.commit('choose_layout','vSearch__2')" alt=""></li>
       </ul>
     </div>
     <div class="rightlayout widget-widget" v-show="$store.state.chooseBox.isShow">

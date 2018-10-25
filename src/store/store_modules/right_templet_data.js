@@ -8,36 +8,36 @@ export default {
       {item:[
         {
           type: 'vTemtravel',
-          image: '/design/default/travelHome.png',
+          image: '/design/images/default/travelHome.png',
           title: "旅游首页",
         },
         {
           type: 'vTemtravelAddr',
-          image: '/design/default/travelAddr.png',
+          image: '/design/images/default/travelAddr.png',
           title: "旅游目的地",
         },
         {
           type: 'vTemtravelUser',
-          image: '/design/default/travelUser.png',
+          image: '/design/images/default/travelUser.png',
           title: "旅游个人中心",
         },
         {
           type: 'vTemtravelFind',
-          image: '/design/default/travelFind.png',
+          image: '/design/images/default/travelFind.png',
           title: "旅游发现",
         },
         {
           type: 'vTemElcticHome',
-          image: '/design/default/eleHome.png',
+          image: '/design/images/default/eleHome.png',
           title: "电器首页",
         },
         {
           type: 'vTemEduHome',
-          image: '/design/default/eduHome.png',
+          image: '/design/images/default/eduHome.png',
           title: "教育首页",
         } ,{
           type: 'vTemHouseKeeping',
-          image: '/design/default/housekhome.png',
+          image: '/design/images/default/housekhome.png',
           title: "教育首页",
         }
       ]
@@ -45,7 +45,7 @@ export default {
         item:[
           {
             type: 'vTemtravel',
-            image: '/design/default/travelHome.png',
+            image: '/design/images/default/travelHome.png',
             title: "旅游首页",
           },
         ]
@@ -53,21 +53,21 @@ export default {
         item:[
           {
             type: 'vTemtravel',
-            image: '/design/default/travelHome.png',
+            image: '/design/images/default/travelHome.png',
             title: "旅游首页",
           },
           {
             type: 'vTemElcticHome',
-            image: '/design/default/travelFind.png',
+            image: '/design/images/default/travelFind.png',
             title: "电器首页",
           },
           {
             type: 'vTemEduHome',
-            image: '/design/default/eduHome.png',
+            image: '/design/images/default/eduHome.png',
             title: "教育首页",
           } ,{
             type: 'vTemHouseKeeping',
-            image: '/design/default/housekhome.png',
+            image: '/design/images/default/housekhome.png',
             title: "教育首页",
           }
         ]
@@ -75,12 +75,12 @@ export default {
         item:[
           {
             type: 'vTemtravelAddr',
-            image: '/design/default/travelAddr.png',
+            image: '/design/images/default/travelAddr.png',
             title: "旅游目的地",
           },
           {
             type: 'vTemtravelFind',
-            image: '/design/default/travelFind.png',
+            image: '/design/images/default/travelFind.png',
             title: "旅游发现",
           }
         ]
@@ -88,7 +88,7 @@ export default {
         item:[
           {
             type: 'vTemtravelFind',
-            image: '/design/default/travelFind.png',
+            image: '/design/images/default/travelFind.png',
             title: "旅游发现",
           }
         ]

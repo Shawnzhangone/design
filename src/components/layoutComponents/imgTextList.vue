@@ -3,9 +3,9 @@
     <div class="page-widget rightlayout" v-show="!$store.state.chooseBox.isShow">
       <div class="chooselaout_title">选择布局：</div>
       <ul class="chooselayout imagela clearfloat">
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vImgTextList__1'}"><img src="/design/default/imagetext1.png" @click="$store.commit('choose_layout','vImgTextList__1')"></li>
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vImgTextList__2'}"><img src="/design/default/imagetext2.png" @click="$store.commit('choose_layout','vImgTextList__2')" ></li>
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vImgTextList__3'}"><img src="/design/default/imagetext3.png" @click="$store.commit('choose_layout','vImgTextList__3')" ></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vImgTextList__1'}"><img src="/design/images/default/imagetext1.png" @click="$store.commit('choose_layout','vImgTextList__1')"></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vImgTextList__2'}"><img src="/design/images/default/imagetext2.png" @click="$store.commit('choose_layout','vImgTextList__2')" ></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vImgTextList__3'}"><img src="/design/images/default/imagetext3.png" @click="$store.commit('choose_layout','vImgTextList__3')" ></li>
       </ul>
       <div class="select">功能：<select class="choice" v-on:change="indexSelect" v-model="alldata.pages[nowPageIndex].module[seleIndex].incident">
         　　　　<option v-for="item in funcItem" v-bind:value="item.indexId">{{item.name}}</option>

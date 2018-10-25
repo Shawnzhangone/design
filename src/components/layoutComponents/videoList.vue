@@ -3,8 +3,8 @@
     <div class="page-widget rightlayout" v-show="!$store.state.chooseBox.isShow">
       <div class="chooselaout_title">选择布局：</div>
       <ul class="chooselayout chooseProList clearfloat" >
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vVideoList__1'}" @click="$store.commit('choose_layout','vVideoList__1')" ><img src="/design/default/prolist1.png" alt=""> </li>
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vVideoList__2'}" @click="$store.commit('choose_layout','vVideoList__2')"> <img src="/design/default/prolist2.png" alt=""></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vVideoList__1'}" @click="$store.commit('choose_layout','vVideoList__1')" ><img src="/design/images/default/prolist1.png" alt=""> </li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vVideoList__2'}" @click="$store.commit('choose_layout','vVideoList__2')"> <img src="/design/images/default/prolist2.png" alt=""></li>
       </ul>
       <div class="chooseprolistwidget">
         <div class="chooseishide">选择要添加的组件：</div>

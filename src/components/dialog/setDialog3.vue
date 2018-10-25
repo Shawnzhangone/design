@@ -3,7 +3,7 @@
     <div class="mask"></div>
     <div class="dialog-content">
       <div class="title"><span >设置开发设置</span>···<span >生成</span>···<span class="nowset">代码包下载</span></div>
-      <div class="pimgbox"><img class="pimg" src="/design/default/rarpic.jpg" alt="">
+      <div class="pimgbox"><img class="pimg" src="/design/images/default/rarpic.jpg" alt="">
         <p>{{$store.state.mine.getMineBaseMsg.alldata.pname}}.zip</p>
       </div>
       <p class="text">生成成功!</p>

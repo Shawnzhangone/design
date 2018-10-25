@@ -14,7 +14,7 @@ Vue.use(Router)
 
 const router = new Router({
   // mode: 'history',
-  base: '/design/',
+  base: '/design/images/',
   routes: [
     {
       path: '/login',
