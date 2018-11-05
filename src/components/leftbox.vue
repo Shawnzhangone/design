@@ -183,6 +183,21 @@
             type: 'vForm',
             icon: 'icon-wodedingdan',
             title: '表单组件'
+          },{
+            type: 'vCoupon',
+            icon: 'icon-lingquanzhongxin',
+            title: '卡券中心',
+            isVip:true
+          },{
+            type: 'vSecKill',
+            icon: 'icon-miaosha',
+            title: '秒杀',
+            isVip:true
+          },{
+            type: 'vCollage',
+            icon: 'icon-tuangou',
+            title: '拼团',
+            isVip:true
           },
         ],
       }

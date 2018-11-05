@@ -3,7 +3,7 @@
     <div class="edit-user fl">
       <div id="to-user-center">
         <ul>
-          <li><a href="http://cms.essocial.com.cn/user/usercenter.php"><span  class="icon iconfont icon-gerenzhongxin" ></span>{{$store.state.mine.program_name}}</a></li>
+          <li><a href="/home/user/usercenter.php"><span  class="icon iconfont icon-gerenzhongxin" ></span>{{$store.state.mine.program_name}}</a></li>
           <li @click="offLine"><i class="icon iconfont icon-tuichu"></i></li>
         </ul>
       </div>
@@ -65,7 +65,7 @@
           cancelButtonText: '取消',
           confirmButtonText: '确定'
         },
-        limitData:['多级分类','视频','视频列表',"分销系统中心"] //付费组件
+        limitData:['多级分类','视频','视频列表',"分销系统中心","卡券中心","拼团","秒杀"] //付费组件
       }
     },
     methods:{
@@ -74,7 +74,7 @@
        this.showDialog = true;
        this.$refs.dialog.confirm().then(() => {
          this.showDialog = false;
-         this.$axios.post('http://mps.essocial.com.cn/api/user/logout',{credentials:true}).then((response)=>{
+         this.$axios.post(this.$store.state.mine.BASE_URL+'/api/user/logout',{credentials:true}).then((response)=>{
            if(response.data.status === 1){
              window.location.href = response.data.url
              return;
@@ -88,7 +88,7 @@
      },
       backEnd(){
         var tempwindow=window.open();
-        this.$axios.post('http://mps.essocial.com.cn/api/user/toBackend',{credentials:true}).then((response)=>{
+        this.$axios.post(this.$store.state.mine.BASE_URL+'/api/user/toBackend',{credentials:true}).then((response)=>{
           if(response.data.status === 0){
             alert(response.data.message);
             return;
@@ -106,7 +106,7 @@
       },
       helpCenter(){
         var tempwindow=window.open();
-        tempwindow.location = 'http://cms.essocial.com.cn/help/index.php'
+        tempwindow.location = this.$store.state.mine.BASE_URL+'/help/index.php'
       },
       checkIsVIP(){ //是不是
         var allStrctureData = this.alldata.pages
@@ -127,6 +127,20 @@
                 }
                 if(allStrctureData[i].module[j].widget.jf){
                   this.$store.state.mine.VIPCom.push("个人中心会员积分功能")
+                }
+              }
+              if(allStrctureData[i].module[j].type =='vClassify'){
+                if(allStrctureData[i].module[j].layout == 'vProVideoClassify__1' || allStrctureData[i].module[j].layout == 'vProVideoClassify__2'||allStrctureData[i].module[j].layout == 'vShowVideoClassify__1'||allStrctureData[i].module[j].layout == 'vShowVideoClassify__2'||allStrctureData[i].module[j].layout == 'vShowVideoClassify__3'){
+                  this.$store.state.mine.VIPCom.push("视频类分类列表")
+                }
+              }
+              if(allStrctureData[i].module[j].type =='vRecommend'){
+                if(allStrctureData[i].module[j].layout == 'vVideoRecommend__1' || allStrctureData[i].module[j].layout == 'vVideoRecommend__2'){
+                  this.$store.state.mine.VIPCom.push("视频类推荐位")
+                }if(allStrctureData[i].module[j].layout == 'vSecKillRe'){
+                  this.$store.state.mine.VIPCom.push("秒杀推荐位")
+                }if(allStrctureData[i].module[j].layout == 'vCollageRe'){
+                  this.$store.state.mine.VIPCom.push("拼团推荐位")
                 }
               }
             }
@@ -168,7 +182,7 @@
     border-bottom:1px solid #d4d2d3;
   }
   .icon-tuichu,.icon-servicefill,.icon-bangzhu,.icon-yanjing,.icon-dianji{
-    font-size: 26px;
+    font-size: 26px !important;
     line-height:30px;
   }
   #to-user-center {

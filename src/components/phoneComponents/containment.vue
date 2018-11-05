@@ -37,6 +37,9 @@
   import vVideo from './video'
   import vVideoList from './videoList'
   import vForm from './form'
+  import vCoupon from './coupon'
+  import vSecKill from './seckill'
+  import vCollage from './collage'
 
 //  import vTravelFind from '../templetComponents/travelFind'
   import vTravelAddr from '../templetComponents/travelAddr'
@@ -160,7 +163,19 @@
                     "pageText":"已收到您的信息，我们会尽快审核，谢谢您的配合！",
                     "style": {"background__color":"#ffffff","border__radius":"8","border__color":"#c9c9c9","btn__color":'#B56D61'},
                     "layout":"vForm__1"
-                  }
+                  },
+                  {
+                    "type":"vCoupon",
+                    "mname":"卡券中心",
+                  },{
+                    "type":"vSecKill",
+                    "style":{"margin__bottom":"4"},
+                    "mname":"秒杀",
+                  },{
+                    "type":"vCollage",
+                    "style":{"margin__bottom":"4"},
+                    "mname":"拼团",
+                  },
                 ],
                 templet:[
                   {
@@ -492,6 +507,9 @@
       vVideoList,
       vDistributorCenter,
       vForm,
+      vCoupon,
+      vSecKill,
+      vCollage,
 //      vTravelFind,
       vTravelAddr,
       vTravelAddrCity,
@@ -596,6 +614,12 @@
           warn = '分销系统中心'
         }else if(text == "vForm"){
           warn = '表单组件'
+        } if(text == "vCoupon"){
+          warn = "卡券中心"
+        }if(text == "vSecKill"){
+          warn = "秒杀"
+        }if(text == "vCollage"){
+          warn = "拼团"
         }else if(text.substring(0, 4) == "vTem"){//判断拖拽的模板，拖拽组件名前四位
           warn = '模板';
           dType = 'vTem';

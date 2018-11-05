@@ -6,7 +6,7 @@ import * as types from "./types.js";
 import Vue from "vue";
 
 const state = {
-  BASE_URL :'http://test.essocial.win',
+  BASE_URL :'http://mps.essocial.win',
   mobile:'',
   program_id:'',
   isVIP:true,//是不是VIP用户
@@ -58,7 +58,7 @@ const state = {
         "name":"",
         "module":[]
       }]
-    },
+    }
 
 
   }

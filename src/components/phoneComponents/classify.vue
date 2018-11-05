@@ -1,13 +1,11 @@
 <template>
   <div>
       <div class="productlist clearfloat classify " :class="pData.layout" >
-        <!--v-if="pData.layout != 'vClassify__3'" -->
-        <!--:class="pData.layout"-->
         <div class="navbox" :style="{backgroundColor:pData.style.background__color}">
-          <ul :style="{color:pData.style.color,fontSize:pData.style.font__size+'px'}"><li class="navitem" :class="{nownavitem:nowClassify == index}" v-for="(item,index) in $store.state.defaultData.vClassify[imgdata].proData">{{item.title}}</li></ul>
+          <ul :style="{color:pData.style.color,fontSize:pData.style.font__size+'px'}"><li class="navitem" :class="{nownavitem:nowClassify == index}" v-for="(item,index) in classifyData.proData">{{item.title}}</li></ul>
         </div>
         <div class="productItembox clearfloat">
-          <div class="productitem clearfloat Productscl"  v-for="item in $store.state.defaultData.vClassify[imgdata].proData[nowClassify].product">
+          <div class="productitem clearfloat Productscl"  v-for="item in classifyData.proData[nowClassify].product">
             <img :src="item.img_url" :alt="item.title" class="productimg"  >
             <div class="infobox clearfloat"  >
               <div class="title">{{item.title}}</div>
@@ -18,14 +16,6 @@
         </div>
       </div>
 
-    <!--<div class="vQuickNav vClassify__3" v-if="pData.layout == 'vClassify__3'">-->
-      <!--<div class="navbox" :style="{backgroundColor:pData.style.background__color}">-->
-        <!--<ul :style="{color:pData.style.color,fontSize:pData.style.font__size+'px'}"><li class="navitem" :class="{nownavitem:nowClassify == index}" v-for="(item,index) in proData" @click="tabSwitch(index)">{{item.title}}</li></ul>-->
-      <!--</div>-->
-      <!--<ul class="quicknav clearfloat">-->
-        <!--<li class="quicknavitem" v-for="item in $store.state.defaultData.vNewsList" :key="item.id"><div class="grid-content clearfloat" :style="{paddingLeft:pData.style.padding+'px',paddingRight:pData.style.padding+'px'}"><img class="itlImg" :src="item.imgUrl" alt="" :style="{width:pData.style.width + '%'}"><div class="title"  :style="{width:97-pData.style.width+'%'}"><h4 :style="{lineHeight:pData.style.line__height+'px',color:pData.style.tcolor,fontSize:pData.style.tfont__size+'px'}">{{item.title}}</h4> <p class="pra">{{item.text}}</p></div></div></li>-->
-      <!--</ul>-->
-    <!--</div>-->
 
   </div>
 </template>
@@ -49,7 +39,25 @@
         }else {
           return 0;
         }
-      },}
+      },},
+    computed: {
+      imgdata(){
+        if (this.pData.ind) {
+          return this.pData.ind;
+        } else {
+          return 0;
+        }
+      },
+      classifyData(){
+        if (this.pData.layout == 'vClassify__2' || this.pData.layout == 'vClassify__1') {
+          return this.$store.state.defaultData.vClassify[this.imgdata]
+        } else if (this.pData.layout == 'vProVideoClassify__1' || this.pData.layout == 'vProVideoClassify__2') {
+          return this.$store.state.defaultData.vVideoClassify[this.imgdata]
+        } else if (this.pData.layout == 'vShowVideoClassify__1' || this.pData.layout == 'vShowVideoClassify__2'||this.pData.layout == 'vShowVideoClassify__3') {
+          return this.$store.state.defaultData.vVideoClassify[this.imgdata]
+        }
+      }
+    }
   }
 </script>
 <style lang="scss">
@@ -122,7 +130,7 @@
      padding-bottom:5px;
      text-align: center;
    }
-  .vClassify__2{
+  .vClassify__2,.vProVideoClassify__2,.vShowVideoClassify__2{
    .Productscl{
      width:44%;float:left;padding:1% 2.5%;
      margin-bottom:5px;
@@ -135,7 +143,7 @@
      position:absolute;bottom:16px;right:8px;
    }
  }
- .vClassify__1{
+ .vClassify__1,.vProVideoClassify__1{
    .Productscl{
      width:100%;
    }
@@ -150,43 +158,34 @@
      bottom:0px;
    }
  }
- .vClassify__3{
-   .infobox{
-     display: none;
+  .vShowVideoClassify__1{
+    .Productscl{
+      width:100%;
+    }
+    .Productscl .productimg{
+      height:150px;
+      width: 100%;
+    }
+    .Productscl .infobox{
+      width: 100%;
+    }
+    .title{
+      padding-left:8px;
+    }
+  }
+ .vShowVideoClassify__3{
+   .Productscl{
+     width:31%;float:left;padding:0.5%;
+     margin-bottom:5px;
+     margin-right:2%;
    }
-   .productitem{
-     position: relative;
-     border:0;
+   .Productscl:nth-child(3n){
+     margin-right:0;
    }
-   .Productscl .productimg{
-     width:100%;
-     margin-top:6px;
-   }
-   .navbox {
-     width: 100%;
-     height: 36px;
-     line-height:35px;
-   }
-   .navbox ul{
-     overflow-x: auto;
-   }
-   .navbox ul li{
-     width: 60px;
-     margin:6px 10px;
-     float: left;
-     line-height:24px;
+   .title{
      text-align: center;
-     -webkit-border-radius: 6px;
-     -moz-border-radius: 6px;
-     border-radius: 6px;
-     background-color: #52dfbf;
-     padding:0;
    }
-   .navbox ul .nownavitem{
-     color: #1dd6ac;
-     background-color: #fff;
-     border:0;
-   }
+
  }
   .grid-content {
     padding:5px;
@@ -196,5 +195,9 @@
     background-color: #fff;
     margin-bottom:4px;
   }
-
+  .vShowVideoClassify__1,.vShowVideoClassify__2,.vShowVideoClassify__3{
+    .quantity,.price{
+      display: none;
+    }
+  }
 </style>

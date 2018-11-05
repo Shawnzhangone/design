@@ -123,7 +123,7 @@
       navBottomWidth(){
         return (100 /this.alldata.bottom_nav.list.length)+'%'
       },
-      styleBColorPicker(){
+      styleBColorPicker(){ //选择颜色
           if(this.$store.state.mine.showStylePicker){
             this.alldata.bottom_nav.backgroundColor = this.colors.hex;
           }return (this.alldata.bottom_nav.backgroundColor)

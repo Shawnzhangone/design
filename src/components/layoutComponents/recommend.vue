@@ -7,10 +7,28 @@
         <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vRecommend__1'}" @click="$store.commit('choose_layout','vRecommend__1')" ><img src="/design/images/default/prolist1.png" alt=""> </li>
         <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vRecommend__2'}" @click="$store.commit('choose_layout','vRecommend__2')"> <img src="/design/images/default/prolist2.png" alt=""></li>
       </ul>
+
       <p>新闻推荐列表</p>
       <ul class="chooselayout chooseProList clearfloat" >
         <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vRecommend__3'}" @click="$store.commit('choose_layout','vRecommend__3')" ><img src="/design/images/default/prolist1.png" alt=""> </li>
       </ul>
+
+      <p>商品视频推荐列表</p>
+      <ul class="chooselayout chooseProList clearfloat" >
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vVideoRecommend__1'}" @click="$store.commit('choose_layout','vVideoRecommend__1')" class="vipicon"><img src="/design/images/default/provideo1.png" alt=""><div class="ribbon-vipicon-green" ><div class="ribbon-green">VIP</div></div> </li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vVideoRecommend__2'}" @click="$store.commit('choose_layout','vVideoRecommend__2')" class="vipicon"><img src="/design/images/default/provideo2.png" alt=""><div class="ribbon-vipicon-green" ><div class="ribbon-green">VIP</div></div> </li>
+      </ul>
+
+     <p>秒杀推荐位</p>
+      <ul class="chooselayout chooseProList clearfloat" >
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vSecKillRe'}" @click="$store.commit('choose_layout','vSecKillRe')" class="vipicon"><img src="/design/images/default/provideo1.png" alt=""><div class="ribbon-vipicon-green" ><div class="ribbon-green">VIP</div></div> </li>
+      </ul>
+
+    <p>拼团推荐位</p>
+      <ul class="chooselayout chooseProList clearfloat" >
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vCollageRe'}" @click="$store.commit('choose_layout','vCollageRe')" class="vipicon"><img src="/design/images/default/provideo1.png" alt=""><div class="ribbon-vipicon-green" ><div class="ribbon-green">VIP</div></div> </li>
+      </ul>
+
         <div class="chooseprolistwidget" v-if="alldata.pages[nowPageIndex].module[seleIndex].layout != 'vRecommend__3'">
           <div class="chooseishide">选择要添加的组件：</div>
           <ul>
@@ -46,8 +64,6 @@
         <div class="setcolor">字体颜色：<input type="color" name="color" id="color" value="#2D9900" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.color"></div>
         <div class="setfz">字体大小：<input type="number" class="number" step="1" min="12" max="16" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.font__size"/></div>
         <div class="seth">文字行高：<input type="number" class="number" step="1" min="12" max="28" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.line__height"/></div>
-        <!--<div class="seth">图片宽度：<input type="number" class="number" step="1" min="10"  v-model="alldata.pages[nowPageIndex].module[seleIndex].style.width"/></div>-->
-        <!--<div class="seth">图片模块大小：<input type="number" class="number" step="1" min="0" max="46" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.padding"/></div>-->
       </div>
     </div>
   </div>

@@ -37,6 +37,9 @@
     import vUserCenter from './layoutComponents/userCenter'
     import vDistributorCenter from './layoutComponents/distributorCenter'
     import vForm from './layoutComponents/form'
+    import vCoupon from './layoutComponents/coupon'
+    import vSecKill from './layoutComponents/seckill'
+    import vCollage from './layoutComponents/collage'
 
     import vTravelFind from './layoutComponents/travelFind'
 
@@ -82,6 +85,9 @@
       vUserCenter,
       vDistributorCenter,
       vForm,
+      vCoupon,
+      vSecKill,
+      vCollage,
       vTravelFind
     }
 
@@ -98,6 +104,7 @@
     width:320px;
     border-left:1px solid $bordercolor;
     height:calc(100% - 1px);
+    overflow-y: scroll;
     position:relative;
     .rightbox-header{
       width:100%;

@@ -567,6 +567,45 @@ export default {
         ]
       },//家政
     ],
+    vVideoClassify:[
+      {
+        proData:[
+          {title:'分类一',
+            product:[{
+              img_url: '/design/images/default/video.png',
+              title: '视频名称',
+              new_price: '120',
+              old_price: '169',
+              sales: '122',
+              stock: '999',
+              cart_icon: '0'
+            },{
+              img_url: '/design/images/default/video.png',
+              title: '视频名称',
+              new_price: '120',
+              old_price: '169',
+              sales: '122',
+              stock: '999',
+              cart_icon: '0'
+            },{
+              img_url: '/design/images/default/video.png',
+              title: '视频名称',
+              new_price: '120',
+              old_price: '169',
+              sales: '122',
+              stock: '999',
+              cart_icon: '0'
+            }]
+          },
+          {title:'分类二',
+            product:[]
+          },
+          {title:'分类三',
+            product:[]
+          }
+        ]
+      },//default
+    ],
     vMulticlass:[
       {
         proData:[
@@ -1008,6 +1047,39 @@ export default {
           }
         ]
       },//8
+    ],
+    vVideoMulticlass:[
+      {
+        proData:[
+          {title:'分类一',
+            product:[{
+              img_url: '/design/images/default/video.png',
+              title: "二级分类",
+              name:'视频名称',
+            },{
+              img_url: '/design/images/default/video.png',
+              title: "二级分类",
+              name:'视频名称',
+            },{
+              img_url: '/design/images/default/video.png',
+              title: "二级分类",
+              name:'视频名称',
+            },{
+              img_url: '/design/images/default/video.png',
+              title: "二级分类",
+              name:'视频名称',
+            }
+            ]
+          },
+          {title:'分类二',
+            product:[]
+          },
+          {title:'分类三',
+            product:[]
+          },{title:'分类四',
+            product:[]
+          }
+        ]},//default
     ],
     vUserCenter:[
       {img:"/design/images/default/userCenter.jpg",

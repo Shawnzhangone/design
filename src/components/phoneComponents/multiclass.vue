@@ -1,7 +1,7 @@
 <template>
   <div class="productlist clearfloat " >
     <!--商品多级分类-->
-    <div v-if="pData.layout == 'vMulticlass__1'" class="vMulticlass__1">
+    <div v-if="pData.layout == 'vMulticlass__1'|| pData.layout =='vProVideoClassify__1'|| pData.layout == 'vShowVideoClassify__1'" class="vMulticlass__1">
       <div class="navbox" >
         <ul :style="{color:pData.style.color,fontSize:pData.style.font__size+'px',backgroundColor:pData.style.background__color}"><li class="navitem" :class="{nownavitem:nowClassify == index}" v-for="(item,index) in $store.state.defaultData.vMulticlass[imgdata].proData">{{item.title}}</li></ul>
       </div>
@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div v-if="pData.layout == 'vMulticlass__2'" class="vMulticlass__2">
+    <div v-if="pData.layout == 'vMulticlass__2'|| pData.layout =='vProVideoClassify__2'|| pData.layout =='vShowVideoClassify__2' " class="vMulticlass__2">
       <div class="navbox" :style="{backgroundColor:pData.style.background__color}">
         <el-dropdown trigger="click" v-for="(item,index) in MulticlassData.proData" :key="index" :class="{nownavitem:nowClassify == index}" class="eldrop" >
           <span class="el-dropdown-link" :style="{color:pData.style.color,fontSize:pData.style.font__size+'px'}">
@@ -26,7 +26,7 @@
       </el-dropdown>
       </div>
       <div class="productItembox clearfloat">
-        <div class="productitem clearfloat Productscl"  v-for="item in $store.state.defaultData.vMulticlass[imgdata].proData[nowClassify].product"  >  <!--:style="{marginBottom:pData.style.margin__bottom+'px'}"-->
+        <div class="productitem clearfloat Productscl"  v-for="item in MulticlassData.proData[nowClassify].product"  >  <!--:style="{marginBottom:pData.style.margin__bottom+'px'}"-->
           <img :src="item.img_url" :alt="item.title" class="productimg"  >
           <div class="infobox clearfloat"  >
             <div class="title">{{item.name}}</div>
@@ -37,41 +37,6 @@
       </div>
     </div>
         <!--视频多级分类-->
-    <div v-if="pData.layout == 'vMulticlass__1'" class="vMulticlass__1">
-      <div class="navbox" >
-        <ul :style="{color:pData.style.color,fontSize:pData.style.font__size+'px',backgroundColor:pData.style.background__color}"><li class="navitem" :class="{nownavitem:nowClassify == index}" v-for="(item,index) in $store.state.defaultData.vMulticlass[imgdata].proData">{{item.title}}</li></ul>
-      </div>
-      <div class="productItembox clearfloat">
-        <div class="productitem clearfloat Productscl"  v-for="item in $store.state.defaultData.vMulticlass[imgdata].proData[nowClassify].product"  :style="{marginBottom:pData.style.margin__bottom+'px'}">
-          <img :src="item.img_url" :alt="item.title"class="productimg"  >
-          <div class="infobox clearfloat"  >
-            <div class="title">{{item.title}}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div v-if="pData.layout == 'vMulticlass__2'" class="vMulticlass__2">
-      <div class="navbox" :style="{backgroundColor:pData.style.background__color}">
-        <el-dropdown trigger="click" v-for="(item,index) in $store.state.defaultData.vMulticlass[imgdata].proData" :key="index" :class="{nownavitem:nowClassify == index}" class="eldrop" >
-          <span class="el-dropdown-link" :style="{color:pData.style.color,fontSize:pData.style.font__size+'px'}">
-            {{item.title}}<i class="el-icon-arrow-down el-icon--right"></i>
-          </span>
-          <el-dropdown-menu slot="dropdown" >
-            <el-dropdown-item v-for="(goods,idx) in $store.state.defaultData.vMulticlass[imgdata].proData[nowClassify].product" :key="idx">{{goods.title}}</el-dropdown-item>
-          </el-dropdown-menu>
-        </el-dropdown>
-      </div>
-      <div class="productItembox clearfloat">
-        <div class="productitem clearfloat Productscl"  v-for="item in $store.state.defaultData.vMulticlass[imgdata].proData[nowClassify].product"  >  <!--:style="{marginBottom:pData.style.margin__bottom+'px'}"-->
-          <img :src="item.img_url" :alt="item.title" class="productimg"  >
-          <div class="infobox clearfloat"  >
-            <div class="title">{{item.name}}</div>
-            <!--<div class="price"><span class="newprice">￥{{item.new_price}}</span><span class="oldprice" v-show="pData.widget.op">￥{{item.old_price}}</span></div>-->
-            <!--<div class="quantity "><span class="sales" v-show="pData.widget.sa">销量:{{item.sales}}</span>  <span class="stock" v-show="pData.widget.st">库存:{{item.stock}}</span> <i class="icon iconfont icon-gouwuche02 " v-show="pData.widget.ca"></i></div>-->
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 <script>
@@ -109,6 +74,10 @@
       MulticlassData(){
         if(this.pData.layout == 'vMulticlass__1' ||this.pData.layout == 'vMulticlass__2' ){
             return this.$store.state.defaultData.vMulticlass[this.imgdata]
+        }else if(this.pData.layout == 'vProVideoClassify__1' ||this.pData.layout == 'vProVideoClassify__2'){
+          return this.$store.state.defaultData.vVideoMulticlass[this.imgdata]
+        }else if(this.pData.layout == 'vShowVideoClassify__1' ||this.pData.layout == 'vShowVideoClassify__2'){
+          return this.$store.state.defaultData.vVideoMulticlass[this.imgdata]
         }
       },
       }

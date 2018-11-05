@@ -2,31 +2,21 @@
   <div class="leftbox-widget">
     <div class="page-widget rightlayout" v-show="!$store.state.chooseBox.isShow">
       <div class="chooselaout_title">选择布局：</div>
+      <p>商品多级分类</p>
       <ul class="chooselayout chooseProList clearfloat" >
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vMulticlass__1'}" @click="$store.commit('choose_layout','vMulticlass__1')" ><img src="/design/images/default/prolist1.png" alt=""> </li>
-        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vMulticlass__2'}" @click="$store.commit('choose_layout','vMulticlass__2')"> <img src="/design/images/default/prolist2.png" alt=""></li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vMulticlass__1'}" @click="$store.commit('choose_layout','vMulticlass__1')" ><img src="/design/images/default/muclass1.png" alt=""> </li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vMulticlass__2'}" @click="$store.commit('choose_layout','vMulticlass__2')"> <img src="/design/images/default/muclass2.png" alt=""></li>
       </ul>
-      <!--<div class="chooseprolistwidget">-->
-        <!--<div class="chooseishide">选择是否隐藏的组件：</div>-->
-        <!--<ul>-->
-          <!--<li>-->
-            <!--<input type="checkbox" id="salesc" v-model="alldata.pages[nowPageIndex].module[seleIndex].widget.sa">-->
-            <!--<label for="salesc">是否隐藏销量</label>-->
-          <!--</li>-->
-          <!--<li>-->
-            <!--<input type="checkbox" id="stockc" v-model="alldata.pages[nowPageIndex].module[seleIndex].widget.st">-->
-            <!--<label for="stockc">是否隐藏库存</label>-->
-          <!--</li>-->
-          <!--<li>-->
-            <!--<input type="checkbox" id="opricec" v-model="alldata.pages[nowPageIndex].module[seleIndex].widget.op">-->
-            <!--<label for="opricec">是否隐藏虚拟价格</label>-->
-          <!--</li>-->
-          <!--<li>-->
-            <!--<input type="checkbox" id="cartc" v-model="alldata.pages[nowPageIndex].module[seleIndex].widget.ca">-->
-            <!--<label for="cartc">是否隐藏购物车按钮</label>-->
-          <!--</li>-->
-        <!--</ul>-->
-      <!--</div>-->
+      <p>商品类视频多级分类</p>
+      <ul class="chooselayout chooseProList clearfloat" >
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vProVideoClassify__1'}" @click="$store.commit('choose_layout','vProVideoClassify__1')" ><img src="/design/images/default/muclass1.png" alt=""> </li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vProVideoClassify__2'}" @click="$store.commit('choose_layout','vProVideoClassify__2')"> <img src="/design/images/default/muclass2.png" alt=""></li>
+      </ul>
+      <p>展示类视频多级分类</p>
+      <ul class="chooselayout chooseProList clearfloat" >
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vShowVideoClassify__1'}" @click="$store.commit('choose_layout','vShowVideoClassify__1')" ><img src="/design/images/default/muclass1.png" alt=""> </li>
+        <li :class="{'nowChoose': alldata.pages[nowPageIndex].module[seleIndex].layout == 'vShowVideoClassify__2'}" @click="$store.commit('choose_layout','vShowVideoClassify__2')"> <img src="/design/images/default/muclass2.png" alt=""></li>
+      </ul>
     </div>
     <div class="rightlayout widget-widget" v-show="$store.state.chooseBox.isShow">
       <ul class="set">

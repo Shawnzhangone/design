@@ -100,4 +100,57 @@
     -ms-user-select:none;
     user-select:none;
   }
+  .Vip{
+    height: 16px;
+    width: 30px;
+    font: bold 12px Sans-Serif;
+    text-align: center;
+    color:#fff;
+    background-color: #ffd200;
+  }
+  .vipicon {
+    position: relative;
+    z-index: 90;
+  }
+  .vipicon .ribbon-vipicon-green {
+    width: 50px;
+    height: 52px;
+    overflow: hidden;
+    position: absolute;
+    top: -3px;
+    right: -2px;
+  }
+  .vipicon .ribbon-green {
+    font: bold 13px Sans-Serif;
+    text-align: center;
+    text-shadow: rgba(255, 255, 255, 0.5) 0px 1px 0px;
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    position: relative;
+    /* padding: 7px 0; */
+    left: 14px;
+    top: 2px;
+    width: 51px;
+    background-color: #ffd200;
+    background-image: -o-linear-gradient(top, #fed200, #fcd200);
+    color: #fff;
+    -webkit-box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+  }
+  .vipicon .ribbon-green:before, .ribbon-green:after {
+    content: "";
+    border-top: 3px solid #ab942a;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    position: absolute;
+    bottom: -3px;
+  }
+  .vipicon .ribbon-green:before {
+    left: 0;
+  }
+  .vipicon .ribbon-green:after {
+    right: 0;
+  }
 </style>
