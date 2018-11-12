@@ -6,16 +6,16 @@
       <div class="guide">请在“微信公众平台-小程序-设置-开发设置”，填写以下信息</div>
       <div class="inputBox">
         <p class="text">APP ID：<input class="grey inname" type="text" placeholder="请输入APP ID" v-model="appInfo.appid" @blur="$store.state.mine.focusState =  false" v-focus="$store.state.mine.focusState"><a
-          href=""> 怎么获取APP ID？</a></p>
+          href="" target="_blank"> 怎么获取APP ID？</a></p>
         <p class="text text1">APP 密钥：<input class="grey inname" type="text" placeholder="请输入APP 密钥" v-model="appInfo.appsecret" ><a
-          href=""> 怎么获取APP密钥？</a></p>
+          href="" target="_blank"> 怎么获取APP密钥？</a></p>
         <p class=" tip">如小程序涉及商品交易则必须填写商户ID和商户密钥</p>
         <p class="text text2" v-show="$store.state.mine.sid">商户ID：<input class="grey inname" type="text" placeholder="请输入商户ID" v-model="appInfo.storeid" ><a
-          href=""> 怎么获取商户ID？</a></p>
+          href="" target="_blank"> 怎么获取商户ID？</a></p>
         <p class="text" v-show="$store.state.mine.sid">商户密钥：<input class="grey inname" type="text" placeholder="请输入商户密钥" v-model="appInfo.storesecret" ><a
-          href=""> 怎么获取商户密钥？</a></p>
+          href="" target="_blank"> 怎么获取商户密钥？</a></p>
       </div>
-      <p class="guide"><a href="">还没有注册微信小程序？现在去注册</a></p>
+      <p class="guide"><a href="" target="_blank">还没有注册微信小程序？现在去注册</a></p>
       <div class="btn-group">
         <div class="btn" @click="$store.state.mine.showSetDialog = false;$store.state.mine.showBasicSet = true">返回</div>
         <div class="btn btn2" @click="submit">确定</div>
@@ -39,7 +39,6 @@
         reject: '',
         promise: '', // 保存promise对象
         appInfo:{appid:'',appsecret:'',storeid:'',storesecret:''},
-        limitData:['搜索组件','轮播组件','快速导航']
       }
     },
     computed: {
@@ -72,15 +71,6 @@
           }
 
       },
-//      for(let i = 0;i <= this.$store.state.mine.getMineBaseMsg.alldata.pages.length;i ++ ){
-//          for(let j = 0; j <= this.$store.state.mine.getMineBaseMsg.alldata.pages[i].module.length;j ++){
-//              for(let a=0;a <= this.limitData.length;a ++){
-//                if(this.$store.state.mine.getMineBaseMsg.alldata.pages[i].module[j].mname == this.limitData[a] ){
-//                  console.log(this.limitData[a]);
-//                }
-//              }
-//          }
-//      }
       // 取消,将promise断定为reject状态
 //      cancel() {
 //        this.$store.state.mine.showBasicSet = true;

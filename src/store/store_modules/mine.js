@@ -6,7 +6,7 @@ import * as types from "./types.js";
 import Vue from "vue";
 
 const state = {
-  BASE_URL :'http://mps.essocial.win',
+  BASE_URL :'http://mps.test.essocial.com.cn/',
   mobile:'',
   program_id:'',
   isVIP:true,//是不是VIP用户
@@ -111,7 +111,7 @@ const mutations = {
         state.showToast = true;
         state.toastOption.text = res.message;
         if(preview){
-          tempwindow.location='./preview/index.html';
+          tempwindow.location='/design/preview/index.html';
         }
         setTimeout(() => {
           state.showToast = false;
