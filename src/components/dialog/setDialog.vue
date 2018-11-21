@@ -17,7 +17,7 @@
       </div>
       <p class="guide"><a href="" target="_blank">还没有注册微信小程序？现在去注册</a></p>
       <div class="btn-group">
-        <div class="btn" @click="$store.state.mine.showSetDialog = false;$store.state.mine.showBasicSet = true">返回</div>
+        <div class="btn" @click="$store.state.mine.showSetDialog = false;">返回</div>
         <div class="btn btn2" @click="submit">确定</div>
       </div>
       <div class="del" @click="$store.state.mine.showSetDialog = false;">
@@ -71,11 +71,6 @@
           }
 
       },
-      // 取消,将promise断定为reject状态
-//      cancel() {
-//        this.$store.state.mine.showBasicSet = true;
-//        this.$store.state.mine.showSetDialog = false;
-//      },
       //显示confirm弹出,并创建promise对象，给父组件调用
       confirm() {
         this.promise = new Promise((resolve, reject) => {

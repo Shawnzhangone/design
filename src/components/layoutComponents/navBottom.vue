@@ -10,7 +10,7 @@
       <div class="choosenavitem">
         <ul>
           <li class="itembox" v-for="(item,index) in alldata.bottom_nav.list">
-            <div class="title">{{item.text}} <i class="iconfont icon-lajixiang cp fr" @click="delNavBottomItem(index)"></i></div>
+            <div class="title">{{item.text}} <i class="iconfont icon-lajixiang cp fr" @click="delNavBottomItem(index)"></i> <span class="fr" id="upnav" @click="upnav(index)">上移</span> </div>
             <ul class="cfuntion">
               <li>名称：<input type="text" v-model="item.text"></li>
               <li  class="cp choosep" ><span class="choosePic" @click="changeIcon(index)"><span class="tit">默认图标:</span><img
@@ -72,17 +72,23 @@
           this.alldata.bottom_nav.list.splice(index, 1);
         }
       },
+      upnav(index){ //上移底部nav页面
+        if(index > 0){
+          var index2 = index - 1;
+          var tem = this.alldata.bottom_nav.list[index];
+          this.alldata.bottom_nav.list.splice(index, 1);
+          this.alldata.bottom_nav.list.splice(index2, 0,tem);
+        }
+      },
       selectePage(event,p){
           console.log("1",event.target.value,p)
       },
       changeIcon(inx){
-          console.log('111')
         this.$store.state.mine.chooseIcon = '1';
           this.$store.state.mine.chooseIconIndex = inx;
           this.$store.state.mine.chooseIconbox = true;
           this.$store.state.mine.nowIconin = '9999';
           console.log(this.$store.state.mine.nowIconin)
-
       },
       changeSeIcon(inx){
         this.$store.state.mine.chooseIcon = '2';
@@ -137,7 +143,7 @@
     height: 684px;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 300px;
+    width: 290px;
   }
   .choosenavitem .itembox {
     border:1px solid #ccc;
@@ -198,5 +204,11 @@
     position: relative;
     top:-9px;
     right:-8px;
+  }
+  #upnav{
+    font-size:14px;
+    padding:0 6px;
+    cursor: pointer;
+    margin: auto 5px;
   }
 </style>

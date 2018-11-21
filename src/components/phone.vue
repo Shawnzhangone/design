@@ -30,7 +30,7 @@
           <li @click="templet()" :class="{nowStyle:showTemplet}"><i class="iconfont icon-lifangtilitiduomiantifangkuai2"></i>模板</li>
           <li @click="module()" :class="{nowStyle:showModule}"><i class="iconfont icon-msnui-module"></i>模块</li>
           <li @click="$store.state.mine.showStylePicker = !$store.state.mine.showStylePicker;" class="tbstyle" :class="{nowStyle:$store.state.mine.showStylePicker}"><i class="iconfont icon-beijingyanse"></i> 风格</li>
-          <Sketch v-show="$store.state.mine.showStylePicker"  v-model="colors" >11</Sketch >
+          <Sketch v-show="$store.state.mine.showStylePicker"  v-model="colors" ></Sketch >
         </ul>
       </div>
     </div>

@@ -286,13 +286,21 @@
           this.$store.state.mine.program_id = response.data.program_id;
           this.$store.state.mine.program_name = response.data.program_name;
           this.$store.state.mine.mobile = response.data.mobile;
-//          console.log(response.data.program_id,'getpid');
           this.$store.dispatch('getMineBaseApi', response.data.program_id);
           this.$store.state.mine.getMineBaseMsg.alldata.pname = response.data.program_name;
         } else {
           window.location.href = response.data.data
           return;
         }
+      });
+      this.$axios.post(this.$store.state.mine.BASE_URL+'/home/user/getVersion', {credentials: true}).then((res)=>{
+          var res = res.data.data;
+          if(res.version == 'advanced'||res.version == 'flagship' ){
+            this.$store.state.mine.isVIP = true;
+          }else{
+            this.$store.state.mine.isVIP = false;
+          }
+          console.log(res,this.$store.state.mine.isVIP);
       })
     },
     directives: {

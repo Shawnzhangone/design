@@ -6,10 +6,10 @@ import * as types from "./types.js";
 import Vue from "vue";
 
 const state = {
-  BASE_URL :'http://mps.test.essocial.com.cn/',
+  BASE_URL :'https://essocial.win',
   mobile:'',
   program_id:'',
-  isVIP:true,//是不是VIP用户
+  isVIP:false,//是不是VIP用户
   nowData:"",
   nowPageIndex:0,
   program_name:'',
@@ -39,7 +39,7 @@ const state = {
   getMineBaseMsg: { //小程序数据
     errno: 1,
     alldata:{ //初始化小程序数据
-      "pid":"",
+      "pid":"11",
       "pname":"",
       "top_nav":{"navigationBarBackgroundColor":"#000000","navigationBarTextStyle":"white"},
       "bottom_nav":{"backgroundColor":"#ffffff","color":"#666666","selectedColor":"#fd7a42","layout":"","list":[{"pagePath": "1",
@@ -82,9 +82,15 @@ const actions = {
   },
   postApp({commit},appi){
     let appinfo = JSON.stringify(appi);
-    // console.log(appi,appinfo);
     commit("POSTAPP",appinfo);
-  }
+  },
+  saveAllData({commit},preview){
+    commit("saveAllDataApi",preview);
+  },
+  createPro({commit},name){
+    commit("CREATEPRO",name);
+  },
+
 }
 
 const getters = {
@@ -154,6 +160,12 @@ const mutations = {
     }).catch((error) => {
       console.log(error)
       alert('生成失败')
+    })
+  },
+  CREATEPRO(state,name){
+    let url = state.BASE_URL + '/api/user/createProgram'
+    api.createPro(url,name).then(res =>{
+      console.log(res,"create")
     })
   }
 

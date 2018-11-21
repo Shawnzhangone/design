@@ -2,8 +2,8 @@
   <div class="dialogs">
     <div class="mask"></div>
     <div class="dialog-content">
-      <div class="title">基本设置</div>
-      <p class="text">名称：<input class="grey inname" type="text" placeholder="小程序名称" v-model="$store.state.mine.getMineBaseMsg.alldata.pname" @blur="$store.state.mine.focusState =  false" v-focus="$store.state.mine.focusState"> </p>
+      <div class="title">创建小程序</div>
+      <p class="text">小程序名称：<input class="grey inname" type="text" placeholder="小程序名称" v-model="$store.state.mine.getMineBaseMsg.alldata.pname" @blur="$store.state.mine.focusState =  false" v-focus="$store.state.mine.focusState"> </p>
       <div class="btn-group">
         <div class="btn" @click="cancel">返回</div>
         <div class="btn" @click="confireSet">确定</div>
@@ -36,8 +36,6 @@
       //确定,将promise断定为完成态
       confireSet() {
           if(this.$store.state.mine.getMineBaseMsg.alldata.pname != ''){
-
-            if(this.$store.state.mine.getMineBaseMsg.alldata.pid < 0 ){ //判断是模板进来还是新建
                 var that = this;
               $.ajax({
                 type: 'POST',
@@ -48,18 +46,16 @@
                   withCredentials: true
                 },
                 success: function (data) {
+                    console.log('创建',data)
                   if (data.status == 1) { //创建成功  下一步
-                    that.$store.state.mine.showSetDialog = true
+                    alert('c创建成功')
+                    this.$store.state.mine.getMineBaseMsg.alldata.pid = data.program_id;
                     that.$store.state.mine.showBasicSet = false
                   } else {
                     alert(data.message);
                   }
                 }
               });
-            }else{
-              this.$store.state.mine.showSetDialog = true
-              this.$store.state.mine.showBasicSet = false
-            }
           }else{
               alert("请输入小程序名字！")
           }

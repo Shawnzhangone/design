@@ -61,5 +61,10 @@ export default {
   postAPPApi(url,appinfo,pid){
     // console.log("进入api",appinfo);
     return fetch(url,{appInfo:appinfo,program_id:pid});
+  },
+
+  //创建小程序
+  createPro(url,name){
+    return fetch(url,{program_name:name});
   }
 }

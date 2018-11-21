@@ -60,7 +60,7 @@
   .rightlayout{
     font-size:16px;
     color:#6d6d6d;
-    margin:20px 15px ;
+    margin:20px 0 20px 12px ;
     overflow: hidden;
   }
   .rightlayout .chooselaout_title,#right-box .chooselaout_title{
