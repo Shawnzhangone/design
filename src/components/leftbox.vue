@@ -164,41 +164,44 @@
             icon: 'icon-gerenzhongxinkaobei',
             title: '分销系统中心',
             isVip:true
-          },  {
+          },
+          {
             type: 'vMap',
             icon: 'icon-ditu',
             title: '地图'
-          }, {
-            type: 'vVideo',
-            icon: 'icon-video',
-            title: '视频',
-            isVip:true
-          }, {
-            type: 'vVideoList',
-            icon: 'icon-shipinyuan',
-            title: '视频列表',
-            isVip:true
           },
+//          {
+//            type: 'vVideo',
+//            icon: 'icon-video',
+//            title: '视频',
+//            isVip:true
+//          }, {
+//            type: 'vVideoList',
+//            icon: 'icon-shipinyuan',
+//            title: '视频列表',
+//            isVip:true
+//          },
           {
             type: 'vForm',
             icon: 'icon-wodedingdan',
             title: '表单组件'
-          },{
-            type: 'vCoupon',
-            icon: 'icon-lingquanzhongxin',
-            title: '卡券中心',
-            isVip:true
-          },{
-            type: 'vSecKill',
-            icon: 'icon-miaosha',
-            title: '秒杀',
-            isVip:true
-          },{
-            type: 'vCollage',
-            icon: 'icon-tuangou',
-            title: '拼团',
-            isVip:true
           },
+//          {
+//            type: 'vCoupon',
+//            icon: 'icon-lingquanzhongxin',
+//            title: '卡券中心',
+//            isVip:true
+//          },{
+//            type: 'vSecKill',
+//            icon: 'icon-miaosha',
+//            title: '秒杀',
+//            isVip:true
+//          },{
+//            type: 'vCollage',
+//            icon: 'icon-tuangou',
+//            title: '拼团',
+//            isVip:true
+//          },
         ],
       }
     },
@@ -251,6 +254,9 @@
           } else {
             this.alldata.pages.splice(index, 1);
 //            console.log(page_id);
+//            if(模板){
+//                alert("请先保存创建属于自己的小程序！")
+//            }else{}
             this.delpage(page_id);
             this.selectItem = 0;
 
@@ -269,6 +275,9 @@
         this.value = '';
       },
       confirmNewPage(){ //添加新页面
+//        if(模板){
+//          alert("请先保存创建属于自己的小程序！")
+//        }else{}
         if (this.value != '') {
           this.arrPages.name = this.value;
           this.arrPages.navigationBarTitleText = this.value;
@@ -528,7 +537,7 @@
   }
 
   .changeNameBox button {
-    margin-right: 15px;
+    margin-right: 10px;
     line-height: 20px;
   }
 

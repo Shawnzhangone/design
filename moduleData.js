@@ -974,7 +974,7 @@ alldatajs:{
       ]},
     {
       "page_id":"4",
-      "navigationBarTitleText":"健康",
+      "navigationBarTitleText":"我的",
       "name":"我的",
       "module":[
         {"type":"vUserCenter",
@@ -1144,7 +1144,7 @@ alldatasz:{
       ]},
     {
       "page_id":"4",
-      "navigationBarTitleText":"健康",
+      "navigationBarTitleText":"我的",
       "name":"我的",
       "module":[
         {"type":"vUserCenter",

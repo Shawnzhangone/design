@@ -6,7 +6,7 @@ import * as types from "./types.js";
 import Vue from "vue";
 
 const state = {
-  BASE_URL :'https://essocial.win',
+  BASE_URL :'https://mps.essocial.com.cn',
   mobile:'',
   program_id:'',
   isVIP:false,//是不是VIP用户
@@ -39,28 +39,32 @@ const state = {
   getMineBaseMsg: { //小程序数据
     errno: 1,
     alldata:{ //初始化小程序数据
-      "pid":"11",
+      "pid":"",
       "pname":"",
       "top_nav":{"navigationBarBackgroundColor":"#000000","navigationBarTextStyle":"white"},
-      "bottom_nav":{"backgroundColor":"#ffffff","color":"#666666","selectedColor":"#fd7a42","layout":"","list":[{"pagePath": "1",
-        "iconPath": "https://mps.essocial.com.cn/public/static/icon/grey/grey33.png",
-        "selectedIconPath": "https://mps.essocial.com.cn/public/static/icon/org/org33.png",
+      "bottom_nav":{"backgroundColor":"#ffffff","color":"#666666","selectedColor":"#fd7a42","layout":"","list":[{"pagePath": "pages/page_1/page_1",
+        "iconPath": "/images/icon/grey/grey33.png",
+        "selectedIconPath": "/images/icon/org/org33.png",
         "text": "首页"},{
-        "pagePath": "",
-        "iconPath": "",
-        "selectedIconPath": "",
+        "pagePath": "pages/page_2/page_2",
+        "iconPath": "/images/icon/grey/grey1.png",
+        "selectedIconPath": "/images/icon/org/org1.png",
         "text": "第二页"
       }]
       },
       "pages":[{
         "page_id":"1",
-        "navigationBarTitleText":"",
-        "name":"",
+        "navigationBarTitleText":"首页",
+        "name":"首页",
         "module":[]
-      }]
+      },{
+        "page_id":"2",
+        "navigationBarTitleText":"第二页",
+        "name":"第二页",
+        "module":[]
+      }
+      ]
     }
-
-
   }
 }
 
@@ -156,6 +160,8 @@ const mutations = {
             state.showSetDialog3 = true;
             state.download.path = res.path;
             state.download.size = res.size;
+          }else{
+            alert(res.message)
           }
     }).catch((error) => {
       console.log(error)

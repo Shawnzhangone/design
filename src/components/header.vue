@@ -131,56 +131,71 @@
         if(en.test(pid)){ //判断模板
 
         }else {
-          if (!this.$store.state.mine.isVIP) {//不是会员  判断是否有付费组件
-            for (var i = 0; i < allStrctureData.length; i++) {
-              for (var j = 0; j < allStrctureData[i].module.length; j++) {
-                for (var a = 0; a < this.limitData.length; a++) {
-                  if (allStrctureData[i].module[j].mname == this.limitData[a]) {
-                    this.$store.state.mine.VIPCom.push(this.limitData[a])
+          var navlist = this.alldata.bottom_nav.list;  //必选底部导航栏链接
+          var flag = false;
+          for (var i = 0; i < navlist.length; i++) {
+            if (navlist[i].pagePath == '') {
+              flag = true;
+            }
+          }
+          if (flag) {
+            alert('请选择底部导航栏链接!');
+            return;
+          } else {
+            if (!this.$store.state.mine.isVIP) {//不是会员  判断是否有付费组件
+              for (var i = 0; i < allStrctureData.length; i++) {
+                for (var j = 0; j < allStrctureData[i].module.length; j++) {
+                  for (var a = 0; a < this.limitData.length; a++) {
+                    if (allStrctureData[i].module[j].mname == this.limitData[a]) {
+                      this.$store.state.mine.VIPCom.push(this.limitData[a])
+                    }
                   }
-                }
-                if (allStrctureData[i].module[j].type == 'vUserCenter') {
-                  if (allStrctureData[i].module[j].widget.hy) {
-                    this.$store.state.mine.VIPCom.push("个人中心会员功能")
+                  if (allStrctureData[i].module[j].type == 'vUserCenter') {
+                    if (allStrctureData[i].module[j].widget.hy) {
+                      this.$store.state.mine.VIPCom.push("个人中心会员功能")
+                    }
+                    if (allStrctureData[i].module[j].widget.kqb) {
+                      this.$store.state.mine.VIPCom.push("个人中心卡券包功能")
+                    }
+                    if (allStrctureData[i].module[j].widget.jf) {
+                      this.$store.state.mine.VIPCom.push("个人中心会员积分功能")
+                    }
                   }
-                  if (allStrctureData[i].module[j].widget.kqb) {
-                    this.$store.state.mine.VIPCom.push("个人中心卡券包功能")
+                  if (allStrctureData[i].module[j].type == 'vClassify') {
+                    if (allStrctureData[i].module[j].layout == 'vProVideoClassify__1' || allStrctureData[i].module[j].layout == 'vProVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__1' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__3') {
+                      this.$store.state.mine.VIPCom.push("视频类分类列表")
+                    }
                   }
-                  if (allStrctureData[i].module[j].widget.jf) {
-                    this.$store.state.mine.VIPCom.push("个人中心会员积分功能")
-                  }
-                }
-                if (allStrctureData[i].module[j].type == 'vClassify') {
-                  if (allStrctureData[i].module[j].layout == 'vProVideoClassify__1' || allStrctureData[i].module[j].layout == 'vProVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__1' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__3') {
-                    this.$store.state.mine.VIPCom.push("视频类分类列表")
-                  }
-                }
-                if (allStrctureData[i].module[j].type == 'vRecommend') {
-                  if (allStrctureData[i].module[j].layout == 'vVideoRecommend__1' || allStrctureData[i].module[j].layout == 'vVideoRecommend__2') {
-                    this.$store.state.mine.VIPCom.push("视频类推荐位")
-                  }
-                  if (allStrctureData[i].module[j].layout == 'vSecKillRe') {
-                    this.$store.state.mine.VIPCom.push("秒杀推荐位")
-                  }
-                  if (allStrctureData[i].module[j].layout == 'vCollageRe') {
-                    this.$store.state.mine.VIPCom.push("拼团推荐位")
+                  if (allStrctureData[i].module[j].type == 'vRecommend') {
+                    if (allStrctureData[i].module[j].layout == 'vVideoRecommend__1' || allStrctureData[i].module[j].layout == 'vVideoRecommend__2') {
+                      this.$store.state.mine.VIPCom.push("视频类推荐位")
+                    }
+                    if (allStrctureData[i].module[j].layout == 'vSecKillRe') {
+                      this.$store.state.mine.VIPCom.push("秒杀推荐位")
+                    }
+                    if (allStrctureData[i].module[j].layout == 'vCollageRe') {
+                      this.$store.state.mine.VIPCom.push("拼团推荐位")
+                    }
                   }
                 }
               }
-            }
-            console.log(this.$store.state.mine.VIPCom)
-            if (this.$store.state.mine.VIPCom.length != 0) {
-              this.$store.state.mine.showIsVIP = true;
-              return;
-            } else { //没有付费组件
-              this.$store.state.mine.focusState = true;
+              console.log(this.$store.state.mine.VIPCom)
+              if (this.$store.state.mine.VIPCom.length != 0) {
+                this.$store.state.mine.showIsVIP = true;
+                return;
+              } else { //没有付费组件
+                this.$store.state.mine.focusState = true;
+                this.$store.state.mine.showSetDialog = true;
+              }
+            } else { //是VIP
               this.$store.state.mine.showSetDialog = true;
+              this.$store.state.mine.focusState = true;
             }
-          } else { //是VIP
-            this.$store.state.mine.showSetDialog = true;
-            this.$store.state.mine.focusState = true;
           }
         }
+
+      },
+      navLink(){
 
       },
       ...mapActions(['saveAllData',"createPro"])
