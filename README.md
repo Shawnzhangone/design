@@ -22,11 +22,17 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 
  ##本地编译变更
+``` bash
+#修改
 
-  修改left.vue create()请求数据，mine.js默认数据。
-       全局url：src/store/store-modules/mine.js  BASE_URL
-       图片：/design/images/
-       icon：/images/icon/
-       phone.vue 返回
+left.vue create()请求数据，mine.js默认数据。
 
+全局url：src/store/store-modules/mine.js  BASE_URL
 
+图片：/design/images/
+
+icon：/images/icon/
+
+phone.vue 返回
+
+```
