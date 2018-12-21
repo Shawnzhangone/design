@@ -142,7 +142,7 @@
   .module{
     width:100%;
     margin-top:10px;
-    height: 770px;
+    height: 730px;
     overflow-x: hidden;
     overflow-y: auto;
   .mpics{

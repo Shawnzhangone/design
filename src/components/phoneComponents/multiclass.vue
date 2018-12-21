@@ -65,11 +65,7 @@
     },
     computed:{
       imgdata(){
-        if(this.pData.ind){
-          return this.pData.ind;
-        }else {
-          return 0;
-        }
+        return this.pData.ind ? this.pData.ind : 0 ;
       },
       MulticlassData(){
         if(this.pData.layout == 'vMulticlass__1' ||this.pData.layout == 'vMulticlass__2' ){

@@ -170,38 +170,48 @@
             icon: 'icon-ditu',
             title: '地图'
           },
-//          {
-//            type: 'vVideo',
-//            icon: 'icon-video',
-//            title: '视频',
-//            isVip:true
-//          }, {
-//            type: 'vVideoList',
-//            icon: 'icon-shipinyuan',
-//            title: '视频列表',
-//            isVip:true
-//          },
+          {
+            type: 'vVideo',
+            icon: 'icon-video',
+            title: '视频',
+            isVip:true
+          }, {
+            type: 'vVideoList',
+            icon: 'icon-shipinyuan',
+            title: '视频列表',
+            isVip:true
+          },
           {
             type: 'vForm',
             icon: 'icon-wodedingdan',
             title: '表单组件'
           },
-//          {
-//            type: 'vCoupon',
-//            icon: 'icon-lingquanzhongxin',
-//            title: '卡券中心',
-//            isVip:true
-//          },{
-//            type: 'vSecKill',
-//            icon: 'icon-miaosha',
-//            title: '秒杀',
-//            isVip:true
-//          },{
-//            type: 'vCollage',
-//            icon: 'icon-tuangou',
-//            title: '拼团',
-//            isVip:true
-//          },
+          {
+            type: 'vCoupon',
+            icon: 'icon-lingquanzhongxin',
+            title: '卡券中心',
+            isVip:true
+          },{
+            type: 'vSecKill',
+            icon: 'icon-miaosha',
+            title: '秒杀',
+            isVip:true
+          },{
+            type: 'vCollage',
+            icon: 'icon-tuangou',
+            title: '拼团',
+            isVip:true
+          },{
+            type: 'vTurntable',
+            icon: 'icon-dazhuanpan',
+            title: '大转盘',
+            isVip:true
+          },{
+            type: 'vGoldenEgg',
+            icon: 'icon-zhengshuidan',
+            title: '砸金蛋',
+            isVip:true
+          },
         ],
       }
     },
@@ -252,14 +262,15 @@
           if (this.alldata.pages.length <= 2) {
             alert("请手下留情，还是留两个页面吧！")
           } else {
-            this.alldata.pages.splice(index, 1);
-//            console.log(page_id);
-//            if(模板){
-//                alert("请先保存创建属于自己的小程序！")
-//            }else{}
-            this.delpage(page_id);
-            this.selectItem = 0;
 
+            console.log(page_id);
+            if(this.$store.state.mine.program_module){
+                alert("请先保存创建属于自己的小程序！")
+            }else{
+              this.alldata.pages.splice(index, 1);
+              this.delpage(page_id);
+              this.selectItem = 0;
+            }
           }
         }).catch(() => {
           this.showDialog = false;
@@ -275,33 +286,56 @@
         this.value = '';
       },
       confirmNewPage(){ //添加新页面
-//        if(模板){
-//          alert("请先保存创建属于自己的小程序！")
-//        }else{}
-        if (this.value != '') {
-          this.arrPages.name = this.value;
-          this.arrPages.navigationBarTitleText = this.value;
-          let pagesArray = Object.assign({}, JSON.parse(JSON.stringify(this.arrPages)));
-          this.addpage(pagesArray);
-          this.isShowNewPage = false;
-          this.value = '';
+        if(this.$store.state.mine.program_module){
+          alert("请先保存创建属于自己的小程序！")
+        }else {
+          if (this.value != '') {
+            this.arrPages.name = this.value;
+            this.arrPages.navigationBarTitleText = this.value;
+            let pagesArray = Object.assign({}, JSON.parse(JSON.stringify(this.arrPages)));
+            this.addpage(pagesArray);
+            this.isShowNewPage = false;
+            this.value = '';
+          }
         }
       },
       ...mapActions(['addpage', 'delpage', 'getDistributorInfo'])
     },
     created(){ //获取保存的数据
-      this.$axios.post(this.$store.state.mine.BASE_URL+'/api/user/getPerssion', {credentials: true}).then((response) => {
-        if (response.data.status === 1) {
-          this.$store.state.mine.program_id = response.data.program_id;
-          this.$store.state.mine.program_name = response.data.program_name;
-          this.$store.state.mine.mobile = response.data.mobile;
-          this.$store.dispatch('getMineBaseApi', response.data.program_id);
-          this.$store.state.mine.getMineBaseMsg.alldata.pname = response.data.program_name;
-        } else {
-          window.location.href = response.data.data
-          return;
-        }
-      });
+      function GetPar(name) {//获取页面参数
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if(r != null) return decodeURIComponent(r[2]);
+        return null;
+      }
+      let moduleid = GetPar("case_id");
+      if (moduleid){
+        this.$store.state.mine.program_module = moduleid;
+        console.log(moduleid);
+        this.$axios.post(this.$store.state.mine.BASE_URL+'/api/user/getPerssion', {credentials: true}).then((response) => {
+            if (response.data.status === 1) {
+              this.$store.dispatch('getModuleData',moduleid );
+            }else {
+              alert(response.message)
+              window.location.href = response.data.data
+              return;
+            }
+        });
+      }else {
+          console.log('else');
+        this.$axios.post(this.$store.state.mine.BASE_URL + '/api/user/getPerssion', {credentials: true}).then((response) => {
+          if (response.data.status === 1) {
+            this.$store.state.mine.program_id = response.data.program_id;
+            this.$store.state.mine.program_name = response.data.program_name;
+            this.$store.state.mine.mobile = response.data.mobile;
+            this.$store.dispatch('getMineBaseApi', response.data.program_id);
+            this.$store.state.mine.getMineBaseMsg.alldata.pname = response.data.program_name;
+          } else {
+            window.location.href = response.data.data
+            return;
+          }
+        });
+      }
       this.$axios.post(this.$store.state.mine.BASE_URL+'/home/user/getVersion', {credentials: true}).then((res)=>{
           var res = res.data.data;
           if(res.version == 'advanced'||res.version == 'flagship' ){
@@ -315,9 +349,7 @@
     directives: {
       focus: {
         update: function (el, {value}) {
-          if (value) {
-            el.focus()
-          }
+          value && el.focus()
         }
       }
     },

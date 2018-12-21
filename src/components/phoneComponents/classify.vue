@@ -32,21 +32,9 @@
 //    :style="{nowStyle:nowClassify == index}"
         }
     },
-    computed:{
-      imgdata(){
-        if(this.pData.ind){
-          return this.pData.ind;
-        }else {
-          return 0;
-        }
-      },},
     computed: {
       imgdata(){
-        if (this.pData.ind) {
-          return this.pData.ind;
-        } else {
-          return 0;
-        }
+        return this.pData.ind ? this.pData.ind : 0 ;
       },
       classifyData(){
         if (this.pData.layout == 'vClassify__2' || this.pData.layout == 'vClassify__1') {

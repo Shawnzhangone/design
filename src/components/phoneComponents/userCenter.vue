@@ -32,12 +32,7 @@
       },
     computed:{
       imgdata(){
-        if(this.pData.ind){
-//            console.log("111",this.pData)
-          return this.pData.ind;
-        }else {
-          return 0;
-        }
+        return this.pData.ind ? this.pData.ind : 0;
       },
       Liwidth(){
           return (100/this.$store.state.defaultData.vUserCenter[this.imgdata].items.length)+'%';

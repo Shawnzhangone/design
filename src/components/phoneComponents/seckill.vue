@@ -27,11 +27,7 @@
     props:['pData'],
     computed:{
       imgdata(){
-        if(this.pData.ind){
-          return this.pData.ind;
-        }else {
-          return 0;
-        }
+        return this.pData.ind ? this.pData.ind : 0;
       },}
   }
 </script>

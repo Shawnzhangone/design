@@ -40,6 +40,8 @@
     import vCoupon from './layoutComponents/coupon'
     import vSecKill from './layoutComponents/seckill'
     import vCollage from './layoutComponents/collage'
+    import vTurntable from './layoutComponents/turntable'
+    import vGoldenEgg from './layoutComponents/goldenEgg'
 
     import vTravelFind from './layoutComponents/travelFind'
 
@@ -88,7 +90,9 @@
       vCoupon,
       vSecKill,
       vCollage,
-      vTravelFind
+      vTravelFind,
+      vTurntable,
+      vGoldenEgg
     }
 
 

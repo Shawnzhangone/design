@@ -40,6 +40,10 @@ export default {
     // console.log('获取api.js')
     return fetch(url,{program_id:pid});
   },
+  getModuleData(url,pid) {
+    // console.log('获取api.js')
+    return fetch(url,{case_id:pid});
+  },
   //保存
   AllDataApi(url,data){
     console.log('保存api');

@@ -6,7 +6,7 @@ import * as types from "./types.js";
 import Vue from "vue";
 
 const state = {
-  BASE_URL :'https://mps.essocial.com.cn',
+  BASE_URL :'http://mps.essocial.win',
   mobile:'',
   program_id:'',
   isVIP:false,//是不是VIP用户
@@ -78,6 +78,14 @@ const actions = {
         commit(types.GET_BASE_API, res)
       })
   },
+  getModuleData({commit},param){ //获取行业案列模板
+    let url = state.BASE_URL + '/home/industry_case/casequery'
+    api.getModuleData(url,param)
+      .then(res => {
+        console.log(res);
+        commit(types.GET_BASE_API, res)
+      })
+  },
   addpage({commit},page){
     commit("ADDPAGE",page);
   },
@@ -109,6 +117,7 @@ const mutations = {
     // console.log(res.data);
     console.log("进入mutations修改state成功");
   },
+
   saveAllDataApi(state,preview){
     if(preview){
         var tempwindow=window.open();

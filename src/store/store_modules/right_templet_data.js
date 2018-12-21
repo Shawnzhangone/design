@@ -11,21 +11,21 @@ export default {
           image: '/design/images/default/travelHome.png',
           title: "旅游首页",
         },
-        // {
-        //   type: 'vTemtravelAddr',
-        //   image: '/design/images/default/travelAddr.png',
-        //   title: "旅游目的地",
-        // },
+        {
+          type: 'vTemtravelAddr',
+          image: '/design/images/default/travelAddr.png',
+          title: "旅游目的地",
+        },
         {
           type: 'vTemtravelUser',
           image: '/design/images/default/travelUser.png',
           title: "旅游个人中心",
         },
-        // {
-        //   type: 'vTemtravelFind',
-        //   image: '/design/images/default/travelFind.png',
-        //   title: "旅游发现",
-        // },
+        {
+          type: 'vTemtravelFind',
+          image: '/design/images/default/travelFind.png',
+          title: "旅游发现",
+        },
         {
           type: 'vTemElcticHome',
           image: '/design/images/default/eleHome.png',
@@ -90,12 +90,16 @@ export default {
           type: 'vTemOrder',
           image: '/design/images/default/meirong3.png',
           title: "在线预约",
+        },{
+          type: 'vTemPlan',
+          image: '/design/images/default/meirong3.png',
+          title: "护理计划",
         },
-        //   {
-        //   type: 'vTemFarm',
-        //   image: '/design/images/default/housekhome.png',
-        //   title: "农产品首页",
-        // },
+          {
+          type: 'vTemFarm',
+          image: '/design/images/default/housekhome.png',
+          title: "农产品首页",
+        },
       ]
       },
       {

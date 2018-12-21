@@ -43,11 +43,7 @@
     },
     computed: {
       imgdata(){ //图片素材，数组中的第几个   因为没法$store.state.defaultData.vSlider.出来具体对象，所以用数字下标，缺点不好整理
-        if(this.pData.ind){
-          return this.pData.ind;
-        }else {
-          return 0;
-        }
+        return this.pData.ind ? this.pData.ind : 0;
       },
       swiper() {
         return this.$refs.mySwiper.swiper

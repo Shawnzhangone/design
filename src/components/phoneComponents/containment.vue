@@ -40,6 +40,8 @@
   import vCoupon from './coupon'
   import vSecKill from './seckill'
   import vCollage from './collage'
+  import vTurntable from './turntable'
+  import vGoldenEgg from './goldenEgg'
 
 //  import vTravelFind from '../templetComponents/travelFind'
   import vTravelAddr from '../templetComponents/travelAddr'
@@ -175,6 +177,14 @@
                     "type":"vCollage",
                     "style":{"margin__bottom":"4"},
                     "mname":"拼团",
+                  },{
+                    "type":"vTurntable",
+                    "style":{},
+                    "mname":"大转盘",
+                  },{
+                    "type":"vGoldenEgg",
+                    "style":{},
+                    "mname":"砸金蛋",
                   },
                 ],
                 templet:[
@@ -309,56 +319,6 @@
                       }
                       ]
                   },
-                  {"type":"vTemAboutUs",
-                    "Tem":[
-                      {
-                        "type":"vMap",
-                        "mname":"地图",
-                        "address":"成都市高新区世纪城路198附184号",
-                        "coordinate":""
-                      },
-                      {"type":"vText",
-                        "mname":"文本组件",
-                        "text":"公司电话: 028-12345678",
-                        "style":{"background__color":"#ffffff","color":"#000000","font__size":"14","text__align":"left","height":"30","line__height":"34"},
-                        "incident":"1"
-                      },
-                      {"type":"vText",
-                        "mname":"文本组件",
-                        "text":"营业时间：08:00 - 22:00",
-                        "style":{"background__color":"#ffffff","color":"#000000","font__size":"14","text__align":"left","height":"30","line__height":"34"},
-                        "incident":"1"
-                      },
-                      {"type":"vText",
-                        "mname":"文本组件",
-                        "text":"公司介绍",
-                        "style":{"background__color":"#ffffff","color":"#000000","font__size":"14","text__align":"left","height":"28","line__height":"34"},
-                        "incident":"1"
-                      },{"type":"vText",
-                        "mname":"文本组件",
-                        "text":"成都翼升科技有限公司现主要运营小程序业务。可视化拖拽制作，无需代码，轻松生成。",
-                        "style":{"background__color":"#ffffff","color":"#000000","font__size":"13","text__align":"left","height":"44","line__height":"20"},
-                        "incident":"1"
-                      },
-                    ]
-                  },
-                  {"type":"vTemMap",
-                    "Tem":[
-                      {
-                        "type":"vMap",
-                        "mname":"地图",
-                        "address":"成都市高新区世纪城路198附184号",
-                        "coordinate":""
-                      },
-                      {"type":"vText",
-                        "mname":"文本组件",
-                        "text":" 联系电话:028-8888888",
-                        "style":{"background__color":"#ffffff","color":"#333333","font__size":"14","text__align":"left","height":"20","line__height":"20"},
-                        "incident":"1"
-                      },
-                      ]
-                  },
-
                   {"type":"vTemElcticHome",
                     "Tem":[
                       {"type":"vSlider",
@@ -409,7 +369,7 @@
                         "style":{"margin__bottom":"4","height":"88","width":"40","line__height":"20","font__size":"12","color":"#000000","padding":"0"},
                         "ind":'2'
                       }
-                      ]
+                    ]
                   },
                   {"type":"vTemEduHome",
                     "Tem":[
@@ -472,6 +432,56 @@
                         "ind":'2'
                       }
                     ]},
+                  {"type":"vTemMap",
+                    "Tem":[
+                      {
+                        "type":"vMap",
+                        "mname":"地图",
+                        "address":"成都市高新区世纪城路198附184号",
+                        "coordinate":""
+                      },
+                      {"type":"vText",
+                        "mname":"文本组件",
+                        "text":" 联系电话:028-8888888",
+                        "style":{"background__color":"#ffffff","color":"#333333","font__size":"14","text__align":"left","height":"20","line__height":"20"},
+                        "incident":"1"
+                      },
+                      ]
+                  },
+                  {"type":"vTemAboutUs",
+                    "Tem":[
+                      {
+                        "type":"vMap",
+                        "mname":"地图",
+                        "address":"成都市高新区世纪城路198附184号",
+                        "coordinate":""
+                      },
+                      {"type":"vText",
+                        "mname":"文本组件",
+                        "text":"公司电话: 028-12345678",
+                        "style":{"background__color":"#ffffff","color":"#000000","font__size":"14","text__align":"left","height":"30","line__height":"34"},
+                        "incident":"1"
+                      },
+                      {"type":"vText",
+                        "mname":"文本组件",
+                        "text":"营业时间：08:00 - 22:00",
+                        "style":{"background__color":"#ffffff","color":"#000000","font__size":"14","text__align":"left","height":"30","line__height":"34"},
+                        "incident":"1"
+                      },
+                      {"type":"vText",
+                        "mname":"文本组件",
+                        "text":"公司介绍",
+                        "style":{"background__color":"#ffffff","color":"#000000","font__size":"14","text__align":"left","height":"28","line__height":"34"},
+                        "incident":"1"
+                      },{"type":"vText",
+                        "mname":"文本组件",
+                        "text":"成都翼升科技有限公司现主要运营小程序业务。可视化拖拽制作，无需代码，轻松生成。",
+                        "style":{"background__color":"#ffffff","color":"#000000","font__size":"13","text__align":"left","height":"44","line__height":"20"},
+                        "incident":"1"
+                      },
+                    ]
+                  },
+
                   {"type":"vTemHouseKeeping",
                     "Tem":[
                       {"type":"vSlider",
@@ -1149,6 +1159,8 @@
       vCoupon,
       vSecKill,
       vCollage,
+      vTurntable,
+      vGoldenEgg,
 //      vTravelFind,
       vTravelAddr,
       vTravelAddrCity,
@@ -1234,20 +1246,24 @@
           this.alldata.pages[this.nowPageIndex].module.splice(dataIndex,0,tempItem);  //在拖拽目标位置组件后面添加数据
 //          }
         }else if( text.substring(0, 4) == "vTem"){ //拖拽的为模板
-           for(let i = 0;i < this.templet.length;i++){
-               if(this.templet[i].type == text){ //匹配拖拽的模板
-                 this.alldata.pages[this.nowPageIndex].module = this.templet[i].Tem.slice(0); //拖拽的模板数据，  数组
-                 for(let j = 0; j < this.$store.state.rightTemplet.myTemData.length; j++){//更新我的模板数据
-                     if(this.$store.state.rightTemplet.myTemData[j].type == text){
-                       this.$store.state.rightTemplet.myTemData.splice(j,1);
-                     }
+          if(this.alldata.pages[this.nowPageIndex].module.length > 0 && flag ){
+            alert( '模板只能在空白页显示');
+            return;
+          }else{
+             for(let i = 0;i < this.templet.length;i++){
+                 if(this.templet[i].type == text){ //匹配拖拽的模板
+                   this.alldata.pages[this.nowPageIndex].module = this.templet[i].Tem.slice(0); //拖拽的模板数据，  数组
+                   for(let j = 0; j < this.$store.state.rightTemplet.myTemData.length; j++){//更新我的模板数据
+                       if(this.$store.state.rightTemplet.myTemData[j].type == text){
+                         this.$store.state.rightTemplet.myTemData.splice(j,1);
+                       }
+                   }
+                   this.$store.state.rightTemplet.myTemData.unshift(this.$store.state.rightTemplet.module[0].item[i]);//我的模板数据,全部模板和templet顺序保持一致
                  }
-                 this.$store.state.rightTemplet.myTemData.unshift(this.$store.state.rightTemplet.module[0].item[i]);//我的模板数据,全部模板和templet顺序保持一致
-               }
-           }
+             }
+          }
         }else{ //左边拖拽添加
           if(text == "vSearch"){ //一个页面只能有一个
-//            warnin = '搜索框'
             var modules = this.alldata.pages[this.nowPageIndex].module
             for( var i = 0;i < modules.length; i++ ){
               if( modules[i].type == "vSearch"){
@@ -1256,36 +1272,38 @@
               }
             }
           }
-          if(text == "vUserCenter"){//拖拽个人中心  只能在空白页添加
-            warn = '个人中心'}
-          else if( text == "vClassify"){
-            warn = '分类'
-          }else if(text == "vProductList"){
-            warn = '商品列表'
-          }else if(text == "vNewsList"){
-            warn = '文章列表'
-          }else if(text == "vMulticlass"){
-            warn = '多级分类'
-          }else if(text == "vCart"){
-            warn = '购物车'
-          }else if(text == "vDistributorCenter"){
-            warn = '分销系统中心'
-          }else if(text == "vForm"){
-            warn = '表单组件'
-          }else if(text == "vCoupon"){
-            warn = "卡券中心"
-          }else if(text == "vSecKill"){
-            warn = "秒杀"
-          }else if(text == "vCollage"){
-            warn = "拼团"
-          }else if(text == "vVideoList"){
-            warn = "视频列表"
-          }else if(text.substring(0, 4) == "vTem"){//判断拖拽的模板，拖拽组件名前四位
-            warn = '模板';
-            dType = 'vTem';
-          }else{
-            flag = false;
-          }
+          switch (text){
+            case 'vUserCenter':  //拖拽个人中心  只能在空白页添加
+              warn = '个人中心';break;
+            case 'vClassify' :
+              warn = '分类';break;
+            case 'vProductList' :
+              warn = '商品列表';break;
+            case 'vNewsList' :
+              warn = '文章列表';break;
+            case 'vMulticlass' :
+              warn = '多级分类';break;
+            case 'vCart' :
+              warn = '购物车';break;
+            case 'vDistributorCenter' :
+              warn = '分销系统中心';break;
+            case 'vForm' :
+              warn = '表单组件';break;
+            case 'vCoupon' :
+              warn = '卡券中心';break;
+            case 'vSecKill' :
+              warn = '秒杀';break;
+            case 'vCollage' :
+              warn = '拼团';break;
+            case 'vVideoList' :
+              warn = '视频列表';break;
+            case 'vGoldenEgg' :
+              warn = '砸金蛋';break;
+            case 'vTurntable' :
+              warn = '大转盘';break;
+            default:
+              flag = false;
+          };
           if(this.alldata.pages[this.nowPageIndex].module.length > 0 && flag ){
             alert( warn + '只能在空白页显示');
             return;

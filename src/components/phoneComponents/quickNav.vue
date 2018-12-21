@@ -11,11 +11,7 @@
     props:['pData'],
     computed:{
       vQuickNavData(){
-          if(this.pData.ind){
-            return this.quickNav[this.pData.ind].slice(0,this.pData.rowNum);
-          }else{
-            return this.quickNav[0].slice(0,this.pData.rowNum);
-          }
+          return this.pData.ind ? this.quickNav[this.pData.ind].slice(0,this.pData.rowNum) : this.quickNav[0].slice(0,this.pData.rowNum)
 
       },
       ...mapState({

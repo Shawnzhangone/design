@@ -3,7 +3,7 @@
     <div class="edit-user fl">
       <div id="to-user-center">
         <ul>
-          <li><a href="/home/user/usercenter.php"><span  class="icon iconfont icon-gerenzhongxin" ></span>{{$store.state.mine.program_name}}</a></li>
+          <li><a href="/home/user/usercenter.php"><span  class="icon iconfont icon-gerenzhongxin" ></span>{{$store.state.mine.getMineBaseMsg.alldata.pname}}</a></li>
           <li @click="offLine"><i class="icon iconfont icon-tuichu"></i></li>
         </ul>
       </div>
@@ -67,7 +67,7 @@
           cancelButtonText: '取消',
           confirmButtonText: '确定'
         },
-        limitData:['多级分类','视频','视频列表',"分销系统中心","卡券中心","拼团","秒杀"] //付费组件
+        limitData:['多级分类','视频','视频列表',"分销系统中心","卡券中心","拼团","秒杀","大转盘","砸金蛋"] //付费组件
       }
     },
     methods:{
@@ -104,13 +104,13 @@
         tempwindow.location = 'https://mpkf.weixin.qq.com/'
       },
       save(preview){
-        var pid = this.alldata.pid;
-        var en = new RegExp("[A-Za-z]+"); //判断小程序id为英文， 区分行业模板和用户小程序
+        let program_module = this.$store.state.mine.program_module //行业模板
+//        var en = new RegExp("[A-Za-z]+"); //判断小程序id为英文， 区分行业模板和用户小程序
 //        en.test(pid)
-        if( pid == '13'){
+        if(program_module){ //行业模板进来保存创建小程序
           console.log("abc")
           if(preview){
-            var tempwindow=window.open();
+            let tempwindow=window.open();
             tempwindow.location='/design/preview/index.html';
           }else{
             this.$store.state.mine.showBasicSet = true;
@@ -126,10 +126,9 @@
       },
       checkIsVIP(){ //是不是
         var allStrctureData = this.alldata.pages
-        var pid = this.alldata.pid;
-        var en = new RegExp("[A-Za-z]+");
-        if(en.test(pid)){ //判断模板
-
+        var program_module = this.$store.state.mine.program_module
+        if(program_module){ //判断模板
+          return;
         }else {
           var navlist = this.alldata.bottom_nav.list;  //必选底部导航栏链接
           var flag = false;
@@ -143,23 +142,15 @@
             return;
           } else {
             if (!this.$store.state.mine.isVIP) {//不是会员  判断是否有付费组件
-              for (var i = 0; i < allStrctureData.length; i++) {
-                for (var j = 0; j < allStrctureData[i].module.length; j++) {
-                  for (var a = 0; a < this.limitData.length; a++) {
-                    if (allStrctureData[i].module[j].mname == this.limitData[a]) {
-                      this.$store.state.mine.VIPCom.push(this.limitData[a])
-                    }
+              for (let i = 0; i < allStrctureData.length; i++) {
+                for (let j = 0; j < allStrctureData[i].module.length; j++) {
+                  for (let a = 0; a < this.limitData.length; a++) {
+                    allStrctureData[i].module[j].mname == this.limitData[a] && this.$store.state.mine.VIPCom.push(this.limitData[a])
                   }
                   if (allStrctureData[i].module[j].type == 'vUserCenter') {
-                    if (allStrctureData[i].module[j].widget.hy) {
-                      this.$store.state.mine.VIPCom.push("个人中心会员功能")
-                    }
-                    if (allStrctureData[i].module[j].widget.kqb) {
-                      this.$store.state.mine.VIPCom.push("个人中心卡券包功能")
-                    }
-                    if (allStrctureData[i].module[j].widget.jf) {
-                      this.$store.state.mine.VIPCom.push("个人中心会员积分功能")
-                    }
+                    allStrctureData[i].module[j].widget.hy && this.$store.state.mine.VIPCom.push("个人中心会员功能");
+                    allStrctureData[i].module[j].widget.kqb && this.$store.state.mine.VIPCom.push("个人中心卡券包功能");
+                    allStrctureData[i].module[j].widget.jf && this.$store.state.mine.VIPCom.push("个人中心会员积分功能");
                   }
                   if (allStrctureData[i].module[j].type == 'vClassify') {
                     if (allStrctureData[i].module[j].layout == 'vProVideoClassify__1' || allStrctureData[i].module[j].layout == 'vProVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__1' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__3') {
@@ -176,6 +167,7 @@
                     if (allStrctureData[i].module[j].layout == 'vCollageRe') {
                       this.$store.state.mine.VIPCom.push("拼团推荐位")
                     }
+
                   }
                 }
               }

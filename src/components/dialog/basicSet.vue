@@ -35,21 +35,24 @@
     methods: {
       //确定,将promise断定为完成态
       confireSet() {
-          if(this.$store.state.mine.getMineBaseMsg.alldata.pname != ''){
+          let alldata = this.$store.state.mine.getMineBaseMsg.alldata;
+
+          if(alldata.pname != ''){
                 var that = this;
               $.ajax({
                 type: 'POST',
-                url: this.$store.state.mine.BASE_URL+'/api/user/createProgram',
-                data: {program_name: that.$store.state.mine.getMineBaseMsg.alldata.pname},
+                url: this.$store.state.mine.BASE_URL+'/home/program/casepreservation',
+                data: {name: alldata.pname,case_id:alldata.pid,data:JSON.stringify(alldata)},
                 dataType: 'json',
                 xhrFields: {
                   withCredentials: true
                 },
                 success: function (data) {
                     console.log('创建',data)
-                  if (data.status == 1) { //创建成功  下一步
+                  if (data.status == 200) { //创建成功  下一步
                     alert('c创建成功')
-                    this.$store.state.mine.getMineBaseMsg.alldata.pid = data.program_id;
+                    this.$store.state.mine.getMineBaseMsg.alldata.pid = data.data.program_id;
+                    this.$store.state.mine.program_module = null;
                     that.$store.state.mine.showBasicSet = false
                   } else {
                     alert(data.message);
@@ -77,9 +80,7 @@
     directives:{
       focus:{
         update:function(el,{value}){
-          if(value){
-            el.focus()
-          }
+          value && el.focus()
         }
       }
     },

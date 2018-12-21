@@ -48,9 +48,7 @@
     directives:{
       focus:{
         update:function(el,{value}){
-          if(value){
-            el.focus()
-          }
+          value && el.focus()
         }
       }
     },

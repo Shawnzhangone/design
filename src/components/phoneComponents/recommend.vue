@@ -49,11 +49,7 @@
     props:['pData'],
     computed: {
       imgdata(){
-        if (this.pData.ind) {
-          return this.pData.ind;
-        } else {
-          return 0;
-        }
+          return this.pData.ind ? this.pData.ind : 0;
       },
       recommendData(){//商品和视频推荐位数据
          if (this.pData.layout == 'vVideoRecommend__1' || this.pData.layout == 'vVideoRecommend__2') {
