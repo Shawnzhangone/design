@@ -1,14 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// import login from '@/pages/login'
-// import register from '@/pages/register'
-// import manage from '@/pages/manage'
-// import userCenter from '@/pages/userCenter'
-import help from '@/pages/help'
-import customService from '@/pages/customService'
-import home from '@/pages/home'
-import forgetPwd from '@/pages/forgetPwd'
 
 Vue.use(Router)
 
@@ -16,51 +8,7 @@ const router = new Router({
   // mode: 'history',
   base: '/design/images/',
   routes: [
-    {
-      path: '/login',
-      name: 'login',
-      component: login
-    },
-    {
-      path: '/',
-      name: 'home',
-      component: home
-    },
-    {
-      path:'/register',
-      name:'register',
-      component:register
-    },{
-      path:'/forgetPwd',
-      name:'forgetPwd',
-      component:forgetPwd
-    },
-    {
-      path:'/manage',
-      name:'manage',
-      component:manage
-    },
-    {
-      path:'/userCenter',
-      name:'userCenter',
-      component:userCenter
-    },
-    {
-      path:'/help',
-      name:'help',
-      component:help
-    },
-    {
-      path:'/customService',
-      name:'customService',
-      component:customService
-    },
-    // {
-    //   path: '**',   // 错误路由
-    //   redirect: '/home'   //重定向
-    // }
-
-  ]
+   ]
 })
 router.beforeEach((to, from, next) => {
   console.log('navigation-guards');

@@ -36,9 +36,8 @@
       //确定,将promise断定为完成态
       confireSet() {
           let alldata = this.$store.state.mine.getMineBaseMsg.alldata;
-
+          let that = this;
           if(alldata.pname != ''){
-                var that = this;
               $.ajax({
                 type: 'POST',
                 url: this.$store.state.mine.BASE_URL+'/home/program/casepreservation',
@@ -50,9 +49,9 @@
                 success: function (data) {
                     console.log('创建',data)
                   if (data.status == 200) { //创建成功  下一步
-                    alert('c创建成功')
-                    this.$store.state.mine.getMineBaseMsg.alldata.pid = data.data.program_id;
-                    this.$store.state.mine.program_module = null;
+                    alert('小程序创建成功')
+                    that.$store.state.mine.getMineBaseMsg.alldata.pid = data.data.program_id;
+                    that.$store.state.mine.program_module = null;
                     that.$store.state.mine.showBasicSet = false
                   } else {
                     alert(data.message);

@@ -302,40 +302,26 @@
       ...mapActions(['addpage', 'delpage', 'getDistributorInfo'])
     },
     created(){ //获取保存的数据
-      function GetPar(name) {//获取页面参数
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
-        var r = window.location.search.substr(1).match(reg);
-        if(r != null) return decodeURIComponent(r[2]);
-        return null;
-      }
-      let moduleid = GetPar("case_id");
-      if (moduleid){
-        this.$store.state.mine.program_module = moduleid;
-        console.log(moduleid);
         this.$axios.post(this.$store.state.mine.BASE_URL+'/api/user/getPerssion', {credentials: true}).then((response) => {
-            if (response.data.status === 1) {
-              this.$store.dispatch('getModuleData',moduleid );
+            let rdata = response.data;
+            console.log('getper',response.data);
+            if (rdata.status === 1) {
+                if(rdata.program_id == 0){
+                    this.$store.state.mine.program_module = rdata.case_id; //行业模板进来id
+                    this.$store.dispatch('getModuleData',rdata.case_id);
+                }else{
+                  this.$store.state.mine.program_id = rdata.program_id;
+                  this.$store.state.mine.program_name = rdata.program_name;
+                  this.$store.state.mine.mobile = rdata.mobile;
+                  this.$store.dispatch('getMineBaseApi', rdata.program_id);
+                  this.$store.state.mine.getMineBaseMsg.alldata.pname = rdata.program_name;
+                }
             }else {
-              alert(response.message)
-              window.location.href = response.data.data
+              alert(response.data.message)
+              window.location.href = '/home/login/'
               return;
             }
         });
-      }else {
-          console.log('else');
-        this.$axios.post(this.$store.state.mine.BASE_URL + '/api/user/getPerssion', {credentials: true}).then((response) => {
-          if (response.data.status === 1) {
-            this.$store.state.mine.program_id = response.data.program_id;
-            this.$store.state.mine.program_name = response.data.program_name;
-            this.$store.state.mine.mobile = response.data.mobile;
-            this.$store.dispatch('getMineBaseApi', response.data.program_id);
-            this.$store.state.mine.getMineBaseMsg.alldata.pname = response.data.program_name;
-          } else {
-            window.location.href = response.data.data
-            return;
-          }
-        });
-      }
       this.$axios.post(this.$store.state.mine.BASE_URL+'/home/user/getVersion', {credentials: true}).then((res)=>{
           var res = res.data.data;
           if(res.version == 'advanced'||res.version == 'flagship' ){

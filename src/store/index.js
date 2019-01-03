@@ -2,7 +2,6 @@
  * Created by shawn on 2018/3/13 0013.
  */
 import Vue from 'vue'
-// import "babel-polyfill"
 import vuex from 'vuex'
 Vue.use(vuex);
 import choose_box_store from './store_modules/choose_box_store.js';//引入某个store对象

@@ -168,8 +168,6 @@
                     '/images/icon/grey/grey42.png',
                     '/images/icon/grey/grey43.png',
                     '/images/icon/grey/grey44.png',
-
-
                     ''
                   ]
                 },

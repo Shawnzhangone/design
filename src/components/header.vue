@@ -105,9 +105,8 @@
       },
       save(preview){
         let program_module = this.$store.state.mine.program_module //行业模板
-//        var en = new RegExp("[A-Za-z]+"); //判断小程序id为英文， 区分行业模板和用户小程序
-//        en.test(pid)
-        if(program_module){ //行业模板进来保存创建小程序
+
+        if(program_module){ // 区分行业模板和用户小程序
           console.log("abc")
           if(preview){
             let tempwindow=window.open();
@@ -116,7 +115,6 @@
             this.$store.state.mine.showBasicSet = true;
           }
         }else{
-            console.log(pid,preview);
           this.saveAllData(preview);
         }
       },

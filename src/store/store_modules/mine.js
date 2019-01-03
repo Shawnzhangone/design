@@ -6,18 +6,18 @@ import * as types from "./types.js";
 import Vue from "vue";
 
 const state = {
-  BASE_URL :'http://mps.essocial.win',
+  BASE_URL :'https://mps.essocial.win',
   mobile:'',
   program_id:'',
   isVIP:false,//是不是VIP用户
+  program_module:null,//行业模板进来
   nowData:"",
-  nowPageIndex:0,
+  nowPageIndex:0,//当前页
   program_name:'',
-  isLogin:true,
   showToast:false,
   showStylePicker:false,//展开样式
   showIsVIP:false, //VIP组件
-  VIPCom:[],
+  VIPCom:[],//拖拽的VIP组件
   showBasicSet:false,//基础设置
   showSetDialog:false,//设置开发设置
   showSetDialog2:false,//设置开发设置
@@ -79,11 +79,10 @@ const actions = {
       })
   },
   getModuleData({commit},param){ //获取行业案列模板
-    let url = state.BASE_URL + '/home/industry_case/casequery'
+    let url = state.BASE_URL + '/home/tokencase/casequery'
     api.getModuleData(url,param)
       .then(res => {
-        console.log(res);
-        commit(types.GET_BASE_API, res)
+        commit('getModuleAlldata', res)
       })
   },
   addpage({commit},page){
@@ -112,10 +111,15 @@ const getters = {
 const mutations = {
   [types.GET_BASE_API](state, res) {
     // alert("进入mutation");
-    state.getMineBaseMsg = { ...state.getMineBaseMsg, alldata: res.data }
+    state.getMineBaseMsg = { ...state.getMineBaseMsg, alldata:res.data}
+
     // state.nowData = state.getMineBaseMsg.msg[0].pagedata;
     // console.log(res.data);
     console.log("进入mutations修改state成功");
+  },
+  getModuleAlldata(state, res){
+      let alldata = res.data;
+    state.getMineBaseMsg = { ...state.getMineBaseMsg, alldata:alldata }
   },
 
   saveAllDataApi(state,preview){
