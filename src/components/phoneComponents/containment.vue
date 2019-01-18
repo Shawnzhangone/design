@@ -137,8 +137,6 @@
                   },{
                     "type":"vMap",
                     "mname":"地图",
-                    "address":"成都市高新区世纪城路198附184号",
-                    "coordinate":""
                   },{
                     "type":"vVideo",
                     "mname":"视频",
@@ -437,8 +435,6 @@
                       {
                         "type":"vMap",
                         "mname":"地图",
-                        "address":"成都市高新区世纪城路198附184号",
-                        "coordinate":""
                       },
                       {"type":"vText",
                         "mname":"文本组件",
@@ -453,8 +449,6 @@
                       {
                         "type":"vMap",
                         "mname":"地图",
-                        "address":"成都市高新区世纪城路198附184号",
-                        "coordinate":""
                       },
                       {"type":"vText",
                         "mname":"文本组件",

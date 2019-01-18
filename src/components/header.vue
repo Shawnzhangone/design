@@ -26,19 +26,13 @@
     <div class="header-sever fl">
       <ul class="clearfloat clear">
         <li @click="backEnd">
-          <!--<router-link to="/manage">-->
             <i class="icon iconfont icon-houtai9"></i>管理
-          <!--</router-link>-->
         </li>
         <li @click="weixinkf">
-          <!--<router-link to="/customService">-->
             <i class="icon iconfont icon-servicefill"></i>客服
-          <!--</router-link>-->
         </li>
         <li @click="helpCenter" >
-          <!--<router-link to="/help">-->
             <i class="icon iconfont icon-bangzhu"></i>帮助
-          <!--</router-link>-->
         </li>
       </ul>
     </div>

@@ -5,7 +5,6 @@
       <v-leftbox></v-leftbox>
       <v-phone></v-phone>
       <v-rightbox></v-rightbox>
-      <!--<v-righttemplet v-show="showTemplet"></v-righttemplet>-->
       <v-rightmodule v-show="showTemplet"></v-rightmodule>
     </div>
 
@@ -14,9 +13,7 @@
 
 
 <script>
-  //    import toast from './components/toast'
   import DialogM from '../components/DialogM'
-  //  import alert from './components/alert'
   //  import loading from './components/loading'
   import header from '../components/header'
   import leftbox from '../components/leftbox'
@@ -40,9 +37,7 @@
     },
 
     components:{
-//    'v-toast':toast,
       'v-dialog':DialogM,
-//    'v-alert':alert,
 //    'v-loading':loading,
       'v-header':header,
       'v-leftbox':leftbox,

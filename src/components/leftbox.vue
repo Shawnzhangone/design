@@ -304,7 +304,6 @@
     created(){ //获取保存的数据
         this.$axios.post(this.$store.state.mine.BASE_URL+'/api/user/getPerssion', {credentials: true}).then((response) => {
             let rdata = response.data;
-            console.log('getper',response.data);
             if (rdata.status === 1) {
                 if(rdata.program_id == 0){
                     this.$store.state.mine.program_module = rdata.case_id; //行业模板进来id
