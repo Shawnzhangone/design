@@ -26,7 +26,7 @@
         <li class="nav-item" v-for="(item,index) in $store.state.rightTemplet.navItem" @click="changeNav(index)" :class="{nownav:nowmodule == index}">{{item}}</li>
       </ul>
       <div class="module">
-        <ul class="mpics">
+        <ul class="mpics" v-if="$store.state.mine.showTemplet">
           <li v-for="item in $store.state.rightTemplet.module[nowmodule].item" class="mpic" >
             <img :src="item.image" alt="" draggable="true" @dragstart="dragStart($event)"  @drag="Drag($event)" @dragend="DragEnd($event)" :data-text="item.type">
             <p class="mtitle">{{item.title}}</p>

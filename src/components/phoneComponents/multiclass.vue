@@ -16,14 +16,13 @@
     </div>
     <div v-if="pData.layout == 'vMulticlass__2'|| pData.layout =='vProVideoClassify__2'|| pData.layout =='vShowVideoClassify__2' " class="vMulticlass__2">
       <div class="navbox" :style="{backgroundColor:pData.style.background__color}">
-        <el-dropdown trigger="click" v-for="(item,index) in MulticlassData.proData" :key="index" :class="{nownavitem:nowClassify == index}" class="eldrop" >
-          <span class="el-dropdown-link" :style="{color:pData.style.color,fontSize:pData.style.font__size+'px'}">
-            {{item.title}}<i class="el-icon-arrow-down el-icon--right"></i>
+        <ul class="navboxul">
+          <li v-for="(item,index) in MulticlassData.proData" :key="index"  class="libox" >
+          <span class="typetitle" :style="{color:pData.style.color,fontSize:pData.style.font__size+'px'}" :class="{nownavitem:nowClassify == index}">
+            {{item.title}}<i class="arrow-down"></i>
           </span>
-        <el-dropdown-menu slot="dropdown" >
-          <el-dropdown-item v-for="(goods,idx) in MulticlassData.proData[nowClassify].product" :key="idx">{{goods.title}}</el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
+          </li>
+        </ul>
       </div>
       <div class="productItembox clearfloat">
         <div class="productitem clearfloat Productscl"  v-for="item in MulticlassData.proData[nowClassify].product"  >  <!--:style="{marginBottom:pData.style.margin__bottom+'px'}"-->
@@ -183,20 +182,18 @@
         margin-right:2%;
       }
     }
-    .el-dropdown{
-      width: 25%;
-      -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      box-sizing: border-box;
-      text-align: center;
-
+    .navboxul{
+      display: flex;
+      justify-content: space-between;
+      flex-direction: row;
     }
-    .eldrop{
-      border:1px solid #aaa;
-      border-left:0;
+    .libox{
+      height: 20px;
+      padding:2px 8px;
     }
-    .eldrop:first-child{
-      border-left:1px solid #aaa;
+    .typetitle{
+      width: 100%;
+      padding:4px;
     }
     .Productscl .icon{
       position: absolute;
