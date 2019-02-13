@@ -1,7 +1,7 @@
 <template>
   <div class="productlist clearfloat " >
     <!--商品多级分类-->
-    <div v-if="pData.layout == 'vMulticlass__1'|| pData.layout =='vProVideoClassify__1'|| pData.layout == 'vShowVideoClassify__1'" class="vMulticlass__1">
+    <div v-if="pData.layout == 'vMulticlass__1'|| pData.layout =='vProVideoMulticlass__1'|| pData.layout == 'vShowVideoClassify__1'" class="vMulticlass__1">
       <div class="navbox" >
         <ul :style="{color:pData.style.color,fontSize:pData.style.font__size+'px',backgroundColor:pData.style.background__color}"><li class="navitem" :class="{nownavitem:nowClassify == index}" v-for="(item,index) in $store.state.defaultData.vMulticlass[imgdata].proData">{{item.title}}</li></ul>
       </div>
@@ -14,7 +14,7 @@
         </div>
       </div>
     </div>
-    <div v-if="pData.layout == 'vMulticlass__2'|| pData.layout =='vProVideoClassify__2'|| pData.layout =='vShowVideoClassify__2' " class="vMulticlass__2">
+    <div v-if="pData.layout == 'vMulticlass__2'|| pData.layout =='vProVideoMulticlass__2'|| pData.layout =='vShowVideoClassify__2' " class="vMulticlass__2">
       <div class="navbox" :style="{backgroundColor:pData.style.background__color}">
         <ul class="navboxul">
           <li v-for="(item,index) in MulticlassData.proData" :key="index"  class="libox" >
@@ -69,7 +69,7 @@
       MulticlassData(){
         if(this.pData.layout == 'vMulticlass__1' ||this.pData.layout == 'vMulticlass__2' ){
             return this.$store.state.defaultData.vMulticlass[this.imgdata]
-        }else if(this.pData.layout == 'vProVideoClassify__1' ||this.pData.layout == 'vProVideoClassify__2'){
+        }else if(this.pData.layout == 'vProVideoMulticlass__1' ||this.pData.layout == 'vProVideoMulticlass__2'){
           return this.$store.state.defaultData.vVideoMulticlass[this.imgdata]
         }else if(this.pData.layout == 'vShowVideoClassify__1' ||this.pData.layout == 'vShowVideoClassify__2'){
           return this.$store.state.defaultData.vVideoMulticlass[this.imgdata]

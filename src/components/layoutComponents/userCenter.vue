@@ -30,6 +30,15 @@
           </li><li>
             <input type="checkbox" id="cartj" v-model="alldata.pages[nowPageIndex].module[0].widget.jf">
             <label for="cartj" class="userLabel">我的积分<span class="isVip">VIP</span></label>
+          </li><li>
+            <input type="checkbox" id="cartp" v-model="alldata.pages[nowPageIndex].module[0].widget.pt">
+            <label for="cartp" class="userLabel">我的拼团<span class="isVip">VIP</span></label>
+          </li><li>
+            <input type="checkbox" id="cartm" v-model="alldata.pages[nowPageIndex].module[0].widget.ms">
+            <label for="cartm" class="userLabel">我的秒杀<span class="isVip">VIP</span></label>
+          </li><li>
+            <input type="checkbox" id="cartsp" v-model="alldata.pages[nowPageIndex].module[0].widget.sp">
+            <label for="cartsp" class="userLabel">我的视频<span class="isVip">VIP</span></label>
           </li>
         </ul>
       </div>

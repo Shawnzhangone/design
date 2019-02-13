@@ -328,7 +328,6 @@
           }else{
             this.$store.state.mine.isVIP = false;
           }
-          console.log(res,this.$store.state.mine.isVIP);
       })
     },
     directives: {

@@ -139,27 +139,31 @@
                   for (let a = 0; a < this.limitData.length; a++) {
                     allStrctureData[i].module[j].mname == this.limitData[a] && this.$store.state.mine.VIPCom.push(this.limitData[a])
                   }
-                  if (allStrctureData[i].module[j].type == 'vUserCenter') {
-                    allStrctureData[i].module[j].widget.hy && this.$store.state.mine.VIPCom.push("个人中心会员功能");
-                    allStrctureData[i].module[j].widget.kqb && this.$store.state.mine.VIPCom.push("个人中心卡券包功能");
-                    allStrctureData[i].module[j].widget.jf && this.$store.state.mine.VIPCom.push("个人中心会员积分功能");
-                  }
-                  if (allStrctureData[i].module[j].type == 'vClassify') {
-                    if (allStrctureData[i].module[j].layout == 'vProVideoClassify__1' || allStrctureData[i].module[j].layout == 'vProVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__1' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__3') {
-                      this.$store.state.mine.VIPCom.push("视频类分类列表")
-                    }
-                  }
-                  if (allStrctureData[i].module[j].type == 'vRecommend') {
-                    if (allStrctureData[i].module[j].layout == 'vVideoRecommend__1' || allStrctureData[i].module[j].layout == 'vVideoRecommend__2') {
-                      this.$store.state.mine.VIPCom.push("视频类推荐位")
-                    }
-                    if (allStrctureData[i].module[j].layout == 'vSecKillRe') {
-                      this.$store.state.mine.VIPCom.push("秒杀推荐位")
-                    }
-                    if (allStrctureData[i].module[j].layout == 'vCollageRe') {
-                      this.$store.state.mine.VIPCom.push("拼团推荐位")
-                    }
-
+                  switch (allStrctureData[i].module[j].type){
+                    case 'vUserCenter':
+                      allStrctureData[i].module[j].widget.hy && this.$store.state.mine.VIPCom.push("个人中心会员功能");
+                      allStrctureData[i].module[j].widget.kqb && this.$store.state.mine.VIPCom.push("个人中心卡券包功能");
+                      allStrctureData[i].module[j].widget.jf && this.$store.state.mine.VIPCom.push("个人中心会员积分功能");
+                      allStrctureData[i].module[j].widget.pt && this.$store.state.mine.VIPCom.push("个人中心我的拼团功能");
+                      allStrctureData[i].module[j].widget.ms && this.$store.state.mine.VIPCom.push("个人中心我的秒杀功能");
+                      allStrctureData[i].module[j].widget.sp && this.$store.state.mine.VIPCom.push("个人中心我的视频功能");
+                      break;
+                    case 'vClassify':
+                      if (allStrctureData[i].module[j].layout == 'vProVideoClassify__1' || allStrctureData[i].module[j].layout == 'vProVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__1' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__3') {
+                        this.$store.state.mine.VIPCom.push("视频类分类列表")
+                      }
+                      break;
+                    case 'vRecommend':
+                      if (allStrctureData[i].module[j].layout == 'vVideoRecommend__1' || allStrctureData[i].module[j].layout == 'vVideoRecommend__2') {
+                        this.$store.state.mine.VIPCom.push("视频类推荐位")
+                      }else if (allStrctureData[i].module[j].layout == 'vSecKillRe') {
+                        this.$store.state.mine.VIPCom.push("秒杀推荐位")
+                      }else if (allStrctureData[i].module[j].layout == 'vCollageRe') {
+                        this.$store.state.mine.VIPCom.push("拼团推荐位")
+                      }
+                      break;
+                    default:
+                      break;
                   }
                 }
               }
@@ -177,10 +181,6 @@
             }
           }
         }
-
-      },
-      navLink(){
-
       },
       ...mapActions(['saveAllData',"createPro"])
     },

@@ -22,14 +22,23 @@
           <input type="checkbox" id="cartc" v-model="alldata.pages[nowPageIndex].module[0].widget.hy">
           <label for="cartc">我的会员</label>
         </li><li>
-          <input type="checkbox" id="cartc" v-model="alldata.pages[nowPageIndex].module[0].widget.sc">
-          <label for="cartc">我的收藏</label>
+          <input type="checkbox" id="carts" v-model="alldata.pages[nowPageIndex].module[0].widget.sc">
+          <label for="carts">我的收藏</label>
         </li><li>
-          <input type="checkbox" id="cartc" v-model="alldata.pages[nowPageIndex].module[0].widget.kqb">
-          <label for="cartc">我的卡券包</label>
+          <input type="checkbox" id="cartk" v-model="alldata.pages[nowPageIndex].module[0].widget.kqb">
+          <label for="cartk">我的卡券包</label>
         </li><li>
-          <input type="checkbox" id="cartc" v-model="alldata.pages[nowPageIndex].module[0].widget.jf">
-          <label for="cartc">我的积分</label>
+          <input type="checkbox" id="cartj" v-model="alldata.pages[nowPageIndex].module[0].widget.jf">
+          <label for="cartj">我的积分</label>
+        </li><li>
+            <input type="checkbox" id="cartp" v-model="alldata.pages[nowPageIndex].module[0].widget.pt">
+            <label for="cartp" class="userLabel">我的拼团</label>
+          </li><li>
+          <input type="checkbox" id="cartm" v-model="alldata.pages[nowPageIndex].module[0].widget.ms">
+          <label for="cartm" class="userLabel">我的秒杀</label>
+        </li><li>
+          <input type="checkbox" id="cartsp" v-model="alldata.pages[nowPageIndex].module[0].widget.sp">
+          <label for="cartsp" class="userLabel">我的视频</label>
         </li>
         </ul>
       </div>

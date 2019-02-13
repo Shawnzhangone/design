@@ -63,6 +63,23 @@
                   cancelButtonText: '取消',
                   confirmButtonText: '确定'
                 },
+                //单独一页组件
+                sigleComponent:[
+                  'vUserCenter',
+                  'vClassify',
+                  'vProductList',
+                  'vNewsList',
+                  'vMulticlass',
+                  'vCart',
+                  'vDistributorCenter',
+                  'vForm',
+                  'vCoupon',
+                  'vSecKill',
+                  'vCollage',
+                  'vVideoList',
+                  'vGoldenEgg',
+                  'vTurntable',
+                ],
                 module:[ //拖拽组件默认样式
                   {"type":"vSearch",
                     "mname":"搜索组件",
@@ -153,11 +170,11 @@
                   },
                   {"type":"vUserCenter",
                     "mname":"个人中心",
-                    "widget":{"hy":true,"sc":true,"kqb":true,"jf":false},
+                    "widget":{"hy":true,"sc":true,"kqb":true,"jf":false,"pt":false,"ms":false,"sp":false},
                   },
                   {"type":"vDistributorCenter",
                     "mname":"分销系统中心",
-                    "widget":{"hy":true,"sc":false,"kqb":false,"jf":false},
+                    "widget":{"hy":true,"sc":false,"kqb":false,"jf":false,"pt":false,"ms":false,"sp":false},
                   },
                   {"type":"vForm",
                     "mname":"表单组件",
@@ -303,7 +320,7 @@
                     "Tem":[
                       {"type":"vUserCenter",
                         "mname":"个人中心",
-                        "widget":{"hy":true,"sc":true,"kqb":true,"jf":true},
+                        "widget":{"hy":true,"sc":true,"kqb":true,"jf":true,"pt":false,"ms":false,"sp":false},
                         "ind":'1'
                       }]
                   },
@@ -1230,11 +1247,10 @@
           event.target.parentNode.parentNode.lastChild.style.display='none';
         }else if (event.target.className === "com-name") {
           event.target.parentNode.parentNode.parentNode.lastChild.style.display='none';
-        }
-        else {
+        } else {
           event.target.parentNode.lastChild.style.display='none';
         }
-        this.$store.state.mine.oalldata = this.cloneObjectFn(this.alldata);//上一步数据
+        this.$store.state.mine.oalldata = this.cloneObjectFn(this.alldata);//保存上一步数据
         //添加拖拽元素的类型
         if(text.match(/\d+/g)){  //判断拖拽的是上下位置
           var tempItem = tempData[text];
@@ -1245,7 +1261,7 @@
 //          }else{
           this.alldata.pages[this.nowPageIndex].module.splice(dataIndex,0,tempItem);  //在拖拽目标位置组件后面添加数据
 //          }
-        }else if( text.substring(0, 4) == "vTem"){ //拖拽的为模板
+        }else if( text.substring(0, 4) == "vTem"){ //判断拖拽的为模板
           if(this.alldata.pages[this.nowPageIndex].module.length > 0 && flag ){
             alert( '模板只能在空白页显示');
             return;
@@ -1307,6 +1323,23 @@
           if(this.alldata.pages[this.nowPageIndex].module.length > 0 && flag ){
             alert( warn + '只能在空白页显示');
             return;
+          }else if(this.alldata.pages[this.nowPageIndex].module.length > 0) {
+            let hasSigle = false; //是否有单独页面组件
+            for (let i in this.sigleComponent){
+                if(this.alldata.pages[this.nowPageIndex].module[0].type == this.sigleComponent[i]){
+                  hasSigle = true;
+                  alert("该页面已经存在单独占一页组件");
+              }
+            }
+            if(!hasSigle){
+              for(var i = 0;i < this.module.length;i++){
+                if(this.module[i].type == text){
+                  let moduleArray = Object.assign({}, JSON.parse(JSON.stringify(this.module[i]))); //深度复制
+                  this.alldata.pages[this.nowPageIndex].module.splice(dataIndex,0,moduleArray);
+                  this.$store.state.chooseBox.chooseBoxName = moduleArray.type;
+                }
+              }
+            }
           }else{
             for(var i = 0;i < this.module.length;i++){
               if(this.module[i].type == text){

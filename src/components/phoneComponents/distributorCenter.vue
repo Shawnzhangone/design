@@ -23,7 +23,9 @@
         <!--<li v-show="alldata.pages[nowPageIndex].module[0].widget.xttz"><i class="iconfont icon-noticefill" style="color:#ffb400"></i> 系统通知<span class="fr"> > </span>  </li>-->
         <li v-show="alldata.pages[nowPageIndex].module[0].widget.kqb"><i class="iconfont icon-qiabao" style="color:#e7241a"></i> 我的卡券包 <span class="fr"> > </span>  </li>
         <li v-show="alldata.pages[nowPageIndex].module[0].widget.jf"><i class="iconfont icon-jifen1" style="color:#1a71e7"></i> 我的积分 <span class="fr"> > </span>  </li>
-
+        <li v-show="alldata.pages[nowPageIndex].module[0].widget.pt"><i class="iconfont icon-pintuanzhuanqu" style="color:#ff0000"></i> 我的拼团 <span class="fr"> > </span>  </li>
+        <li v-show="alldata.pages[nowPageIndex].module[0].widget.ms"><i class="iconfont icon-miaosha1" style="color:#ff0000"></i> 我的秒杀 <span class="fr"> > </span>  </li>
+        <li v-show="alldata.pages[nowPageIndex].module[0].widget.sp"><i class="iconfont icon-video" style="color:#4F55FF"></i> 我的视频 <span class="fr"> > </span>  </li>
       </ul>
     </div>
   </div>

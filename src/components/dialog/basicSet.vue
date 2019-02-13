@@ -37,27 +37,32 @@
       confireSet() {
           let alldata = this.$store.state.mine.getMineBaseMsg.alldata;
           let that = this;
+          let dol=/[.]/g;
           if(alldata.pname != ''){
-              $.ajax({
-                type: 'POST',
-                url: this.$store.state.mine.BASE_URL+'/home/program/casepreservation',
-                data: {name: alldata.pname,case_id:alldata.pid,data:JSON.stringify(alldata)},
-                dataType: 'json',
-                xhrFields: {
-                  withCredentials: true
-                },
-                success: function (data) {
+              if(dol.test(alldata.pname)){
+                  alert("小程序名称不能出现'.'!")
+              }else{
+                $.ajax({
+                  type: 'POST',
+                  url: this.$store.state.mine.BASE_URL+'/home/program/casepreservation',
+                  data: {name: alldata.pname,case_id:alldata.pid,data:JSON.stringify(alldata)},
+                  dataType: 'json',
+                  xhrFields: {
+                    withCredentials: true
+                  },
+                  success: function (data) {
                     console.log('创建',data)
-                  if (data.status == 200) { //创建成功  下一步
-                    alert('小程序创建成功')
-                    that.$store.state.mine.getMineBaseMsg.alldata.pid = data.data.program_id;
-                    that.$store.state.mine.program_module = null;
-                    that.$store.state.mine.showBasicSet = false
-                  } else {
-                    alert(data.message);
+                    if (data.status == 200) { //创建成功  下一步
+                      alert('小程序创建成功')
+                      that.$store.state.mine.getMineBaseMsg.alldata.pid = data.data.program_id;
+                      that.$store.state.mine.program_module = null;
+                      that.$store.state.mine.showBasicSet = false
+                    } else {
+                      alert(data.message);
+                    }
                   }
-                }
-              });
+                });
+              }
           }else{
               alert("请输入小程序名字！")
           }

@@ -6,7 +6,7 @@ import * as types from "./types.js";
 import Vue from "vue";
 
 const state = {
-  BASE_URL :'https://mps.essocial.com.cn',
+  BASE_URL :'https://mps.essocial.win',
   mobile:'',
   program_id:'',
   isVIP:false,//是不是VIP用户
@@ -37,7 +37,6 @@ const state = {
   },
   oalldata:{},//返回上一步数据
   getMineBaseMsg: { //小程序数据
-    errno: 1,
     alldata:{ //初始化小程序数据
       "pid":"",
       "pname":"",
