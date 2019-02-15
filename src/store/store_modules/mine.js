@@ -122,7 +122,7 @@ const mutations = {
   },
 
   saveAllDataApi(state,preview){
-    if(preview){
+    if(preview == 'preview'){
         var tempwindow=window.open();
     }
     console.log("进入saveAllData");
@@ -132,7 +132,7 @@ const mutations = {
       .then(res => {
         state.showToast = true;
         state.toastOption.text = res.message;
-        if(preview){
+        if(preview == 'preview'){
           tempwindow.location='/design/preview/index.html';
         }
         setTimeout(() => {

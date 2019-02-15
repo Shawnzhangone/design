@@ -14,7 +14,7 @@
         <li @click="save()"><i class="icon iconfont icon-baocun" ></i>保存</li>
         <!--$store.commit('saveAllDataApi','preview')-->
         <li ><a href="javascript:void(0);"  @click="save('preview')" ><i class="icon iconfont icon-yanjing" ></i>预览 </a></li>
-        <li @click="save();checkIsVIP(); "><i class="icon iconfont icon-dianji" ></i>生成</li> <!--limit();-->
+        <li @click="save('build')"><i class="icon iconfont icon-dianji" ></i>生成</li> <!--limit();-->
       </ul>
     </div>
     <toast v-show="$store.state.mine.showToast" :toast-option="$store.state.mine.toastOption" ></toast> <!-- 保存-->
@@ -99,22 +99,44 @@
       },
       save(preview){
         let program_module = this.$store.state.mine.program_module //行业模板
-
         if(program_module){ // 区分行业模板和用户小程序
           console.log("abc")
-          if(preview){
-            let tempwindow=window.open();
-            tempwindow.location='/design/preview/index.html';
+          if(preview == 'preview'){
+              let tempwindow=window.open();
+              tempwindow.location='/design/preview/index.html';
           }else{
             this.$store.state.mine.showBasicSet = true;
           }
         }else{
-          this.saveAllData(preview);
+          if(!preview){this.saveAllData();}//只是保存
+          else{
+            var nav = this.bottomNav();//判断是否设置底部导航栏链接
+            if(!nav) {
+              this.saveAllData(preview);
+              if(preview == 'build'){//生成查询VIP组件
+                this.checkIsVIP()
+              }
+            }
+          }
         }
       },
-      helpCenter(){
+      helpCenter(){//去帮助中心
         var tempwindow=window.open();
         tempwindow.location = this.$store.state.mine.BASE_URL+'/help/index.php'
+      },
+      bottomNav(){//判断底部导航栏链接是否填写
+        var navlist = this.alldata.bottom_nav.list;  //必选底部导航栏链接
+        console.log(navlist);
+        var flag = false;
+        for (var i = 0; i < navlist.length; i++) {
+          if (navlist[i].pagePath == '') {
+            flag = true;
+          }
+        }
+        if (flag) {
+          alert('请选择底部导航栏链接!');
+        }
+        return flag;
       },
       checkIsVIP(){ //是不是
         var allStrctureData = this.alldata.pages
@@ -122,17 +144,6 @@
         if(program_module){ //判断模板
           return;
         }else {
-          var navlist = this.alldata.bottom_nav.list;  //必选底部导航栏链接
-          var flag = false;
-          for (var i = 0; i < navlist.length; i++) {
-            if (navlist[i].pagePath == '') {
-              flag = true;
-            }
-          }
-          if (flag) {
-            alert('请选择底部导航栏链接!');
-            return;
-          } else {
             if (!this.$store.state.mine.isVIP) {//不是会员  判断是否有付费组件
               for (let i = 0; i < allStrctureData.length; i++) {
                 for (let j = 0; j < allStrctureData[i].module.length; j++) {
@@ -179,7 +190,6 @@
               this.$store.state.mine.showSetDialog = true;
               this.$store.state.mine.focusState = true;
             }
-          }
         }
       },
       ...mapActions(['saveAllData',"createPro"])
