@@ -9,7 +9,7 @@
         <li>排序4</li>
       </ul>
     </div>
-    <div class="productitem clearfloat" :class="pData.layout" v-for="item in $store.state.defaultData.vVideoList[imgdata]" :style="{marginTop:pData.style.margin+'px',marginBottom:pData.style.margin+'px'}">
+    <div class="productitem clearfloat" :class="pData.layout" v-for="item in $store.state.defaultData.vVideoList[imgdata]" :style="{marginTop:pData.style.margin__bottom+'px',marginBottom:pData.style.margin__bottom+'px'}">
       <img :src="item.img_url" :alt="item.title" class="productimg"  >
       <div class="infobox clearfloat"  >
         <div class="title">{{item.title}}</div>

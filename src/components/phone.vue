@@ -151,10 +151,10 @@
     /*background-color: #f0f0f0;*/
     float: left;
     .content{
-      width: 480px;
+      width: 440px;
       height:calc(100% - 131px);
       /*background-color: #219831;*/
-      margin: 80px auto 0;
+      margin: 7% auto 0;
       .phone-box{
         background: url(/design/images/default/phone3.png);
         width: 320px;

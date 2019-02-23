@@ -413,7 +413,7 @@
 
   .leftbox-bottom {
     position: absolute;
-    bottom: 120px;
+    bottom: 60px;
     left: 50%;
     margin-left: -58px;
 
@@ -461,7 +461,7 @@
   }
   ul {
     width: 100%;
-    height: 820px;
+    height: 640px;
     overflow-x: hidden;
     overflow-y: auto;
 
@@ -480,7 +480,7 @@
     float: right;
     text-align: left;
     width: 18px;
-    margin-right: 18px;
+    margin-right: 15px;
     font-size: 16px;
     border: 0;
     cursor: pointer;
@@ -488,9 +488,9 @@
 
   li.title {
     float: left;
-    width: 80px;
+    width: 196px;
     margin-left: 10%;
-
+    margin-right:0;
   }
 
   }

@@ -166,7 +166,7 @@
                     "mname":"视频列表",
                     "layout":"vVideoList__1",
                     "widget":{"sa":true,"st":true,"op":true,"ca":true},
-                    "style":{"margin":"4"}
+                    "style":{"margin__bottom":"4"}
                   },
                   {"type":"vUserCenter",
                     "mname":"个人中心",

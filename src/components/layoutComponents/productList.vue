@@ -31,7 +31,7 @@
     <div class="rightlayout widget-widget" v-show="$store.state.chooseBox.isShow">
       <ul class="set">
         <!--<li>图片高度：<input type="number" class="number" min="1" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.height"></li>-->
-        <!--<li>上下间距：<input type="number" class="number" min="0" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.margin__bottom"></li>-->
+        <li>上下间距：<input type="number" class="number" min="0" max="30" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.margin__bottom"></li>
 
       </ul>
     </div>

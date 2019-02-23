@@ -16,9 +16,9 @@
       <div class="worning">注：页面链接地址和电话号码后台填写</div>
     </div>
     <div class="rightlayout widget-widget" v-show="$store.state.chooseBox.isShow">
-      <div class="setbg">上下间距：<input type="number" class="number" step="1" min="0" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.margin"></div>
+      <div class="setbg">上下间距：<input type="number" class="number" step="1" min="0" max="24" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.margin"></div>
       <!--<div class="setbg">左右间距：<input type="number" class="number" step="1" min="0" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.padding"></div>-->
-      <div class="setbg">圆角：<input type="number" class="number" step="1" min="0" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.border__radius"></div>
+      <div class="setbg">圆角：<input type="number" class="number" step="1" min="0" max="42" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.border__radius"></div>
 
     </div>
   </div>

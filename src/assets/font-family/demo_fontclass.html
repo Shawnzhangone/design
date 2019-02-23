@@ -1,682 +1,137 @@
+var app = getApp()
+import {
+  getMultiProductGroupList
+} from '../utils/util';
+Page({
+  data: {
+    sortItemList: [], // ����һ��������
+    productInfo: [], // ��Ʒ
+    currentTab: 0, // ��ǰѡ�е�һ������ tab
+    subTabHidden: false // ������ tab Ĭ������ 
+  },
+  onShow: function(options) {
+    var that = this;
+    // ��ȡ�༶���� ������Ʒ �б�
+    var tab = wx.getStorageSync('selectTab');
+    that.setData({
+      productInfo: ''
+    })
+    getMultiProductGroupList(app.globalData.program_id).then(res => {
+      let resData = res.data.data; // ����һ�����б�����
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8"/>
-    <title>IconFont</title>
-    <link rel="stylesheet" href="demo.css">
-    <link rel="stylesheet" href="iconfont.css">
-</head>
-<body>
-    <div class="main markdown">
-        <h1>IconFont 图标</h1>
-        <ul class="icon_lists clear">
-            
-                <li>
-                <i class="icon iconfont icon-bangzhu"></i>
-                    <div class="name">帮助</div>
-                    <div class="fontclass">.icon-bangzhu</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-shoucangjia"></i>
-                    <div class="name">收藏夹</div>
-                    <div class="fontclass">.icon-shoucangjia</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-dianji"></i>
-                    <div class="name">点击</div>
-                    <div class="fontclass">.icon-dianji</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-location"></i>
-                    <div class="name">location</div>
-                    <div class="fontclass">.icon-location</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-comment"></i>
-                    <div class="name">comment</div>
-                    <div class="fontclass">.icon-comment</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-deliver"></i>
-                    <div class="name">deliver</div>
-                    <div class="fontclass">.icon-deliver</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-pay"></i>
-                    <div class="name">pay</div>
-                    <div class="fontclass">.icon-pay</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-send"></i>
-                    <div class="name">send</div>
-                    <div class="fontclass">.icon-send</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-ticket"></i>
-                    <div class="name">ticket</div>
-                    <div class="fontclass">.icon-ticket</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-list"></i>
-                    <div class="name">list</div>
-                    <div class="fontclass">.icon-list</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-pic"></i>
-                    <div class="name">pic</div>
-                    <div class="fontclass">.icon-pic</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-refund"></i>
-                    <div class="name">refund</div>
-                    <div class="fontclass">.icon-refund</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-vip"></i>
-                    <div class="name">vip</div>
-                    <div class="fontclass">.icon-vip</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-14"></i>
-                    <div class="name">图片</div>
-                    <div class="fontclass">.icon-14</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-vipcard"></i>
-                    <div class="name">vipcard</div>
-                    <div class="fontclass">.icon-vipcard</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-searchlist"></i>
-                    <div class="name">search_list</div>
-                    <div class="fontclass">.icon-searchlist</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-huiyuanqia"></i>
-                    <div class="name">会员卡</div>
-                    <div class="fontclass">.icon-huiyuanqia</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-msnui-module"></i>
-                    <div class="name">模块</div>
-                    <div class="fontclass">.icon-msnui-module</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-countdown"></i>
-                    <div class="name">countdown</div>
-                    <div class="fontclass">.icon-countdown</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-noticefill"></i>
-                    <div class="name">notice_fill</div>
-                    <div class="fontclass">.icon-noticefill</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-favorite"></i>
-                    <div class="name">favorite</div>
-                    <div class="fontclass">.icon-favorite</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-jifen"></i>
-                    <div class="name">积分</div>
-                    <div class="fontclass">.icon-jifen</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-servicefill"></i>
-                    <div class="name">service_fill</div>
-                    <div class="fontclass">.icon-servicefill</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-31fenxiang"></i>
-                    <div class="name">3.1分享</div>
-                    <div class="fontclass">.icon-31fenxiang</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-navlist"></i>
-                    <div class="name">nav-list</div>
-                    <div class="fontclass">.icon-navlist</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-baocun"></i>
-                    <div class="name">保存</div>
-                    <div class="fontclass">.icon-baocun</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-liebiao2"></i>
-                    <div class="name">列表</div>
-                    <div class="fontclass">.icon-liebiao2</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-dianhua1"></i>
-                    <div class="name">电话</div>
-                    <div class="fontclass">.icon-dianhua1</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-gouwuche02"></i>
-                    <div class="name">gouwuche-02</div>
-                    <div class="fontclass">.icon-gouwuche02</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-74wodedingdan"></i>
-                    <div class="name">我的订单</div>
-                    <div class="fontclass">.icon-74wodedingdan</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-qiabao"></i>
-                    <div class="name">卡包</div>
-                    <div class="fontclass">.icon-qiabao</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-ditumap29"></i>
-                    <div class="name">地图</div>
-                    <div class="fontclass">.icon-ditumap29</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-lajixiang"></i>
-                    <div class="name">垃圾箱</div>
-                    <div class="fontclass">.icon-lajixiang</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-wodedingdan"></i>
-                    <div class="name">我的订单</div>
-                    <div class="fontclass">.icon-wodedingdan</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-xiangxiajiantou"></i>
-                    <div class="name">向下箭头</div>
-                    <div class="fontclass">.icon-xiangxiajiantou</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-xiangyoujiantou"></i>
-                    <div class="name">向右箭头</div>
-                    <div class="fontclass">.icon-xiangyoujiantou</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-yanjing"></i>
-                    <div class="name">眼睛</div>
-                    <div class="fontclass">.icon-yanjing</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-chazhaobiaodanliebiao"></i>
-                    <div class="name">查找 表单 列表</div>
-                    <div class="fontclass">.icon-chazhaobiaodanliebiao</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-leimupinleifenleileibie"></i>
-                    <div class="name">类目 品类 分类 类别</div>
-                    <div class="fontclass">.icon-leimupinleifenleileibie</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-lifangtilitiduomiantifangkuai2"></i>
-                    <div class="name">立方体 立体 多面体 方块2</div>
-                    <div class="fontclass">.icon-lifangtilitiduomiantifangkuai2</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-ai-module"></i>
-                    <div class="name">模块</div>
-                    <div class="fontclass">.icon-ai-module</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-fenlei"></i>
-                    <div class="name">分类</div>
-                    <div class="fontclass">.icon-fenlei</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-vip1"></i>
-                    <div class="name">VIP</div>
-                    <div class="fontclass">.icon-vip1</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-chuangkou01"></i>
-                    <div class="name">窗口-01</div>
-                    <div class="fontclass">.icon-chuangkou01</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-liebiao601"></i>
-                    <div class="name">列表6-01</div>
-                    <div class="fontclass">.icon-liebiao601</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-tuangou"></i>
-                    <div class="name">团购</div>
-                    <div class="fontclass">.icon-tuangou</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-listhandle"></i>
-                    <div class="name">底部栏-列表点击</div>
-                    <div class="fontclass">.icon-listhandle</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-list1"></i>
-                    <div class="name">底部栏-列表</div>
-                    <div class="fontclass">.icon-list1</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-shoucang"></i>
-                    <div class="name">收藏</div>
-                    <div class="fontclass">.icon-shoucang</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-icontouxiang"></i>
-                    <div class="name">头像</div>
-                    <div class="fontclass">.icon-icontouxiang</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-miaosha1"></i>
-                    <div class="name">秒杀</div>
-                    <div class="fontclass">.icon-miaosha1</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-huidingbu"></i>
-                    <div class="name">回顶部</div>
-                    <div class="fontclass">.icon-huidingbu</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-tuichu"></i>
-                    <div class="name">退出</div>
-                    <div class="fontclass">.icon-tuichu</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-edit-1-copy"></i>
-                    <div class="name">修改</div>
-                    <div class="fontclass">.icon-edit-1-copy</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-sousuo"></i>
-                    <div class="name">搜索</div>
-                    <div class="fontclass">.icon-sousuo</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-3dtouchshangpinliebiao"></i>
-                    <div class="name">3D touch_商品列表</div>
-                    <div class="fontclass">.icon-3dtouchshangpinliebiao</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-news"></i>
-                    <div class="name">news</div>
-                    <div class="fontclass">.icon-news</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-video"></i>
-                    <div class="name">video</div>
-                    <div class="fontclass">.icon-video</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-houtai9"></i>
-                    <div class="name">后台9</div>
-                    <div class="fontclass">.icon-houtai9</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-dingwei"></i>
-                    <div class="name">定位</div>
-                    <div class="fontclass">.icon-dingwei</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-fenlei1"></i>
-                    <div class="name">分类</div>
-                    <div class="fontclass">.icon-fenlei1</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-dazhuanpan"></i>
-                    <div class="name">大转盘</div>
-                    <div class="fontclass">.icon-dazhuanpan</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-pintuanzhuanqu"></i>
-                    <div class="name">拼团专区</div>
-                    <div class="fontclass">.icon-pintuanzhuanqu</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-gerenzhongxin"></i>
-                    <div class="name">个人中心</div>
-                    <div class="fontclass">.icon-gerenzhongxin</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-tubiao_liebiaopailie"></i>
-                    <div class="name">图标_列表排列</div>
-                    <div class="fontclass">.icon-tubiao_liebiaopailie</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-plus-listview"></i>
-                    <div class="name">列表</div>
-                    <div class="fontclass">.icon-plus-listview</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-shangpinfenlei"></i>
-                    <div class="name">商品分类</div>
-                    <div class="fontclass">.icon-shangpinfenlei</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-fenggepitchon"></i>
-                    <div class="name">风格（pitch on）</div>
-                    <div class="fontclass">.icon-fenggepitchon</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-shipinyuan"></i>
-                    <div class="name">视频源</div>
-                    <div class="fontclass">.icon-shipinyuan</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-miaosha"></i>
-                    <div class="name">秒杀</div>
-                    <div class="fontclass">.icon-miaosha</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-home_light"></i>
-                    <div class="name">home_light</div>
-                    <div class="fontclass">.icon-home_light</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-my_light"></i>
-                    <div class="name">my_light</div>
-                    <div class="fontclass">.icon-my_light</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-community_light"></i>
-                    <div class="name">community_light</div>
-                    <div class="fontclass">.icon-community_light</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-cart_light"></i>
-                    <div class="name">cart_light</div>
-                    <div class="fontclass">.icon-cart_light</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-home_fill_light"></i>
-                    <div class="name">home_fill_light</div>
-                    <div class="fontclass">.icon-home_fill_light</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-cart_fill_light"></i>
-                    <div class="name">cart_fill_light</div>
-                    <div class="fontclass">.icon-cart_fill_light</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-community_fill_light"></i>
-                    <div class="name">community_fill_light</div>
-                    <div class="fontclass">.icon-community_fill_light</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-my_fill_light"></i>
-                    <div class="name">my_fill_light</div>
-                    <div class="fontclass">.icon-my_fill_light</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-share_light"></i>
-                    <div class="name">share_light</div>
-                    <div class="fontclass">.icon-share_light</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-dingwei1"></i>
-                    <div class="name">定位</div>
-                    <div class="fontclass">.icon-dingwei1</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-guanli"></i>
-                    <div class="name">管理</div>
-                    <div class="fontclass">.icon-guanli</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-beijingyanse"></i>
-                    <div class="name">背景颜色</div>
-                    <div class="fontclass">.icon-beijingyanse</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-liebiao"></i>
-                    <div class="name">列表</div>
-                    <div class="fontclass">.icon-liebiao</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-dianhua"></i>
-                    <div class="name">电话</div>
-                    <div class="fontclass">.icon-dianhua</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-lunbotu"></i>
-                    <div class="name">符号-轮播图</div>
-                    <div class="fontclass">.icon-lunbotu</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-wenben1"></i>
-                    <div class="name">符号-文本</div>
-                    <div class="fontclass">.icon-wenben1</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-guanlizhongxin"></i>
-                    <div class="name">管理中心</div>
-                    <div class="fontclass">.icon-guanlizhongxin</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-guanbijiantou"></i>
-                    <div class="name"> 关闭箭头</div>
-                    <div class="fontclass">.icon-guanbijiantou</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-ditu"></i>
-                    <div class="name">地图</div>
-                    <div class="fontclass">.icon-ditu</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-kefu"></i>
-                    <div class="name">客服</div>
-                    <div class="fontclass">.icon-kefu</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-dianpu"></i>
-                    <div class="name"> 店铺</div>
-                    <div class="fontclass">.icon-dianpu</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-dingdanyichenggong"></i>
-                    <div class="name"> 订单 已成功</div>
-                    <div class="fontclass">.icon-dingdanyichenggong</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-xiangqing"></i>
-                    <div class="name"> 详情</div>
-                    <div class="fontclass">.icon-xiangqing</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-jifen1"></i>
-                    <div class="name">积分</div>
-                    <div class="fontclass">.icon-jifen1</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-shipin"></i>
-                    <div class="name">视频</div>
-                    <div class="fontclass">.icon-shipin</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-shipin1"></i>
-                    <div class="name">视频</div>
-                    <div class="fontclass">.icon-shipin1</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-daohang"></i>
-                    <div class="name">导航</div>
-                    <div class="fontclass">.icon-daohang</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-fengexian"></i>
-                    <div class="name">分割线</div>
-                    <div class="fontclass">.icon-fengexian</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-lunboxiaoguo"></i>
-                    <div class="name">轮播效果</div>
-                    <div class="fontclass">.icon-lunboxiaoguo</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-dibiao"></i>
-                    <div class="name">地标</div>
-                    <div class="fontclass">.icon-dibiao</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-tuwenliebiao"></i>
-                    <div class="name">图文列表</div>
-                    <div class="fontclass">.icon-tuwenliebiao</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-lingquanzhongxin"></i>
-                    <div class="name">领券中心</div>
-                    <div class="fontclass">.icon-lingquanzhongxin</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-nav_profile"></i>
-                    <div class="name">个人信息</div>
-                    <div class="fontclass">.icon-nav_profile</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-gerenzhongxinkaobei"></i>
-                    <div class="name">个人中心</div>
-                    <div class="fontclass">.icon-gerenzhongxinkaobei</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-shangpinliebiao"></i>
-                    <div class="name">商品列表2</div>
-                    <div class="fontclass">.icon-shangpinliebiao</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-wenben"></i>
-                    <div class="name">文本</div>
-                    <div class="fontclass">.icon-wenben</div>
-                </li>
-            
-                <li>
-                <i class="icon iconfont icon-zhengshuidan"></i>
-                    <div class="name">蒸水蛋</div>
-                    <div class="fontclass">.icon-zhengshuidan</div>
-                </li>
-            
-        </ul>
+      var tab = wx.getStorageSync('selectTab');
+      if (!tab) {
+        var currentTab = resData[0].product_group_id; // ��ǰѡ�е�һ��
+        let first = resData[0].children; // ��һ��һ���£����ж���tab
+        first.map(item => {
+          return new Promise((resolve, reject) => {
+            var id = item.product_group_id;
+            that.getProductListByGroup(id)
+          })
+        })
+      } else {
 
-        <h2 id="font-class-">font-class引用</h2>
-        <hr>
+        let id = 0;
+        console.log(tab)
+        resData.forEach(item => {
 
-        <p>font-class是unicode使用方式的一种变种，主要是解决unicode书写不直观，语意不明确的问题。</p>
-        <p>与unicode使用方式相比，具有如下特点：</p>
-        <ul>
-        <li>兼容性良好，支持ie8+，及所有现代浏览器。</li>
-        <li>相比于unicode语意明确，书写更直观。可以很容易分辨这个icon是什么。</li>
-        <li>因为使用class来定义图标，所以当要替换图标时，只需要修改class里面的unicode引用。</li>
-        <li>不过因为本质上还是使用的字体，所以多色图标还是不支持的。</li>
-        </ul>
-        <p>使用步骤如下：</p>
-        <h3 id="-fontclass-">第一步：引入项目下面生成的fontclass代码：</h3>
+          if (item.product_group_id == tab) {
 
+            // id = item.product_group_id
+            let subTab = item.children; // ����tab
+            subTab.forEach(item => {
+              return new Promise((resolve, reject) => {
+                id = item.product_group_id;
+                that.getProductListByGroup(id)
+              })
+            })
+          } else {
+            let subItem = item.children;
+            subItem.forEach(item => {
+              if (item.product_group_id == tab) {
+                id = tab;
+                that.getProductListByGroup(id)
+              }
+            })
+          }
 
-        <pre><code class="lang-js hljs javascript"><span class="hljs-comment">&lt;link rel="stylesheet" type="text/css" href="./iconfont.css"&gt;</span></code></pre>
-        <h3 id="-">第二步：挑选相应图标并获取类名，应用于页面：</h3>
-        <pre><code class="lang-css hljs">&lt;<span class="hljs-selector-tag">i</span> <span class="hljs-selector-tag">class</span>="<span class="hljs-selector-tag">iconfont</span> <span class="hljs-selector-tag">icon-xxx</span>"&gt;&lt;/<span class="hljs-selector-tag">i</span>&gt;</code></pre>
-        <blockquote>
-        <p>"iconfont"是你项目下的font-family。可以通过编辑项目查看，默认是"iconfont"。</p>
-        </blockquote>
-    </div>
-</body>
-</html>
+        })
+
+      }
+
+      that.setData({
+        currentTab: tab ? tab : currentTab, // һ��tab��ǰѡ��
+        sortItemList: resData // һ��tab����
+      })
+    })
+  },
+  // С������ʾ���ض���������
+  showChoose() {
+    this.setData({
+      subTabHidden: !this.data.subTabHidden
+    })
+  },
+  // һ������ѡ��
+  choose(e) {
+    var tab = e.currentTarget.dataset.tab;
+    console.log(tab)
+    this.setData({
+      currentTab: tab,
+      subTabHidden: true // ���һ������tab�����Ӧ�Ķ�������tab��ʾ
+    })
+    wx.setStorageSync('selectTab', tab)
+  },
+  // ��������ѡ�� 
+  getProductGroupDetail(e) {
+    var that = this;
+    let id = e.currentTarget.dataset.id; // ��ȡ������������id 
+    id += 'l2'
+    that.setData({
+      subTabHidden: false // �������tab�����������������Ȼ�������Ӧ������ 
+    })
+
+    //��������ѡ�������Ӧ�����������
+    that.getProductListByGroup(id)
+  },
+  // ������������� ��Ʒ�б�����
+  getProductListByGroup(id) {
+    var that = this;
+    id = id.toString();
+    if (id.includes('l2')) {
+      let end = id.length - 2;
+      id = id.substring(0, end);
+      wx.request({
+        url: app.globalData.api + 'product/getProductListByGroup',
+        method: 'POST',
+        data: {
+          product_group_id: id
+        },
+        success: function(res) {
+          let productInfo = res.data.data;
+          that.setData({
+            productInfo
+          })
+        }
+      })
+    } else {
+      wx.request({
+        url: app.globalData.api + 'product/getProductListByGroup',
+        method: 'POST',
+        data: {
+          product_group_id: id
+        },
+        success: function(res) {
+          let productInfo = that.data.productInfo;
+          let resData = res.data.data;
+          productInfo = [...productInfo, ...resData]
+
+          that.setData({
+            productInfo
+          })
+        }
+      })
+    }
+
+  }
+
+})

@@ -9,7 +9,7 @@
         <li>排序4</li>
       </ul>
     </div>
-    <div class="productitem clearfloat" :class="pData.layout" v-for="item in $store.state.defaultData.vProductList[imgdata]" >
+    <div class="productitem clearfloat" :class="pData.layout" v-for="item in $store.state.defaultData.vProductList[imgdata]" :style="{marginBottom:pData.style.margin__bottom+'px'}">
       <img :src="item.img_url" :alt="item.title" class="productimg"  >
       <div class="infobox clearfloat"  >
         <div class="title">{{item.title}}</div>
@@ -17,7 +17,7 @@
         <div class="quantity "><span class="sales" v-show="pData.widget.sa">销量:{{item.sales}}</span>  <span class="stock" v-show="pData.widget.st">库存:{{item.stock}}</span> <i class="icon iconfont icon-gouwuche02 " v-show="pData.widget.ca"></i></div>
       </div>
     </div>
-    <div class="productitem clearfloat" :class="pData.layout" v-for="item in $store.state.defaultData.vProductList[imgdata]" >
+    <div class="productitem clearfloat" :class="pData.layout" v-for="item in $store.state.defaultData.vProductList[imgdata]" :style="{marginBottom:pData.style.margin__bottom+'px'}">
       <img :src="item.img_url" :alt="item.title" class="productimg"  >
       <div class="infobox clearfloat"  >
         <div class="title">{{item.title}}</div>
@@ -25,7 +25,7 @@
         <div class="quantity "><span class="sales" v-show="pData.widget.sa">销量:{{item.sales}}</span>  <span class="stock" v-show="pData.widget.st">库存:{{item.stock}}</span> <i class="icon iconfont icon-gouwuche02 " v-show="pData.widget.ca"></i></div>
       </div>
     </div>
-    <div class="productitem clearfloat" :class="pData.layout" v-for="item in $store.state.defaultData.vProductList[imgdata]" >
+    <div class="productitem clearfloat" :class="pData.layout" v-for="item in $store.state.defaultData.vProductList[imgdata]" :style="{marginBottom:pData.style.margin__bottom+'px'}">
           <img :src="item.img_url" :alt="item.title" class="productimg"  >
           <div class="infobox clearfloat"  >
             <div class="title">{{item.title}}</div>
@@ -60,7 +60,6 @@
   .productitem{
     position: relative;
     background-color: #fff;
-    margin-bottom:5px;
   }
   .productitem .productimg {
     /*margin-bottom:8px;*/

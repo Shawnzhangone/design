@@ -188,7 +188,7 @@
       flex-direction: row;
     }
     .libox{
-      height: 20px;
+      height: 32px;
       padding:2px 8px;
     }
     .typetitle{

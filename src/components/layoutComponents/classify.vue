@@ -51,7 +51,7 @@
         <li>分类栏文字颜色：<input type="color" name="color" id="color" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.color"></li>
         <!--<li>分类栏选中颜色：<input type="color" name="color" id="color" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.choosecolor"></li>-->
         <li>分类栏字体大小：<input type="number" class="number" step="1" min="12" max="16" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.font__size"/></li>
-        <!--<li>上下间距：<input type="number" class="number" min="0" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.margin__bottom"></li>-->
+        <!--<li>上下间距：<input type="number" class="number" min="0" max="30" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.margin__bottom"></li>-->
       </ul>
     </div>
   </div>

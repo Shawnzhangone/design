@@ -19,17 +19,17 @@
       <div class="box"v-if="alldata.pages[nowPageIndex].module[seleIndex].layout == 'vImgTextList__1'">
         <div class="setcolor">标题字体颜色：<input type="color" name="color" id="color" value="#000000" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.color"></div>
         <div class="setcolor">文字字体颜色：<input type="color" name="color" id="color" value="#333333" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.wcolor"></div>
-        <div class="setfz">标题字体大小：<input type="number" class="number" step="1" min="12" max="16" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.font__size"/></div>
-        <div class="seth">文本行高：<input type="number" class="number" step="1" min="12" max="28" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.line__height"/></div>
-        <div class="setbg">圆角：<input type="number" class="number" step="1" min="0" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.border__radius"></div>
+        <div class="setfz">标题字体大小：<input type="number" class="number" step="1" min="12" max="16" @change="mlh()" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.font__size"/></div>
+        <div class="seth">文本行高：<input type="number" class="number" step="1" :min="minlh" max="28" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.line__height"/></div>
+        <div class="setbg">圆角：<input type="number" class="number" step="1" min="0" max="26" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.border__radius"></div>
         <div class="seth">图片模块大小：<input type="number" class="number" step="1" min="0" max="30" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.padding"/></div>
       </div>
       <div v-else class="box">
         <div class="setcolor">字体颜色：<input type="color" name="color" id="color" value="#000000" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.color"></div>
         <!--<div class="setcolor">文字字体颜色：<input type="color" name="color" id="color" value="#333333" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.wcolor"></div>-->
-        <div class="setfz">字体大小：<input type="number" class="number" step="1" min="12" max="16" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.font__size"/></div>
-        <div class="seth">文本行高：<input type="number" class="number" step="1" min="12" max="28" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.line__height"/></div>
-        <div class="setbg">圆角：<input type="number" class="number" step="1" min="0" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.border__radius"></div>
+        <div class="setfz">字体大小：<input type="number" class="number" step="1" min="12" max="16" @change="mlh()" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.font__size"/></div>
+        <div class="seth">文本行高：<input type="number" class="number" step="1" :min="minlh" max="28"  v-model="alldata.pages[nowPageIndex].module[seleIndex].style.line__height"/></div>
+        <div class="setbg">圆角：<input type="number" class="number" step="1" min="0" max="26" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.border__radius"></div>
         <div class="seth">图片模块大小：<input type="number" class="number" step="1" min="0" max="30" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.padding"/></div>
       </div>
     </div>
@@ -49,7 +49,16 @@
         "name": "拨打电话"
       }]
     }},
+    methods:{
+        mlh(){ //行高必须比字体大1
+            let lh = this.alldata.pages[this.nowPageIndex].module[this.seleIndex].style.line__height,fz = this.alldata.pages[this.nowPageIndex].module[this.seleIndex].style.font__size;
+          this.alldata.pages[this.nowPageIndex].module[this.seleIndex].style.line__height = lh <= fz ? parseInt(lh) + 1 : lh;
+        }
+    },
     computed:{
+        minlh(){//最小行高必须比字体大1
+          return   parseInt(this.alldata.pages[this.nowPageIndex].module[this.seleIndex].style.font__size) + 1;
+        },
       ...mapState({
         alldata : state => state.mine.getMineBaseMsg.alldata,
         nowPageIndex: state => state.mine.nowPageIndex,
