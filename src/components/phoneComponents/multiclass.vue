@@ -3,7 +3,7 @@
     <!--商品多级分类-->
     <div v-if="pData.layout == 'vMulticlass__1'|| pData.layout =='vProVideoMulticlass__1'|| pData.layout == 'vShowVideoClassify__1'" class="vMulticlass__1">
       <div class="navbox" >
-        <ul :style="{color:pData.style.color,fontSize:pData.style.font__size+'px',backgroundColor:pData.style.background__color}"><li class="navitem" :class="{nownavitem:nowClassify == index}" v-for="(item,index) in $store.state.defaultData.vMulticlass[imgdata].proData">{{item.title}}</li></ul>
+        <ul :style="{color:pData.style.color,fontSize:pData.style.font__size+'px',backgroundColor:pData.style.background__color}"><li class="navitem" :class="{nownavitem:nowClassify == index}" v-for="(item,index) in MulticlassData.proData">{{item.title}}</li></ul>
       </div>
       <div class="productItembox clearfloat">
         <div class="productitem clearfloat Productscl"  v-for="item in MulticlassData.proData[nowClassify].product"  :style="{marginBottom:pData.style.margin__bottom+'px'}">
@@ -17,8 +17,8 @@
     <div v-if="pData.layout == 'vMulticlass__2'|| pData.layout =='vProVideoMulticlass__2'|| pData.layout =='vShowVideoClassify__2' " class="vMulticlass__2">
       <div class="navbox" :style="{backgroundColor:pData.style.background__color}">
         <ul class="navboxul">
-          <li v-for="(item,index) in MulticlassData.proData" :key="index"  class="libox" >
-          <span class="typetitle" :style="{color:pData.style.color,fontSize:pData.style.font__size+'px'}" :class="{nownavitem:nowClassify == index}">
+          <li v-for="(item,index) in MulticlassData.proData" :key="index"  class="libox" :class="{nownavitem:nowClassify == index}">
+          <span class="typetitle" :style="{color:pData.style.color,fontSize:pData.style.font__size+'px'}">
             {{item.title}}<i class="arrow-down"></i>
           </span>
           </li>
@@ -129,7 +129,7 @@
   }
   .vMulticlass__1{
     .nownavitem{
-      color: #fd7a42;
+      color: #ff6d00;
       background-color: #fff;
     }
     display: flex;
@@ -168,6 +168,13 @@
     }
   }
   .vMulticlass__2{
+    .nownavitem{
+      color: #ff6d00;
+      background-color: #fff;
+      span{
+        color: #ff6d00 !important;
+      }
+    }
     .productItembox{
       .productitem{
         width: 44%;

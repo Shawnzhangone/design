@@ -36,9 +36,10 @@ export function fetch(url, params) {
 
 export default {
   // 获取我的页面的后台数据
-  mineBaseMsgApi(url,pid) {
+  mineBaseMsgApi(url) {
     // console.log('获取api.js')
-    return fetch(url,{program_id:pid});
+    // return fetch(url,{program_id:pid});
+    return fetch(url);
   },
   getModuleData(url,pid) {
     // console.log('获取api.js')
@@ -51,9 +52,10 @@ export default {
     return fetch(url,{savedata:data});
   },
   //添加页面
-  addPageApi(url,pagename,pid){
+  addPageApi(url,pagename){
     console.log('添加页面api');
-    return fetch(url,{name:pagename,program_id:pid});
+    // return fetch(url,{name:pagename,program_id:pid});
+    return fetch(url,{name:pagename});
   },
   //删除页面
   delPageApi(url,id){
@@ -62,9 +64,10 @@ export default {
   },
 
   //生成提交数据
-  postAPPApi(url,appinfo,pid){
+  postAPPApi(url,appinfo){
     // console.log("进入api",appinfo);
-    return fetch(url,{appInfo:appinfo,program_id:pid});
+    // return fetch(url,{appInfo:appinfo,program_id:pid});
+    return fetch(url,{appInfo:appinfo});
   },
 
   //创建小程序

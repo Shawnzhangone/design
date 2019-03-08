@@ -6,7 +6,7 @@ import * as types from "./types.js";
 import Vue from "vue";
 
 const state = {
-  BASE_URL :'https://mps.essocial.win',
+  BASE_URL :'https://mps.essocial.com.cn',
   mobile:'',
   program_id:'',
   isVIP:false,//是不是VIP用户
@@ -69,7 +69,7 @@ const state = {
 
 const actions = {
   getMineBaseApi({commit},param) {
-    let url = state.BASE_URL + '/api/page/getAllPageStructures'
+    let url = state.BASE_URL + '/home/page/getAllPageStructures'
     api.mineBaseMsgApi(url,param)
       .then(res => {
         // console.log(param,"pid");
@@ -127,7 +127,7 @@ const mutations = {
     }
     console.log("进入saveAllData");
     let savedata = JSON.stringify(state.getMineBaseMsg.alldata);
-    let url = state.BASE_URL + '/api/page/saveAllPageStructures'
+    let url = state.BASE_URL + '/home/page/saveAllPageStructures'
     api.AllDataApi(url,savedata)
       .then(res => {
         state.showToast = true;
@@ -145,8 +145,9 @@ const mutations = {
     state.nowPageIndex = index;
   },
   ADDPAGE(state,page){
-    let url = state.BASE_URL + '/api/page/addPage'
-    api.addPageApi(url,page.name,state.program_id)
+    let url = state.BASE_URL + '/home/page/addPage'
+    // api.addPageApi(url,page.name,state.program_id)
+    api.addPageApi(url,page.name)
       .then(res => {
         page.page_id = res.data;
         state.getMineBaseMsg.alldata.pages.push(page);
@@ -155,7 +156,7 @@ const mutations = {
     // console.log(state.getMineBaseMsg.alldata);
   },
   DELPAGE(state,page_id){
-    let url = state.BASE_URL + '/api/page/deletePage'
+    let url = state.BASE_URL + '/home/page/deletePage'
     api.delPageApi(url,page_id)
       .then(res => {
 
@@ -181,7 +182,7 @@ const mutations = {
     })
   },
   CREATEPRO(state,name){
-    let url = state.BASE_URL + '/api/user/createProgram'
+    let url = state.BASE_URL + '/home/page/createProgram'
     api.createPro(url,name).then(res =>{
       console.log(res,"create")
     })

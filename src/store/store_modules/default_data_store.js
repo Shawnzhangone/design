@@ -743,10 +743,12 @@ export default {
           {
             title: '果汁机',
             product: []
-          },{
+          },
+          {
             title: '破壁机',
             product: []
-          },{
+          },
+          {
             title: '电水壶',
             product: []
           }

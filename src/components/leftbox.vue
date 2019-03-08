@@ -5,12 +5,10 @@
         <li @click="showPage()" class="page-button" :class="{'active':!isShow}">
           <i class="icon iconfont icon-guanli"></i>
           页面管理
-
         </li>
         <li @click="showWidget()" class="widget-button" :class="{'active':isShow}">
           <i class="icon iconfont icon-guanlizhongxin"></i>
           组件库
-
         </li>
       </ul>
     </div>
@@ -69,8 +67,7 @@
     data(){
 
       return {
-        islogin: 1,
-        nowIndex: 'a',
+        nowIndex: 'a',//a显示正常li面板，index修改名称input
         isShow: false,
         isShowNewPage: false,//添加新页面
         selectItem: 0,
@@ -246,9 +243,13 @@
         this.nowIndex = index
       },
       confirmChangeName(index){
-        this.alldata.pages[index].name = this.nameValue;
-        this.nowIndex = 'a';
-        this.nameValue = '';
+          if(this.nameValue != ''){
+            this.alldata.pages[index].name = this.nameValue;
+            this.nowIndex = 'a';
+//            this.nameValue = '';
+          }else{
+            alert('请输入有效名称')
+          }
       },
       cancelChangeName(){
         this.nowIndex = 'a';
@@ -286,7 +287,7 @@
         this.value = '';
       },
       confirmNewPage(){ //添加新页面
-        if(this.$store.state.mine.program_module){
+        if(this.$store.state.mine.program_module){//模板小程序
           alert("请先保存创建属于自己的小程序！")
         }else {
           if (this.value != '') {
@@ -296,26 +297,28 @@
             this.addpage(pagesArray);
             this.isShowNewPage = false;
             this.value = '';
+          }else{
+              alert('请输入有效名称')
           }
         }
       },
       ...mapActions(['addpage', 'delpage', 'getDistributorInfo'])
     },
-    created(){ //获取保存的数据
-        this.$axios.post(this.$store.state.mine.BASE_URL+'/api/user/getPerssion', {credentials: true}).then((response) => {
+    created(){ //获取权限和保存的数据
+        this.$axios.post(this.$store.state.mine.BASE_URL+'/home/page/getPerssion', {credentials: true}).then((response) => {
             let rdata = response.data;
             if (rdata.status === 1) {
                 if(rdata.program_id == 0){
                     this.$store.state.mine.program_module = rdata.case_id; //行业模板进来id
                     this.$store.dispatch('getModuleData',rdata.case_id);
                 }else{
-                  this.$store.state.mine.program_id = rdata.program_id;
+//                  this.$store.state.mine.program_id = rdata.program_id;
                   this.$store.state.mine.program_name = rdata.program_name;
                   this.$store.state.mine.mobile = rdata.mobile;
-                  this.$store.dispatch('getMineBaseApi', rdata.program_id);
-                  this.$store.state.mine.getMineBaseMsg.alldata.pname = rdata.program_name;
+//                  this.$store.dispatch('getMineBaseApi', rdata.program_id);
+                  this.$store.dispatch('getMineBaseApi');
                 }
-            }else {
+            }else { //去登陆
               alert(response.data.message)
               window.location.href = '/home/login/'
               return;

@@ -3,7 +3,7 @@
     <div class="edit-user fl">
       <div id="to-user-center">
         <ul>
-          <li><a href="/home/user/usercenter.php"><span  class="icon iconfont icon-gerenzhongxin" ></span>{{$store.state.mine.getMineBaseMsg.alldata.pname}}</a></li>
+          <li><a href="/home/user/usercenter.php"><span  class="icon iconfont icon-gerenzhongxin" ></span>{{$store.state.mine.program_name}}</a></li>
           <li @click="offLine"><i class="icon iconfont icon-tuichu"></i></li>
         </ul>
       </div>
@@ -70,7 +70,7 @@
        this.showDialog = true;
        this.$refs.dialog.confirm().then(() => {
          this.showDialog = false;
-         this.$axios.post(this.$store.state.mine.BASE_URL+'/api/user/logout',{credentials:true}).then((response)=>{
+         this.$axios.post(this.$store.state.mine.BASE_URL+'/home/page/logout',{credentials:true}).then((response)=>{
            if(response.data.status === 1){
              window.location.href = response.data.url
              return;
@@ -84,7 +84,7 @@
      },
       backEnd(){
         var tempwindow=window.open();
-        this.$axios.post(this.$store.state.mine.BASE_URL+'/api/user/toBackend',{credentials:true}).then((response)=>{
+        this.$axios.post(this.$store.state.mine.BASE_URL+'/home/page/toBackend',{credentials:true}).then((response)=>{
           if(response.data.status === 0){
             alert(response.data.message);
             return;

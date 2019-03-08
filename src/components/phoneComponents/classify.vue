@@ -99,13 +99,14 @@
     width:100%;
   }
    .nownavitem{
-     color: #fd7a42;
-     border-bottom: 3px solid #fd7a42;
+     color: #ff6d00;
+     background-color: #fff;
+     /*border-bottom: 3px solid #fd7a42;*/
    }
    .navbox {
      width: 100%;
-     height: 38px;
-     line-height:35px;
+     height: 30px;
+     line-height:30px;
    }
    .navbox ul{
      overflow-x: auto;

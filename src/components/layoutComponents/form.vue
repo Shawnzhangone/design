@@ -15,7 +15,7 @@
       <li>描边颜色：<input type="color" name="color" id="color" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.border__color"></li>
       <li>按钮颜色：<input type="color" name="color" id="color" v-model="alldata.pages[nowPageIndex].module[seleIndex].style.btn__color"></li>
       <li>按钮名称：<input type="text" v-model="alldata.pages[nowPageIndex].module[seleIndex].btnText" class="btntext"></input></li>
-      <li><p>按钮跳转提示语：</p><textarea v-model="alldata.pages[nowPageIndex].module[seleIndex].pageText" class="pagetext"></textarea></li>
+      <li><p>按钮跳转提示语：</p><textarea maxlength="256" v-model="alldata.pages[nowPageIndex].module[seleIndex].pageText" class="pagetext"></textarea></li>
       </ul>
     </div>
   </div>

@@ -38,8 +38,9 @@
   .red{color:#fd6363;}
   .org{color:#ff6d00;}
   .nownavitem{
-    color: #fd7a42;
-    border-bottom: 3px solid #fd7a42;
+    color: #ff6d00;
+    background-color: #fff;
+    /*border-bottom: 3px solid #fd7a42;*/
   }
   .active {
     background-color: #fd7a42;
