@@ -83,8 +83,9 @@
                 module:[ //拖拽组件默认样式
                   {"type":"vSearch",
                     "mname":"搜索组件",
-                    "style": {"background__color":"#FFF3D9","border__radius":"8","height":"20"},
-                    "layout":"vSearch__1"
+                    "layout":"vSearch__1",
+                    "style": {"background__color":"#FFF3D9","border__radius":"8","height":"20"}
+
                   },
                   {"type":"vQuickNav",
                     "mname":"快速导航",
@@ -243,7 +244,7 @@
                         {"type":"vImage",
                           "mname":"图片组件",
                           "layout":"vImage__1",
-                          "style":{"border__radius":"0","padding":"1","padding__top":"0","padding__bottom":"0","margin":"1","margin__left":"0","margin__right":"0"},
+                          "style":{"border__radius":"0","margin":"1","margin__left":"0","margin__right":"0"},
                           "incident":"1",
                           "ind":'1'
                         },
@@ -256,7 +257,7 @@
                         {"type":"vImage",
                           "mname":"图片组件",
                           "layout":"vImage__1",
-                          "style":{"border__radius":"0","padding":"1","padding__top":"0","padding__bottom":"0","margin":"1","margin__left":"0","margin__right":"0"},
+                          "style":{"border__radius":"0","margin":"1","margin__left":"0","margin__right":"0"},
                           "incident":"1",
                           "ind":'1'
                         },
@@ -269,7 +270,7 @@
                         {"type":"vImage",
                           "mname":"图片组件",
                           "layout":"vImage__1",
-                          "style":{"border__radius":"0","padding":"1","padding__top":"0","padding__bottom":"0","margin":"1","margin__left":"0","margin__right":"0"},
+                          "style":{"border__radius":"0","margin":"1","margin__left":"0","margin__right":"0"},
                           "incident":"1",
                           "ind":'1'
                         },
@@ -294,7 +295,7 @@
                           "mname":"推荐位",
                           "layout":"vRecommend__3",
                           "widget":{"sa":true,"st":true,"op":true,"ca":true},
-                          "style":{"margin__bottom":"4"}, //,"height":"88","width":"40","line__height":"20","font__size":"14","color":"#000000","padding":"0"
+                          "style":{"margin__bottom":"4","line__height":"20","font__size":"12","color":"#000000"},
                           "ind":'1',
                         },
                       ]
@@ -1197,9 +1198,9 @@
       dragStart(event){ //拖拽开始时在被拖拽元素上触发此事件,监听器需要设置拖拽所需数据
 //        console.log(event);
         event.target.style.opacity = .5;
-        var moduleindex = $(event.target).attr('data-moduleindex');
+        var moduleindex = $(event.target).attr('data-moduleindex'); //拖拽上下组件的位置
         //firefox 必须添加
-        event.dataTransfer.setData("text",moduleindex);
+        event.dataTransfer.setData("text",moduleindex);//拖拽携带数据
         event.stopPropagation();
 
       },
@@ -1242,7 +1243,7 @@
         var  ptext= parseInt(text);
 //        console.log(dataIndex,ptext,text,typeof(text),flag);
         var dataIndex = $(event.target).attr('data-indexcom'); //目标的位置
-        var tempData = this.alldata.pages[this.nowPageIndex].module;
+        var tempData = this.alldata.pages[this.nowPageIndex].module; //当前页module数据
         if (event.target.className === "com-tools") {  //防止拖拽目标位置到html内层
           event.target.parentNode.parentNode.lastChild.style.display='none';
         }else if (event.target.className === "com-name") {
@@ -1254,7 +1255,6 @@
         //添加拖拽元素的类型
         if(text.match(/\d+/g)){  //判断拖拽的是上下位置
           var tempItem = tempData[text];
-//          console.log(this.alldata.pages[this.nowPageIndex].module,this.alldata.pages);
           this.alldata.pages[this.nowPageIndex].module.splice(text,1);
 //          if(text > dataIndex){ //判断上下
 //            this.alldata.pages[this.nowPageIndex].module.splice(dataIndex-1,0,tempItem);
@@ -1337,6 +1337,8 @@
                   let moduleArray = Object.assign({}, JSON.parse(JSON.stringify(this.module[i]))); //深度复制
                   this.alldata.pages[this.nowPageIndex].module.splice(dataIndex,0,moduleArray);
                   this.$store.state.chooseBox.chooseBoxName = moduleArray.type;
+                  this.$store.state.chooseBox.selectItem = parseInt(dataIndex);//当前组件的位置
+                  console.log(this.$store.state.chooseBox.selectItem,dataIndex)
                 }
               }
             }
@@ -1346,6 +1348,8 @@
                 let moduleArray = Object.assign({}, JSON.parse(JSON.stringify(this.module[i]))); //深度复制
                 this.alldata.pages[this.nowPageIndex].module.splice(dataIndex,0,moduleArray);
                 this.$store.state.chooseBox.chooseBoxName = moduleArray.type;
+                this.$store.state.chooseBox.selectItem = parseInt(dataIndex);//当前组件的位置
+                console.log(this.$store.state.chooseBox.selectItem,dataIndex)
               }
             }
           }
@@ -1370,11 +1374,11 @@
         })
       },
       nowComponent(index,name){ //选中当前组件
-        this.$store.commit('choose_box',3) //选中的是中间组件还是顶部nav底部nav
+        this.$store.commit('choose_box',2) //选中的是中间组件还是顶部nav底部nav
         this.$store.state.mine.showModule = false;
         this.$store.state.mine.showTemplet = false;
         this.$store.state.mine.showStylePicker = false;
-         if(this.$store.state.chooseBox.activeName == 3){
+         if(this.$store.state.chooseBox.activeName === 2){
            this.$store.state.chooseBox.selectItem = index
            this.$store.state.chooseBox.chooseBoxName = name
          }

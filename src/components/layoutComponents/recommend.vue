@@ -1,4 +1,4 @@
-/design<template>
+<template>
   <div class="leftbox-widget">
     <div class="page-widget rightlayout" v-show="!$store.state.chooseBox.isShow">
       <div class="chooselaout_title">选择布局：</div>

@@ -22,7 +22,7 @@
               <li @click.stop="delPage(index,item.page_id)"><i class="icon iconfont icon-lajixiang"></i></li>
               <li><i class="icon iconfont icon-edit-1-copy" @click.stop="changeName(index)"></i></li>
             </ul>
-            <div class="changeNameBox" v-else><input type="text" v-model="nameValue">
+            <div class="changeNameBox" v-else><input type="text" v-model="nameValue" maxlength="20">
               <button @click="confirmChangeName(index)">确定</button>
               <button @click="cancelChangeName">取消</button>
             </div>
@@ -33,7 +33,7 @@
         </div>
         <transition name="fade">
           <div class="newpage" v-show="isShowNewPage">
-            <span>页面名称:</span><input type="text" v-model="value" @blur="focusState =  false" v-focus="focusState">
+            <span>页面名称:</span><input type="text" v-model="value" @blur="focusState =  false" v-focus="focusState" maxlength="20">
             <div class="btn">
               <button @click="fadeNewPage">取消</button>
               <button class="confirm" @click="confirmNewPage">确定</button>
@@ -495,7 +495,11 @@
     margin-left: 10%;
     margin-right:0;
   }
-
+    li.cpname{
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
   }
   .nowpage {

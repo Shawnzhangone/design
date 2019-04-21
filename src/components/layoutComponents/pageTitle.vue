@@ -1,7 +1,7 @@
 <template>
   <div class="leftbox-widget">
     <div class="page-widget" v-show="!$store.state.chooseBox.isShow">
-      <div class="rightlayout pagetitle">头部标题：<input type="text" v-model="alldata.pages[nowPageIndex].navigationBarTitleText"></div>
+      <div class="rightlayout pagetitle">头部标题：<input type="text" v-model="alldata.pages[nowPageIndex].navigationBarTitleText" maxlength="20"></div>
     </div>
     <div class="rightlayout widget-widget" v-show="$store.state.chooseBox.isShow">
         <div class="setbg">背景颜色：<input type="color" name="color" id="color" v-model="alldata.top_nav.navigationBarBackgroundColor"></div>

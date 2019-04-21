@@ -50,15 +50,16 @@
     methods: {
       //确定,将promise断定为完成态
       submit() {
-          if(this.appInfo.appid == ''){
-              alert("请输入APP ID!");
-          }else if(this.appInfo.appsecret == ''){
-            alert("请输入APP密钥!");
+          let appIdReg = /^[0-9a-zA-Z]{18}$/,appSecretReg = /^[0-9a-zA-Z]{32}$/
+          if(!appIdReg.test(this.appInfo.appid)){
+              alert("请输入正确的APP ID!");
+          }else if(!appSecretReg.test(this.appInfo.appsecret)){
+            alert("请输入正确的APP密钥!");
           }else if(this.$store.state.mine.sid){
-//            if(this.appInfo.storeid == ''){
-//              alert("请输入商户 ID!");
-//            }else if(this.appInfo.storesecret == ''){
-//              alert("请输入商户密钥!");
+//            if(!appIdReg.test(this.appInfo.storeid)){
+//              alert("请输入正确的商户 ID!");
+//            }else if(!appSecretReg.test(this.appInfo.storesecret)){
+//              alert("请输入正确的商户密钥!");
 //            }else{
                       this.postApp(this.appInfo);
               this.$store.state.mine.showSetDialog = false;

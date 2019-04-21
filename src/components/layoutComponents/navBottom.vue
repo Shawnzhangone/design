@@ -12,7 +12,7 @@
           <li class="itembox" v-for="(item,index) in alldata.bottom_nav.list">
             <div class="title">{{item.text}} <i class="iconfont icon-lajixiang cp fr" @click="delNavBottomItem(index)"></i> <span class="fr" id="upnav" @click="upnav(index)">上移</span> </div>
             <ul class="cfuntion">
-              <li>名称：<input type="text" v-model="item.text"></li>
+              <li>名称：<input type="text" v-model="item.text" maxlength="5"></li>
               <li  class="cp choosep" ><span class="choosePic" @click="changeIcon(index)"><span class="tit">默认图标:</span><img
                 :src="item.iconPath" alt=""><span class="chang"> 更换</span> </span> <span class="choosePic1" @click="changeSeIcon(index)"><span class="tit">选中图标:</span><img
                 :src="item.selectedIconPath" alt=""><span class="chang"> 更换</span> </span></li>  <!--v-show="alldata.bottom_nav.layout == 'type_navb1'"-->

@@ -5,7 +5,7 @@
       <div class="phone-box fl">
         <div id="phonepages">
           <!--//模拟手机页面小程序头部标题-->
-          <div id="pagetitle" @click="chooseBox('0','vPageTitle')" :class="{nowbox:$store.state.chooseBox.activeName == 0}" :style="{backgroundColor:stylePageColorPicker}">
+          <div id="pagetitle" @click="chooseBox(0,'vPageTitle')" :class="{nowbox:$store.state.chooseBox.activeName == 0}" :style="{backgroundColor:stylePageColorPicker}">
             <div class="title" :style="{color:alldata.top_nav.navigationBarTextStyle}">{{alldata.pages[nowPageIndex].navigationBarTitleText || alldata.pages[nowPageIndex].name}}</div>
             <!--$store.state.mine.nowData.name-->
            </div>
@@ -15,9 +15,8 @@
             <v-dialog v-show="$store.state.chooseBox.delComShowDialog" :dialog-option="dialogOption" ref="dialog"></v-dialog>
           </div>
           <!--模拟手机页面小程序底部导航-->
-          <div id="phone-navbottom" @click="chooseBox('1','vNavBottom')" :class="{nowbox:$store.state.chooseBox.activeName == 1}"  :style="{backgroundColor:styleBColorPicker}">
+          <div id="phone-navbottom" @click="chooseBox(1,'vNavBottom')" :class="{nowbox:$store.state.chooseBox.activeName == 1}"  :style="{backgroundColor:styleBColorPicker}">
             <ul>
-              <!--:class="{nowpage: index == selectItem }" @click="nowPage(index),$store.commit('nowBnavPageData',item.pagePath)"-->
               <li class="navbottom" v-for="(item,index) in alldata.bottom_nav.list" :style="{ width:navBottomWidth,color:alldata.bottom_nav.color}" ><img :src="item.iconPath" alt="">{{item.text}}</li>
             </ul>
           </div>
@@ -88,19 +87,12 @@
       iconchoose
     },
     methods:{
-      updateValue(e){
-//          console.log(e.value);
-      },
       chooseBox(index,name){ //选中组件
-        this.$store.state.mine.showModule = false;
-        this.$store.state.mine.showTemplet = false;
-        this.$store.state.mine.showStylePicker = false;
-        this.$store.state.chooseBox.chooseBoxName = name;
-        this.$store.commit('choose_box',index);
-//        console.log(this.$store.state.chooseBox.activeName);
-      },
-      nowPage(index){
-        this.selectItem = index;
+        this.$store.state.mine.showModule = false; //关闭模板
+        this.$store.state.mine.showTemplet = false; //关闭模块
+        this.$store.state.mine.showStylePicker = false; //关闭颜色板
+        this.$store.state.chooseBox.chooseBoxName = name;//选中组件名
+        this.$store.commit('choose_box',index);//choose_box_store里选中choose_box方法
       },
       templet(){ //模块
         this.$store.state.mine.showModule = false;
@@ -113,8 +105,6 @@
       backStep(){ //上一步，只写了返回上一步
         this.$store.state.mine.getMineBaseMsg.alldata = JSON.parse(JSON.stringify(this.$store.state.mine.oalldata));
       },
-
-
       colorPick(){
           console.log("111");
       }
@@ -144,16 +134,14 @@
 
   }
 </script>
-<style lang="scss" scoped="" type="text/css">
+<style lang="scss" scoped="" type="text/scss">
   #phone{
    width: calc( 100% - 642px);
     height:calc(100% - 51px);
-    /*background-color: #f0f0f0;*/
     float: left;
     .content{
       width: 440px;
       height:calc(100% - 131px);
-      /*background-color: #219831;*/
       margin: 7% auto 0;
       .phone-box{
         background: url(/design/images/default/phone3.png);
@@ -214,6 +202,12 @@
     width: 100%;
     height: 30px;
     line-height:28px;
+    .title{
+      padding:0 20px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+    }
   }
   #phonecontent{
     height: 505px;

@@ -126,6 +126,12 @@ const mutations = {
         var tempwindow=window.open();
     }
     console.log("进入saveAllData");
+    let saveAllData = state.getMineBaseMsg.alldata
+    if(state.getMineBaseMsg.alldata.top_nav.navigationBarBackgroundColor == ""){
+      state.getMineBaseMsg.alldata.top_nav.navigationBarBackgroundColor = "#000000"
+    }else if(state.getMineBaseMsg.alldata.top_nav.navigationBarTextStyle == ""){
+      state.getMineBaseMsg.alldata.top_nav.navigationBarTextStyle = "white"
+    }
     let savedata = JSON.stringify(state.getMineBaseMsg.alldata);
     let url = state.BASE_URL + '/home/page/saveAllPageStructures'
     api.AllDataApi(url,savedata)

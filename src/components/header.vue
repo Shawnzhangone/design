@@ -228,6 +228,7 @@
     display: inline-block;
     width: 100%;
     height: 100%;
+    padding-left: 30px;
   }
   .icon-gerenzhongxin:before {
     position: absolute;
@@ -269,15 +270,22 @@
     text-align: center;
     color:#515567;
     line-height:50px;
-    width: 33%;
+    width: 32%;
     cursor: pointer;
   }
+  .edit-user ul li{
+    width: 21%;
+  }
+
   li a {
     color:#515567;
   }
   .edit-user ul li:first-child{
-    width: 62%;
+    width: 75%;
     margin-left:10px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
   .icon{
     margin-right:5px;
