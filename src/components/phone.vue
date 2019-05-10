@@ -25,9 +25,9 @@
       <!--对应模拟手机右测导航-->
       <div class="right-btn fr">
         <ul>
-          <!--<li @click="backStep()">撤销模板</li>-->
+          <li v-show="$store.state.mine.temStatus" @click="backStep()">撤销模板</li>
           <li @click="templet()" :class="{nowStyle:showTemplet}"><i class="iconfont icon-lifangtilitiduomiantifangkuai2"></i>模板</li>
-          <li @click="module()" :class="{nowStyle:showModule}"><i class="iconfont icon-msnui-module"></i>模块</li>
+          <!--<li @click="module()" :class="{nowStyle:showModule}"><i class="iconfont icon-msnui-module"></i>模块</li>-->
           <li @click="$store.state.mine.showStylePicker = !$store.state.mine.showStylePicker;" class="tbstyle" :class="{nowStyle:$store.state.mine.showStylePicker}"><i class="iconfont icon-beijingyanse"></i> 风格</li>
           <Sketch v-show="$store.state.mine.showStylePicker"  v-model="colors" ></Sketch >
         </ul>
@@ -104,6 +104,7 @@
       },
       backStep(){ //上一步，只写了返回上一步
         this.$store.state.mine.getMineBaseMsg.alldata = JSON.parse(JSON.stringify(this.$store.state.mine.oalldata));
+        this.$store.state.mine.temStatus = false;//隐藏撤销模板
       },
       colorPick(){
           console.log("111");

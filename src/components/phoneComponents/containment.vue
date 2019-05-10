@@ -33,6 +33,7 @@
   import vClassify from './classify'
   import vMulticlass from './multiclass'
   import vCart from './cart'
+  import vOrderFood from './orderFood'
   import vMap from './map'
   import vVideo from './video'
   import vVideoList from './videoList'
@@ -65,78 +66,103 @@
                 },
                 //单独一页组件
                 sigleComponent:[
-                  'vUserCenter',
-                  'vClassify',
-                  'vProductList',
-                  'vNewsList',
-                  'vMulticlass',
-                  'vCart',
-                  'vDistributorCenter',
-                  'vForm',
-                  'vCoupon',
-                  'vSecKill',
-                  'vCollage',
-                  'vVideoList',
-                  'vGoldenEgg',
-                  'vTurntable',
+                    {type:'vUserCenter',name:'个人中心'},
+                    {type:'vClassify',name:'分类列表'},
+                    {type:'vProductList',name:'商品列表'},
+                    {type:'vNewsList',name:'文章列表'},
+                    {type:'vMulticlass',name:'多级分类'},
+                    {type:'vCart',name:'购物车'},
+                    {type:'vDistributorCenter',name:'分销系统中心'},
+                    {type:'vForm',name:'表单组件'},
+                    {type:'vCoupon',name:'卡券中心'},
+                    {type:'vSecKill',name:'秒杀'},
+                    {type:'vCollage',name:'拼团'},
+                    {type:'vVideoList',name:'视频列表'},
+                    {type:'vGoldenEgg',name:'砸金蛋'},
+                    {type:'vTurntable',name:'大转盘'},
+                    {type:'vOrderFood',name:'点餐'},
+                ],
+                orderFoodAgainst:[
+                  {type:'vClassify',name:'分类列表'},
+                  {type:'vProductList',name:'商品列表'},
+                  {type:'vMulticlass',name:'多级分类'},
+                  {type:'vOrderFood',name:'点餐'},
+//                  {type:"vRecommend", name:'推荐位'},  //非单页面组件，单独判断减少循环
+                  {type:'vSecKill',name:'秒杀'},
+                  {type:'vCollage',name:'拼团'},
+                  {type:'vVideoList',name:'视频列表'},
+                  {type:'vGoldenEgg',name:'砸金蛋'},
+                  {type:'vTurntable',name:'大转盘'},
                 ],
                 module:[ //拖拽组件默认样式
-                  {"type":"vSearch",
+                  { "module_id":'',
+                    "type":"vSearch",
                     "mname":"搜索组件",
                     "layout":"vSearch__1",
                     "style": {"background__color":"#FFF3D9","border__radius":"8","height":"20"}
 
                   },
-                  {"type":"vQuickNav",
+                  {"module_id":'',
+                    "type":"vQuickNav",
                     "mname":"快速导航",
                     "rowNum":"4",
                     "widget":{"ti":true},
                     "style":{"line__height":"16","font__size":"12","color":"#000000","padding":"10","padding__top":"0","padding__bottom":"0"}
                   },
-                  {"type":"vSlider",
+                  {
+                    "module_id":'',
+                    "type":"vSlider",
                     "mname":"轮播组件",
                     "time":"6"
                   },
-                  {"type":"vText",
+                  {"module_id":'',
+                    "type":"vText",
                     "mname":"文本组件",
                     "text":"文本示例",
                     "style":{"background__color":"#f0f0f0","color":"#333333","font__size":"12","text__align":"left","height":"20","line__height":"18"},
                     "incident":"1"
                   },
-                  {"type":"vLine",
+                  {"module_id":'',
+                    "type":"vLine",
                     "mname":"分割线",
                     "style":{"padding":"2","padding__left":"0","padding__right":"0","background__color":"#f0f0f0","border__style":"solid","border__bottom__width":"1","border__color":"#000000"},
                     "layout":"vLine__1"
                   },
-                  {"type":"vImage",
+                  {"module_id":'',
+                    "type":"vImage",
                     "mname":"图片组件",
                     "layout":"vImage__1",
                     "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                     "incident":"1"
                   },
-                  {"type":"vRecommend",
+                  {"module_id":'',
+                    "type":"vRecommend",
                     "mname":"推荐位",
                     "layout":"vRecommend__1",
                     "widget":{"sa":true,"st":true,"op":true,"ca":true},
                     "style":{"margin__bottom":"4","line__height":"20","font__size":"12","color":"#000000"}
                   },
-                  {"type":"vProductList",
+                  {"module_id":'',
+                    "type":"vProductList",
                     "mname":"商品列表",
                     "widget":{"sa":true,"st":true,"op":true,"ca":true},
                     "style":{"margin__bottom":"4"},
                     "layout":"vProductList__1"
                   },
-                  {"type":"vImgTextList",
+                  {"module_id":'',
+                    "type":"vImgTextList",
                     "mname":"图文集",
                     "layout":"vImgTextList__2",
                     "style":{"border__radius":"5","line__height":"16","font__size":"12","color":"#000000","wcolor":"#333333","padding":"8","padding__top":"0","padding__bottom":"0"},
                     "incident":"1"
                   },
-                  {"type":"vNewsList",
+                  {"module_id":'',
+                    "type":"vNewsList",
                     "mname":"文章列表",
                     "style":{"line__height":"20","font__size":"12","color":"#000000"}
                   },
                   {
+                    "module_id":'',
                     "type":"vClassify",
                     "mname":"分类列表",
                     "layout":"vClassify__1",
@@ -144,40 +170,53 @@
                     "style":{"background__color":"#f0f0f0","color":'#333333',"font__size":"12"},
                   },
                   {
+                    "module_id":'',
                     "type":"vMulticlass",
                     "mname":"多级分类",
                     "layout":"vMulticlass__1",
                     "style":{"background__color":"#f0f0f0","color":'#333333',"font__size":'12'},
                   },
                   {
+                    "module_id":'',
                     "type":"vCart",
                     "mname":"购物车",
                   },{
+                    "module_id":'',
                     "type":"vMap",
                     "mname":"地图",
                     "address":"成都市高新区世纪城路198附184号",
                     "coordinate":""
                   },{
+                    "module_id":'',
                     "type":"vVideo",
                     "mname":"视频",
                     "layout":"vVideo__1",
                     "style":{"margin":"1","margin__left":"0","margin__right":"0","line__height":"16","font__size":"12","color":"#000000"},
                   },{
+                    "module_id":'',
                     "type":"vVideoList",
                     "mname":"视频列表",
                     "layout":"vVideoList__1",
                     "widget":{"sa":true,"st":true,"op":true,"ca":true},
                     "style":{"margin__bottom":"4"}
                   },
-                  {"type":"vUserCenter",
+                  {"module_id":'',
+                    "type":"vUserCenter",
                     "mname":"个人中心",
                     "widget":{"hy":true,"sc":true,"kqb":true,"jf":false,"pt":false,"ms":false,"sp":false},
                   },
-                  {"type":"vDistributorCenter",
+                  {"module_id":'',
+                    "type":"vDistributorCenter",
                     "mname":"分销系统中心",
                     "widget":{"hy":true,"sc":false,"kqb":false,"jf":false,"pt":false,"ms":false,"sp":false},
                   },
-                  {"type":"vForm",
+                  {"module_id":'',
+                    "type":"vOrderFood",
+                    "mname":"点餐",
+                    "style":{"background__color":"#888888",}
+                  },
+                  {"module_id":'',
+                    "type":"vForm",
                     "mname":"表单组件",
                     "btnText":"下一步",
                     "pageText":"已收到您的信息，我们会尽快审核，谢谢您的配合！",
@@ -185,21 +224,26 @@
                     "layout":"vForm__1"
                   },
                   {
+                    "module_id":'',
                     "type":"vCoupon",
                     "mname":"卡券中心",
                   },{
+                    "module_id":'',
                     "type":"vSecKill",
                     "style":{"margin__bottom":"4"},
                     "mname":"秒杀",
                   },{
+                    "module_id":'',
                     "type":"vCollage",
                     "style":{"margin__bottom":"4"},
                     "mname":"拼团",
                   },{
+                    "module_id":'',
                     "type":"vTurntable",
                     "style":{},
                     "mname":"大转盘",
                   },{
+                    "module_id":'',
                     "type":"vGoldenEgg",
                     "style":{},
                     "mname":"砸金蛋",
@@ -209,89 +253,103 @@
                   {
                       "type":"vTemtravel",
                       "Tem":[
-                        {"type":"vSlider",
+                        {"module_id":'',
+                          "type":"vSlider",
                           "mname":"轮播组件",
                           "time":"6",
                           "ind":'1'
                         },
-                        {"type":"vQuickNav",
+                        {"module_id":'',
+                          "type":"vQuickNav",
                           "mname":"快速导航",
                           "rowNum":"4",
                           "widget":{"ti":true},
                           "style":{"line__height":"16","font__size":"12","color":"#000000","padding":"10","padding__top":"0","padding__bottom":"0"},
                           "ind":'1'
                         },
-                        {"type":"vText",
+                        {"module_id":'',
+                          "type":"vText",
                           "mname":"文本组件",
                           "text":"目的地推荐 | 精选好玩的景点、城市",
                           "style":{"background__color":"#ffffff","color":"#000000","font__size":"13","text__align":"left","height":"26","line__height":"30"},
                           "incident":"1"
                         },
-                        {"type":"vImgTextList",
+                        {"module_id":'',
+                          "type":"vImgTextList",
                           "mname":"图文集",
                           "layout":"vImgTextList__3",
                           "style":{"border__radius":"0","line__height":"16","font__size":"12","color":"#666666","padding":"0","padding__top":"0","padding__bottom":"0"},
                           "incident":"1",
                           "ind":'1'
                           },
-                        {"type":"vImgTextList",
+                        {"module_id":'',
+                          "type":"vImgTextList",
                           "mname":"图文集",
                           "layout":"vImgTextList__3",
                           "style":{"border__radius":"0","line__height":"16","font__size":"12","color":"#666666","padding":"0","padding__top":"0","padding__bottom":"0"},
                           "incident":"1",
                           "ind":'1'
                           },
-                        {"type":"vImage",
+                        {"module_id":'',
+                          "type":"vImage",
                           "mname":"图片组件",
                           "layout":"vImage__1",
                           "style":{"border__radius":"0","margin":"1","margin__left":"0","margin__right":"0"},
                           "incident":"1",
                           "ind":'1'
                         },
-                        {"type":"vText",
+                        {"module_id":'',
+                          "type":"vText",
                           "mname":"文本组件",
                           "text":"【自由人】博罗观背油画村-怡情谷温泉一天自由行",
                           "style":{"background__color":"#ffffff","color":"#30c8a2","font__size":"13","text__align":"center","height":"38","line__height":"26"},
                           "incident":"1"
                         },
-                        {"type":"vImage",
+                        {"module_id":'',
+                          "type":"vImage",
                           "mname":"图片组件",
                           "layout":"vImage__1",
                           "style":{"border__radius":"0","margin":"1","margin__left":"0","margin__right":"0"},
                           "incident":"1",
                           "ind":'1'
                         },
-                        {"type":"vText",
+                        {"module_id":'',
+                          "type":"vText",
                           "mname":"文本组件",
                           "text":"【自由人】博罗观背油画村-怡情谷温泉一天自由行",
                           "style":{"background__color":"#ffffff","color":"#30c8a2","font__size":"13","text__align":"center","height":"38","line__height":"26"},
                           "incident":"1"
                         },
-                        {"type":"vImage",
+                        {"module_id":'',
+                          "type":"vImage",
                           "mname":"图片组件",
                           "layout":"vImage__1",
                           "style":{"border__radius":"0","margin":"1","margin__left":"0","margin__right":"0"},
                           "incident":"1",
                           "ind":'1'
                         },
-                        {"type":"vText",
+                        {"module_id":'',
+                          "type":"vText",
                           "mname":"文本组件",
                           "text":"【自由人】博罗观背油画村-怡情谷温泉一天自由行",
                           "style":{"background__color":"#ffffff","color":"#30c8a2","font__size":"13","text__align":"center","height":"38","line__height":"26"},
                           "incident":"1"
                         },
-                        {"type":"vLine",
+                        {"module_id":'',
+                          "type":"vLine",
                           "mname":"分割线",
                           "style":{"padding":"4","padding__left":"0","padding__right":"0","background__color":"#f0f0f0","border__style":"solid","border__bottom__width":"0","border__color":"#000000"},
                           "layout":"vLine__1"
                         },
-                        {"type":"vText",
+                        {"module_id":'',
+                          "type":"vText",
                           "mname":"文本组件",
                           "text":"更多精彩",
                           "style":{"background__color":"#ffffff","color":"#30c8a2","font__size":"15","text__align":"center","height":"34","line__height":"34"},
                           "incident":"1"
                         },
-                        {"type":"vRecommend",
+                        {"module_id":'',
+                          "type":"vRecommend",
                           "mname":"推荐位",
                           "layout":"vRecommend__3",
                           "widget":{"sa":true,"st":true,"op":true,"ca":true},
@@ -300,87 +358,96 @@
                         },
                       ]
                   },
-                  {
-                    "type":"vTemtravelAddr",
-                    "Tem":[
-                      {"type":"vTravelAddr",
-                        "mname":"目的地",
-                      },
-                      {"type":"vText",
-                        "mname":"文本组件",
-                        "text":"———周边热门城市———",
-                        "style":{"background__color":"#ffffff","color":"#666666","font__size":"12","text__align":"center","height":"32","line__height":"42"},
-                        "incident":"1"
-                      },
-                      {"type":"vTravelAddrCity",
-                        "mname":"目的地",
-                      },
-                    ]
-                  },
+//                  {
+//                    "type":"vTemtravelAddr",
+//                    "Tem":[
+//                      {"type":"vTravelAddr",
+//                        "mname":"目的地",
+//                      },
+//                      {"type":"vText",
+//                        "mname":"文本组件",
+//                        "text":"———周边热门城市———",
+//                        "style":{"background__color":"#ffffff","color":"#666666","font__size":"12","text__align":"center","height":"32","line__height":"42"},
+//                        "incident":"1"
+//                      },
+//                      {"type":"vTravelAddrCity",
+//                        "mname":"目的地",
+//                      },
+//                    ]
+//                  },
                   {"type":"vTemtravelUser",
                     "Tem":[
-                      {"type":"vUserCenter",
+                      {"module_id":'',
+                        "type":"vUserCenter",
                         "mname":"个人中心",
                         "widget":{"hy":true,"sc":true,"kqb":true,"jf":true,"pt":false,"ms":false,"sp":false},
                         "ind":'1'
                       }]
                   },
-                  {"type":"vTemtravelFind",
-                    "Tem":[
-                      {
-                        "type":"vClassify",
-                        "mname":"分类列表",
-                        "layout":"vClassify__3",
-                        "widget":{"sa":false,"st":false,"op":false,"ca":false},
-                        "style":{"margin__bottom":"4","background__color":"#30c8a2","color":'#ffffff',"choosecolor":"#30c8a2","font__size":"12", "line__height":"20","tfont__size":"14","tcolor":"#000000","padding":"0"},
-                        "ind":"1"
-                      }
-                      ]
-                  },
+//                  {"type":"vTemtravelFind",
+//                    "Tem":[
+//                      {
+//                        "type":"vClassify",
+//                        "mname":"分类列表",
+//                        "layout":"vClassify__3",
+//                        "widget":{"sa":false,"st":false,"op":false,"ca":false},
+//                        "style":{"margin__bottom":"4","background__color":"#30c8a2","color":'#ffffff',"choosecolor":"#30c8a2","font__size":"12", "line__height":"20","tfont__size":"14","tcolor":"#000000","padding":"0"},
+//                        "ind":"1"
+//                      }
+//                      ]
+//                  },
                   {"type":"vTemElcticHome",
                     "Tem":[
-                      {"type":"vSlider",
+                      {"module_id":'',
+                        "type":"vSlider",
                         "mname":"轮播组件",
                         "time":"5",
                         "ind":'2'
-                      },{"type":"vSearch",
+                      },{"module_id":'',
+                        "type":"vSearch",
                         "mname":"搜索组件",
                         "style": {"background__color":"#f0eff5","border__radius":"2","height":"20"},
                         "layout":"vSearch__2"
                       },
-                      {"type":"vQuickNav",
+                      {"module_id":'',
+                        "type":"vQuickNav",
                         "mname":"快速导航",
                         "rowNum":"4",
                         "widget":{"ti":"true"},
                         "style":{"line__height":"16","font__size":"12","color":"#000000","padding":"10","padding__top":"0","padding__bottom":"0"},
                         "ind":'2'
                       },
-                      {"type":"vQuickNav",
+                      {"module_id":'',
+                        "type":"vQuickNav",
                         "mname":"快速导航",
                         "rowNum":"4",
                         "widget":{"ti":"true"},
                         "style":{"line__height":"16","font__size":"12","color":"#000000","padding":"10","padding__top":"0","padding__bottom":"0"},
                         "ind":'3'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"0","padding":"1","padding__top":"0","padding__bottom":"0","margin":"1","margin__left":"0","margin__right":"0"},
                         "ind":'4'
                       },
-                      {"type":"vRecommend",
+                      {"module_id":'',
+                        "type":"vRecommend",
                         "mname":"推荐位",
                         "layout":"vRecommend__2",
                         "widget":{"sa":true,"st":true,"op":true,"ca":true},
                         "style":{"margin__bottom":"4","height":"88","width":"40","line__height":"20","font__size":"12","color":"#000000","padding":"0"},
                         "ind":'1'
-                      },{"type":"vImage",
+                      },{"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"0","padding":"1","padding__top":"0","padding__bottom":"0","margin":"1","margin__left":"0","margin__right":"0"},
                         "ind":'5'
                       },
-                      {"type":"vRecommend",
+                      {"module_id":'',
+                        "type":"vRecommend",
                         "mname":"推荐位",
                         "layout":"vRecommend__2",
                         "widget":{"sa":true,"st":true,"op":true,"ca":true},
@@ -391,58 +458,67 @@
                   },
                   {"type":"vTemEduHome",
                     "Tem":[
-                      {"type":"vSlider",
+                      {"module_id":'',
+                        "type":"vSlider",
                         "mname":"轮播组件",
                         "time":"5",
                         "ind":'3'
                       },
-                      {"type":"vQuickNav",
+                      {"module_id":'',
+                        "type":"vQuickNav",
                         "mname":"快速导航",
                         "rowNum":"4",
                         "widget":{"ti":"true"},
                         "style":{"line__height":"16","font__size":"12","color":"#000000","padding":"15","padding__top":"0","padding__bottom":"0"},
                         "ind":'4'
                       },
-                      {"type":"vText",
+                      {"module_id":'',
+                        "type":"vText",
                         "mname":"文本组件",
                         "text":"课程推荐",
                         "style":{"background__color":"#ffffff","color":"#333333","font__size":"14","text__align":"center","height":"30","line__height":"30"},
                         "incident":"1"
                       },
-                      {"type":"vImgTextList",
+                      {"module_id":'',
+                        "type":"vImgTextList",
                         "mname":"图文集",
                         "layout":"vImgTextList__2",
                         "style":{"border__radius":"10","line__height":"18","font__size":"12","color":"#000000","padding":"0","padding__top":"0","padding__bottom":"0"},
                         "ind":"2",
                         "incident":"1"
                       },
-                      {"type":"vImgTextList",
+                      {"module_id":'',
+                        "type":"vImgTextList",
                         "mname":"图文集",
                         "layout":"vImgTextList__2",
                         "style":{"border__radius":"10","line__height":"18","font__size":"12","color":"#000000","padding":"0","padding__top":"0","padding__bottom":"0"},
                         "ind":"3",
                         "incident":"1"
                       },
-                      {"type":"vText",
+                      {"module_id":'',
+                        "type":"vText",
                         "mname":"文本组件",
                         "text":"课外阅读",
                         "style":{"background__color":"#ffffff","color":"#333333","font__size":"14","text__align":"center","height":"30","line__height":"32"},
                         "incident":"1"
                       },
-                      {"type":"vQuickNav",
+                      {"module_id":'',
+                        "type":"vQuickNav",
                         "mname":"快速导航",
                         "rowNum":"4",
                         "widget":{"ti":false},
                         "style":{"line__height":"16","font__size":"12","color":"#000000","padding":"0","padding__top":"0","padding__bottom":"0"},
                         "ind":'5'
                       },
-                      {"type":"vText",
+                      {"module_id":'',
+                        "type":"vText",
                         "mname":"文本组件",
                         "text":"新闻资讯",
                         "style":{"background__color":"#ffffff","color":"#333333","font__size":"14","text__align":"center","height":"34","line__height":"40"},
                         "incident":"1"
                       },
-                      {"type":"vRecommend",
+                      {"module_id":'',
+                        "type":"vRecommend",
                         "mname":"推荐位",
                         "layout":"vRecommend__3",
                         "widget":{"sa":true,"st":true,"op":true,"ca":true},
@@ -453,12 +529,14 @@
                   {"type":"vTemMap",
                     "Tem":[
                       {
+                        "module_id":'',
                         "type":"vMap",
                         "mname":"地图",
                         "address":"成都市高新区世纪城路198附184号",
                         "coordinate":""
                       },
-                      {"type":"vText",
+                      {"module_id":'',
+                        "type":"vText",
                         "mname":"文本组件",
                         "text":" 联系电话:028-8888888",
                         "style":{"background__color":"#ffffff","color":"#333333","font__size":"14","text__align":"left","height":"20","line__height":"20"},
@@ -469,29 +547,34 @@
                   {"type":"vTemAboutUs",
                     "Tem":[
                       {
+                        "module_id":'',
                         "type":"vMap",
                         "mname":"地图",
                         "address":"成都市高新区世纪城路198附184号",
                         "coordinate":""
                       },
-                      {"type":"vText",
+                      {"module_id":'',
+                        "type":"vText",
                         "mname":"文本组件",
                         "text":"公司电话: 028-12345678",
                         "style":{"background__color":"#ffffff","color":"#000000","font__size":"14","text__align":"left","height":"30","line__height":"34"},
                         "incident":"1"
                       },
-                      {"type":"vText",
+                      {"module_id":'',
+                        "type":"vText",
                         "mname":"文本组件",
                         "text":"营业时间：08:00 - 22:00",
                         "style":{"background__color":"#ffffff","color":"#000000","font__size":"14","text__align":"left","height":"30","line__height":"34"},
                         "incident":"1"
                       },
-                      {"type":"vText",
+                      {"module_id":'',
+                        "type":"vText",
                         "mname":"文本组件",
                         "text":"公司介绍",
                         "style":{"background__color":"#ffffff","color":"#000000","font__size":"14","text__align":"left","height":"28","line__height":"34"},
                         "incident":"1"
-                      },{"type":"vText",
+                      },{"module_id":'',
+                        "type":"vText",
                         "mname":"文本组件",
                         "text":"成都翼升科技有限公司现主要运营小程序业务。可视化拖拽制作，无需代码，轻松生成。",
                         "style":{"background__color":"#ffffff","color":"#000000","font__size":"13","text__align":"left","height":"44","line__height":"20"},
@@ -502,55 +585,64 @@
 
                   {"type":"vTemHouseKeeping",
                     "Tem":[
-                      {"type":"vSlider",
+                      {"module_id":'',
+                        "type":"vSlider",
                         "mname":"轮播组件",
                         "time":"6",
                         "ind":'4'
                       },
-                      {"type":"vQuickNav",
+                      {"module_id":'',
+                        "type":"vQuickNav",
                         "mname":"快速导航",
                         "rowNum":"4",
                         "widget":{"ti":true},
                         "style":{"line__height":"15","font__size":"12","color":"#000000","padding":"12","padding__top":"0","padding__bottom":"0"},
                         "ind":'6'
                       },
-                      {"type":"vQuickNav",
+                      {"module_id":'',
+                        "type":"vQuickNav",
                         "mname":"快速导航",
                         "rowNum":"4",
                         "widget":{"ti":true},
                         "style":{"line__height":"15","font__size":"12","color":"#000000","padding":"12","padding__top":"0","padding__bottom":"0"},
                         "ind":'7'
                       },
-                      {"type":"vText",
+                      {"module_id":'',
+                        "type":"vText",
                         "mname":"文本组件",
                         "text":"月嫂推荐",
                         "style":{"background__color":"#ffffff","color":"#000000","font__size":"14","text__align":"left","height":"30","line__height":"34"},
                         "incident":"1"
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"0","padding":"1","padding__top":"0","padding__bottom":"0","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'6'
                       },
-                      {"type":"vText",
+                      {"module_id":'',
+                        "type":"vText",
                         "mname":"文本组件",
                         "text":"家政推荐",
                         "style":{"background__color":"#ffffff","color":"#000000","font__size":"14","text__align":"left","height":"30","line__height":"34"},
                         "incident":"1"
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"0","padding":"1","padding__top":"0","padding__bottom":"0","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'7'
-                      },{"type":"vText",
+                      },{"module_id":'',
+                        "type":"vText",
                         "mname":"文本组件",
                         "text":"保姆推荐",
                         "style":{"background__color":"#ffffff","color":"#000000","font__size":"16","text__align":"left","height":"30","line__height":"34"},
                         "incident":"1"
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"0","padding":"1","padding__top":"0","padding__bottom":"0","margin":"0","margin__left":"0","margin__right":"0"},
@@ -561,28 +653,33 @@
 
                   {"type": "vTemKTVHome",
                     "Tem":[
-                      {"type":"vSlider",
+                      {"module_id":'',
+                        "type":"vSlider",
                         "mname":"轮播组件",
                         "time":"6",
                         "ind":'5'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'9'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__2",
                         "style":{"border__radius":"3","margin":"3",},
                         "ind":'10'
-                      },{"type":"vImage",
+                      },{"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__2",
                         "style":{"border__radius":"3","margin":"3","margin__left":"0","margin__right":"0"},
                         "ind":'11'
-                      },{"type":"vImage",
+                      },{"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__2",
                         "style":{"border__radius":"3","margin":"3","margin__left":"0","margin__right":"0"},
@@ -593,6 +690,7 @@
                   {"type":"vTemKTVOrder",
                     "Tem":[
                       {
+                        "module_id":'',
                         "type":"vMulticlass",
                         "mname":"多级分类",
                         "layout":"vMulticlass__1",
@@ -603,24 +701,29 @@
 
                   {"type":"vTemPhoto",
                    "Tem":[
-                     {"type":"vSlider",
+                     {"module_id":'',
+                       "type":"vSlider",
                        "mname":"轮播组件",
                        "time":"6",
                        "ind":'8'
                      },
-                     {"type":"vImage",
+                     {
+                       "module_id":'',
+                       "type":"vImage",
                        "mname":"图片组件",
                        "layout":"vImage__2",
                        "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                        "ind":'21'
                      },
-                     {"type":"vImage",
+                     {"module_id":'',
+                       "type":"vImage",
                        "mname":"图片组件",
                        "layout":"vImage__2",
                        "style":{"border__radius":"3","margin":"4","margin__left":"0","margin__right":"0"},
                        "ind":'22'
                      },
-                     {"type":"vLine",
+                     {"module_id":'',
+                       "type":"vLine",
                        "mname":"分割线",
                        "layout":"vLine__1",
                        "style":{
@@ -633,6 +736,7 @@
                        }, "ind":'0'
                      },
                      {
+                       "module_id":'',
                        "type":"vText",
                        "mname":"文本组件",
                        "text":"私人定制",
@@ -646,6 +750,7 @@
                        "ind":"0"
                      },
                      {
+                       "module_id":'',
                        "type":"vImgTextList",
                        "mname":"图文集组件",
                        "layout":"vImgTextList__3",
@@ -659,7 +764,8 @@
                          "wcolor": "#333333"},
                        "ind":"6"
                      },
-                     {"type":"vLine",
+                     {"module_id":'',
+                       "type":"vLine",
                        "mname":"分割线",
                        "layout":"vLine__1",
                        "style":{
@@ -672,6 +778,7 @@
                        },"ind":'0'
                      },
                      {
+                       "module_id":'',
                        "type":"vText",
                        "mname":"文本组件",
                        "text":"样片展示",
@@ -684,19 +791,22 @@
                          "text__align": "left"},
                        "ind":"0"
                      },
-                     {"type":"vImage",
+                     {"module_id":'',
+                       "type":"vImage",
                        "mname":"图片组件",
                        "layout":"vImage__1",
                        "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                        "ind":'23'
                      },
-                     {"type":"vImage",
+                     {"module_id":'',
+                       "type":"vImage",
                        "mname":"图片组件",
                        "layout":"vImage__1",
                        "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                        "ind":'24'
                      },
-                     {"type":"vImage",
+                     {"module_id":'',
+                       "type":"vImage",
                        "mname":"图片组件",
                        "layout":"vImage__1",
                        "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
@@ -706,6 +816,7 @@
                   {"type": "vTemPhotoPage",
                     "Tem":[
                       {
+                        "module_id":'',
                         "type":"vMulticlass",
                         "mname":"多级分类",
                         "layout": "vMulticlass__1",
@@ -718,43 +829,50 @@
 
                   {"type": "vTemMuY",
                     "Tem":[
-                      {"type":"vSlider",
+                      {"module_id":'',
+                        "type":"vSlider",
                         "mname":"轮播组件",
                         "time":"6",
                         "ind":'6'
                       },
-                      {"type":"vSearch",
+                      {"module_id":'',
+                        "type":"vSearch",
                         "mname":"搜索组件",
                         "layout":"vSearch__1",
                         "style":{"background__color": "#ebebeb", "border__radius": "4", "height": "26"},
                         "ind":'0'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'14'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'15'
                       },
-                      {"type":"vRecommend",
+                      {"module_id":'',
+                        "type":"vRecommend",
                         "mname":"推荐位",
                         "layout":"vRecommend__1",
                         "style":{"margin__bottom": "4", "line__height": "20", "font__size": "12", "color": "#000000"},
                         "widget": {"sa": "true", "st": "true", "op": "true", "ca": "true"},
                         "ind":'3'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__2",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'13'
                       },
-                      {"type":"vRecommend",
+                      {"module_id":'',
+                        "type":"vRecommend",
                         "mname":"推荐位",
                         "layout":"vRecommend__1",
                         "style":{"margin__bottom": "4", "line__height": "20", "font__size": "12", "color": "#000000"},
@@ -765,49 +883,57 @@
 
                   {"type": "vTemBodyBuilding",
                     "Tem": [
-                      {"type":"vSlider",
+                      {"module_id":'',
+                        "type":"vSlider",
                         "mname":"轮播组件",
                         "time":"6",
                         "ind":'7'
                       },
-                      {"type":"vQuickNav",
+                      {"module_id":'',
+                        "type":"vQuickNav",
                         "mname":"快速导航",
                         "rowNum": "4",
                         "widget": {"ti": true},
                         "style":{"line__height": "26", "font__size": "12", "color": "#000000", "padding": "10", "padding__top": "0","padding__bottom": "0",},
                         "ind":'8'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'16'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__3",
                         "style":{"border__radius":"3","margin":"4","margin__left":"0","margin__right":"0"},
                         "ind":'17'
                       },
-                      {"type":"vLine",
+                      {"module_id":'',
+                        "type":"vLine",
                         "mname":"分割线",
                         "layout":"vLine__1",
                         "style":{"padding": "2", "padding__left": "0", "padding__right": "0", "background__color": "#ffffff","border__bottom__width": "9","border__color": "#efeff4"},
                         "ind":'0'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'20'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'18'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
@@ -817,6 +943,7 @@
                   {"type": "vTemBodyP",
                     "Tem": [
                       {
+                        "module_id":'',
                         "type":"vText",
                         "mname":"文本组件",
                         "text":"大家都在看",
@@ -829,6 +956,7 @@
                         "ind":"0"
                       },
                       {
+                        "module_id":'',
                         "type":"vImgTextList",
                         "mname":"图文集组件",
                         "layout":"vImgTextList__3",
@@ -842,13 +970,15 @@
                           "wcolor": "#333333"},
                         "ind":"4"
                       },
-                      {"type":"vLine",
+                      {"module_id":'',
+                        "type":"vLine",
                         "mname":"分割线",
                         "layout":"vLine__1",
                         "style":{"padding": "2", "padding__left": "0", "padding__right": "0", "background__color": "#ffffff","border__bottom__width": "9","border__color": "#efeff4"},
                         "ind":'0'
                       },
                       {
+                        "module_id":'',
                         "type":"vText",
                         "mname":"文本组件",
                         "text":"美味午餐便当",
@@ -861,6 +991,7 @@
                         "ind":"0"
                       },
                       {
+                        "module_id":'',
                         "type":"vImgTextList",
                         "mname":"图文集组件",
                         "layout":"vImgTextList__3",
@@ -874,13 +1005,15 @@
                           "wcolor": "#333333"},
                         "ind":"5"
                       },
-                      {"type":"vLine",
+                      {"module_id":'',
+                        "type":"vLine",
                         "mname":"分割线",
                         "layout":"vLine__1",
                         "style":{"padding": "2", "padding__left": "0", "padding__right": "0", "background__color": "#ffffff","border__bottom__width": "9","border__color": "#efeff4"},
                         "ind":'0'
                       },
                       {
+                        "module_id":'',
                         "type":"vText",
                         "mname":"文本组件",
                         "text":"更多健康资讯",
@@ -892,7 +1025,8 @@
                           "text__align": "left"},
                         "ind":"0"
                       },
-                      {"type":"vRecommend",
+                      {"module_id":'',
+                        "type":"vRecommend",
                         "mname":"推荐位",
                         "layout":"vRecommend__3",
                         "style":{"margin__bottom": "4", "line__height": "20", "font__size": "12", "color": "#000000"},
@@ -905,18 +1039,21 @@
 
                   {"type": "vTemBeautify",
                     "Tem": [
-                      {"type":"vSearch",
+                      {"module_id":'',
+                        "type":"vSearch",
                         "mname":"搜索组件",
                         "layout": "vSearch__1",
                         "ind":'0',
                         "style":{"background__color": "#efefef", "border__radius": "3", "height": "28"}
                       },
-                      {"type":"vSlider",
+                      {"module_id":'',
+                        "type":"vSlider",
                         "mname":"轮播组件",
                         "time":"6",
                         "ind":'10'
                       },
-                      {"type":"vLine",
+                      {"module_id":'',
+                        "type":"vLine",
                         "mname":"分割线",
                         "layout":"vLine__1",
                         "style":{
@@ -930,7 +1067,8 @@
                         },
                         "ind":'0'
                       },
-                      {"type":"vQuickNav",
+                      {"module_id":'',
+                        "type":"vQuickNav",
                         "mname":"快速导航",
                         "rowNum": "3",
                         "widget": {"ti": true},
@@ -938,6 +1076,7 @@
                         "ind":'10'
                       },
                       {
+                        "module_id":'',
                         "type":"vText",
                         "mname":"文本组件",
                         "text":"通知：全场7.5折",
@@ -949,52 +1088,61 @@
                           "text__align": "left"},
                         "ind":"0"
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'28'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"4","margin__left":"0","margin__right":"0"},
                         "ind":'29'
-                      },{"type":"vImage",
+                      },{"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'30'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"4","margin__left":"0","margin__right":"0"},
                         "ind":'31'
-                      },{"type":"vImage",
+                      },{"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'32'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"4","margin__left":"0","margin__right":"0"},
                         "ind":'33'
-                      },{"type":"vImage",
+                      },{"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"4","margin__left":"0","margin__right":"0"},
                         "ind":'34'
                       },
-                      {"type":"vRecommend",
+                      {"module_id":'',
+                        "type":"vRecommend",
                         "mname":"推荐位",
                         "layout":"vRecommend__1",
                         "style":{"margin__bottom": "4", "line__height": "20", "font__size": "12", "color": "#000000"},
                         "widget": {"sa": true, "st": true, "op": true, "ca": true},
                         "ind":'6'
-                      },{"type":"vRecommend",
+                      },{"module_id":'',
+                        "type":"vRecommend",
                         "mname":"推荐位",
                         "layout":"vRecommend__1",
                         "style":{"margin__bottom": "4", "line__height": "20", "font__size": "12", "color": "#000000"},
@@ -1004,24 +1152,28 @@
                     ]},
                   {"type": "vTemBeautiType",
                     "Tem": [
-                      {"type":"vSlider",
+                      {"module_id":'',
+                        "type":"vSlider",
                         "mname":"轮播组件",
                         "time":"6",
                         "ind":'11'
                       },
-                      {"type":"vQuickNav",
+                      {"module_id":'',
+                        "type":"vQuickNav",
                         "mname":"快速导航",
                         "rowNum": "4",
                         "widget": {"ti": true},
                         "style":{"line__height": "28", "font__size": "12", "color": "#000000", "padding": "10", "padding__top": "0","padding__bottom": "0",},
                         "ind":'11'
-                      },{"type":"vQuickNav",
+                      },{"module_id":'',
+                        "type":"vQuickNav",
                         "mname":"快速导航",
                         "rowNum": "4",
                         "widget": {"ti": true},
                         "style":{"line__height": "28", "font__size": "12", "color": "#000000", "padding": "10", "padding__top": "0","padding__bottom": "0",},
                         "ind":'12'
-                      },{"type":"vQuickNav",
+                      },{"module_id":'',
+                        "type":"vQuickNav",
                         "mname":"快速导航",
                         "rowNum": "4",
                         "widget": {"ti": true},
@@ -1031,7 +1183,8 @@
                     ]},
                   {"type": "vTemOrder",
                     "Tem":[
-                      {"type":"vForm",
+                      {"module_id":'',
+                        "type":"vForm",
                         "mname":"表单组件",
                         "btnText": "提交",
                         "layout": "vForm__2",
@@ -1041,25 +1194,29 @@
                     ]},
                   {"type": "vTemPlan",
                     "Tem": [
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'35'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'36'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'37'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
@@ -1069,12 +1226,14 @@
 
                   {"type": "vTemFarm",
                     "Tem": [
-                      {"type":"vSlider",
+                      {"module_id":'',
+                        "type":"vSlider",
                         "mname":"轮播组件",
                         "time":"6",
                         "ind":'9'
                       },
-                      {"type":"vLine",
+                      {"module_id":'',
+                        "type":"vLine",
                         "mname":"分割线",
                         "layout":"vLine__1",
                         "style":{
@@ -1088,7 +1247,8 @@
                         },
                         "ind":'0'
                       },
-                      {"type":"vQuickNav",
+                      {"module_id":'',
+                        "type":"vQuickNav",
                         "mname":"快速导航",
                         "rowNum": "4",
                         "widget": {"ti": true},
@@ -1096,6 +1256,7 @@
                         "ind":'9'
                       },
                       {
+                        "module_id":'',
                         "type":"vText",
                         "mname":"文本组件",
                         "text":"现时折扣",
@@ -1108,26 +1269,30 @@
                           "text__align": "left"},
                         "ind":"0"
                       },
-                       {"type":"vRecommend",
+                       {"module_id":'',
+                         "type":"vRecommend",
                          "mname":"推荐位",
                          "layout":"vRecommend__1",
                          "style":{"margin__bottom": "4", "line__height": "20", "font__size": "12", "color": "#000000"},
                          "widget": {"sa": true, "st": true, "op": true, "ca": true},
                          "ind":'4'
                        },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"0","margin__left":"0","margin__right":"0"},
                         "ind":'26'
                       },
-                      {"type":"vImage",
+                      {"module_id":'',
+                        "type":"vImage",
                         "mname":"图片组件",
                         "layout":"vImage__1",
                         "style":{"border__radius":"3","margin":"4","margin__left":"0","margin__right":"0"},
                         "ind":'27'
                       },
                       {
+                        "module_id":'',
                         "type":"vText",
                         "mname":"文本组件",
                         "text":"热销推荐",
@@ -1140,7 +1305,8 @@
                           "text__align": "left"},
                         "ind":"0"
                       },
-                      {"type":"vRecommend",
+                      {"module_id":'',
+                        "type":"vRecommend",
                         "mname":"推荐位",
                         "layout":"vRecommend__1",
                         "style":{"margin__bottom": "4", "line__height": "20", "font__size": "12", "color": "#000000"},
@@ -1168,6 +1334,7 @@
       vClassify,
       vMulticlass,
       vRecommend,
+      vOrderFood,
       vCart,
       vMap,
       vVideo,
@@ -1238,7 +1405,6 @@
       },
       Drop(event){ //鼠标在拖放目标上释放时,在拖放目标上触发.此时监听器需要收集数据并且执行所需操作.
         var text = event.dataTransfer.getData("text");//拖拽携带的数据
-        var flag = true,warn = '';
         var dType = '';//判断拖拽类型
         var  ptext= parseInt(text);
 //        console.log(dataIndex,ptext,text,typeof(text),flag);
@@ -1254,6 +1420,7 @@
         this.$store.state.mine.oalldata = this.cloneObjectFn(this.alldata);//保存上一步数据
         //添加拖拽元素的类型
         if(text.match(/\d+/g)){  //判断拖拽的是上下位置
+          this.$store.state.mine.temStatus = false;//隐藏撤销模板
           var tempItem = tempData[text];
           this.alldata.pages[this.nowPageIndex].module.splice(text,1);
 //          if(text > dataIndex){ //判断上下
@@ -1262,7 +1429,7 @@
           this.alldata.pages[this.nowPageIndex].module.splice(dataIndex,0,tempItem);  //在拖拽目标位置组件后面添加数据
 //          }
         }else if( text.substring(0, 4) == "vTem"){ //判断拖拽的为模板
-          if(this.alldata.pages[this.nowPageIndex].module.length > 0 && flag ){
+          if(this.alldata.pages[this.nowPageIndex].module.length > 0){
             alert( '模板只能在空白页显示');
             return;
           }else{
@@ -1274,11 +1441,13 @@
                          this.$store.state.rightTemplet.myTemData.splice(j,1);
                        }
                    }
+                   this.$store.state.mine.temStatus = true;//拖拽为模板撤销模板
                    this.$store.state.rightTemplet.myTemData.unshift(this.$store.state.rightTemplet.module[0].item[i]);//我的模板数据,全部模板和templet顺序保持一致
                  }
              }
           }
         }else{ //左边拖拽添加
+          this.$store.state.mine.temStatus = false;//隐藏撤销模板
           if(text == "vSearch"){ //一个页面只能有一个
             var modules = this.alldata.pages[this.nowPageIndex].module
             for( var i = 0;i < modules.length; i++ ){
@@ -1288,72 +1457,56 @@
               }
             }
           }
-          switch (text){
-            case 'vUserCenter':  //拖拽个人中心  只能在空白页添加
-              warn = '个人中心';break;
-            case 'vClassify' :
-              warn = '分类';break;
-            case 'vProductList' :
-              warn = '商品列表';break;
-            case 'vNewsList' :
-              warn = '文章列表';break;
-            case 'vMulticlass' :
-              warn = '多级分类';break;
-            case 'vCart' :
-              warn = '购物车';break;
-            case 'vDistributorCenter' :
-              warn = '分销系统中心';break;
-            case 'vForm' :
-              warn = '表单组件';break;
-            case 'vCoupon' :
-              warn = '卡券中心';break;
-            case 'vSecKill' :
-              warn = '秒杀';break;
-            case 'vCollage' :
-              warn = '拼团';break;
-            case 'vVideoList' :
-              warn = '视频列表';break;
-            case 'vGoldenEgg' :
-              warn = '砸金蛋';break;
-            case 'vTurntable' :
-              warn = '大转盘';break;
-            default:
-              flag = false;
-          };
-          if(this.alldata.pages[this.nowPageIndex].module.length > 0 && flag ){
-            alert( warn + '只能在空白页显示');
-            return;
-          }else if(this.alldata.pages[this.nowPageIndex].module.length > 0) {
-            let hasSigle = false; //是否有单独页面组件
-            for (let i in this.sigleComponent){
-                if(this.alldata.pages[this.nowPageIndex].module[0].type == this.sigleComponent[i]){
-                  hasSigle = true;
-                  alert("该页面已经存在单独占一页组件");
-              }
-            }
-            if(!hasSigle){
-              for(var i = 0;i < this.module.length;i++){
-                if(this.module[i].type == text){
-                  let moduleArray = Object.assign({}, JSON.parse(JSON.stringify(this.module[i]))); //深度复制
-                  this.alldata.pages[this.nowPageIndex].module.splice(dataIndex,0,moduleArray);
-                  this.$store.state.chooseBox.chooseBoxName = moduleArray.type;
-                  this.$store.state.chooseBox.selectItem = parseInt(dataIndex);//当前组件的位置
-                  console.log(this.$store.state.chooseBox.selectItem,dataIndex)
+          //不能和点餐组件共存 return
+          if(text === "vOrderFood"){
+              for(let i in this.alldata.pages) {
+                for (let j in this.orderFoodAgainst) { //不能与点餐组件共存的单页面组件
+                  if (this.alldata.pages[i].module.length > 0 && this.alldata.pages[i].module[0].type === this.orderFoodAgainst[j].type) {
+                    alert('点餐版小程序不能和其他商品组件共存！')
+                    return false
+                  }
+                }
+                for (let k in this.alldata.pages[i].module) {
+                  if (this.alldata.pages[i].module[k].type === 'vRecommend') {
+                    alert('点餐版小程序不能和推荐位组件共存！')
+                    return false
+                  }
                 }
               }
+          } else {
+            for(let i in this.alldata.pages){ //如果组件中有点餐组件
+                if (this.alldata.pages[i].module.length > 0 && this.alldata.pages[i].module[0].type === 'vOrderFood'){
+                    for (let j in this.orderFoodAgainst){
+                        if(text === this.orderFoodAgainst[j].type ||text === 'vRecommend' ){
+                          alert('点餐版小程序不能和其他商品组件共存！')
+                          return
+                        }
+                    }
+                }
             }
-          }else{
-            for(var i = 0;i < this.module.length;i++){
-              if(this.module[i].type == text){
-                let moduleArray = Object.assign({}, JSON.parse(JSON.stringify(this.module[i]))); //深度复制
-                this.alldata.pages[this.nowPageIndex].module.splice(dataIndex,0,moduleArray);
-                this.$store.state.chooseBox.chooseBoxName = moduleArray.type;
-                this.$store.state.chooseBox.selectItem = parseInt(dataIndex);//当前组件的位置
-                console.log(this.$store.state.chooseBox.selectItem,dataIndex)
+          }
+          // 页面是否存在组件单页面组件只能在空白页显示 return
+          if(this.alldata.pages[this.nowPageIndex].module.length > 0) {
+            for (let i in this.sigleComponent){
+                if(text === this.sigleComponent[i].type){//拖拽的为单页面组件
+                  alert( this.sigleComponent[i].name+ '只能在空白页显示');
+                  return false;
+                }else if(this.alldata.pages[this.nowPageIndex].module[0].type == this.sigleComponent[i].type){//页面存在单页面组件
+                  alert("该页面已经存在单独占一页组件"+this.sigleComponent[i].name);
+                  return false
               }
             }
           }
-
+          // 添加成功
+          for(var i = 0;i < this.module.length;i++){
+            if(this.module[i].type == text){
+              let moduleArray = Object.assign({}, JSON.parse(JSON.stringify(this.module[i]))); //深度复制
+              this.alldata.pages[this.nowPageIndex].module.splice(dataIndex,0,moduleArray);
+              this.$store.state.chooseBox.chooseBoxName = moduleArray.type;
+              this.$store.state.chooseBox.selectItem = parseInt(dataIndex);//当前组件的位置
+              console.log(this.$store.state.chooseBox.selectItem,dataIndex)
+            }
+          }
         }
         event.preventDefault();
         event.stopPropagation();
@@ -1362,7 +1515,6 @@
         event.preventDefault();
       },
       delCom(i,item){ //删除组件
-//          console.log(item);
 //        console.log(this.$store.state.chooseBox.chooseBoxName);
         this.$store.state.mine.oalldata = this.cloneObjectFn(this.alldata); //保存上一步操作
         this.dilogDisplay = 'block'; //弹窗

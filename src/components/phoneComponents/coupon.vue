@@ -6,7 +6,9 @@
   </div>
 </template>
 <script>
-
+  export default{
+    props:['pData'],
+  }
 </script>
 <style>
   .coupon{

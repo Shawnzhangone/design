@@ -162,6 +162,12 @@
             title: '分销系统中心',
             isVip:true
           },
+//          {
+//            type: 'vOrderFood',
+//            icon: 'icon-canyin',
+//            title: '点餐',
+//            isVip:true
+//          },
           {
             type: 'vMap',
             icon: 'icon-ditu',

@@ -33,6 +33,5 @@ left.vue create()请求数据，mine.js默认数据。
 
 icon：/images/icon/
 
-phone.vue 返回
 
 ```

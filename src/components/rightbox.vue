@@ -32,6 +32,7 @@
     import vMulticlass from './layoutComponents/multiclass'
     import vCart from './layoutComponents/cart'
     import vMap from './layoutComponents/map'
+    import vOrderFood from './layoutComponents/orderFood'
     import vVideo from './layoutComponents/video'
     import vVideoList from './layoutComponents/videoList'
     import vUserCenter from './layoutComponents/userCenter'
@@ -82,6 +83,7 @@
       vMulticlass,
       vCart,
       vMap,
+      vOrderFood,
       vVideo,
       vVideoList,
       vUserCenter,

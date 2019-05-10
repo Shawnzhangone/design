@@ -61,12 +61,12 @@
           cancelButtonText: '取消',
           confirmButtonText: '确定'
         },
-        limitData:['多级分类','视频','视频列表',"分销系统中心","卡券中心","拼团","秒杀","大转盘","砸金蛋"] //付费组件
+        limitData:['多级分类','视频','视频列表',"分销系统中心","卡券中心","拼团","秒杀","大转盘","砸金蛋","点餐"] //付费组件
       }
     },
     methods:{
 
-     offLine(){
+     offLine(){//退出登录
        this.showDialog = true;
        this.$refs.dialog.confirm().then(() => {
          this.showDialog = false;
@@ -82,7 +82,7 @@
          this.showDialog = false;
        })
      },
-      backEnd(){
+      backEnd(){//去后台管理
         var tempwindow=window.open();
         this.$axios.post(this.$store.state.mine.BASE_URL+'/home/page/toBackend',{credentials:true}).then((response)=>{
           if(response.data.status === 0){
@@ -126,15 +126,16 @@
       },
       bottomNav(){//判断底部导航栏链接是否填写
         var navlist = this.alldata.bottom_nav.list;  //必选底部导航栏链接
-        console.log(navlist);
         var flag = false;
         for (var i = 0; i < navlist.length; i++) {
           if (navlist[i].pagePath == '') {
             flag = true;
+            alert('请选择底部导航栏链接!');
           }
-        }
-        if (flag) {
-          alert('请选择底部导航栏链接!');
+          if(navlist[i].iconPath ==''|| navlist[i].iconPath == ''){
+            flag = true;
+            alert('请选择底部导航栏图标!');
+          }
         }
         return flag;
       },
@@ -147,9 +148,6 @@
             if (!this.$store.state.mine.isVIP) {//不是会员  判断是否有付费组件
               for (let i = 0; i < allStrctureData.length; i++) {
                 for (let j = 0; j < allStrctureData[i].module.length; j++) {
-                  for (let a = 0; a < this.limitData.length; a++) {
-                    allStrctureData[i].module[j].mname == this.limitData[a] && this.$store.state.mine.VIPCom.push(this.limitData[a])
-                  }
                   switch (allStrctureData[i].module[j].type){
                     case 'vUserCenter':
                       allStrctureData[i].module[j].widget.hy && this.$store.state.mine.VIPCom.push("个人中心会员功能");
@@ -174,11 +172,13 @@
                       }
                       break;
                     default:
+                      for (let a = 0; a < this.limitData.length; a++) {
+                        allStrctureData[i].module[j].mname == this.limitData[a] && this.$store.state.mine.VIPCom.push(this.limitData[a])
+                      }
                       break;
                   }
                 }
               }
-              console.log(this.$store.state.mine.VIPCom)
               if (this.$store.state.mine.VIPCom.length != 0) {
                 this.$store.state.mine.showIsVIP = true;
                 return;
@@ -191,6 +191,9 @@
               this.$store.state.mine.focusState = true;
             }
         }
+      },
+      forModule(){//循环组件判断order，module_id,vip组件
+
       },
       ...mapActions(['saveAllData',"createPro"])
     },

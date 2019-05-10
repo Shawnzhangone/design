@@ -6,7 +6,7 @@ import * as types from "./types.js";
 import Vue from "vue";
 
 const state = {
-  BASE_URL :'https://mps.essocial.com.cn',
+  BASE_URL :'https://mps.essocial.win',
   mobile:'',
   program_id:'',
   isVIP:false,//是不是VIP用户
@@ -24,6 +24,7 @@ const state = {
   showSetDialog3:false,//设置开发设置
   focusState:false,//自动焦点
   showTemplet:false,//显示模板
+  temStatus:false,//拖拽为模板撤销模板
   showModule:false,//显示模块
   sid:true,  //商户类型
   chooseIcon : '1', //更换icon 还是selectedIcon
@@ -143,7 +144,7 @@ const mutations = {
         }
         setTimeout(() => {
           state.showToast = false;
-        }, 2000);
+        }, 3000);
         console.log("action中调用封装后的axios成功fasong", res)
       })
   },

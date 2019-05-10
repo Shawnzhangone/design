@@ -1125,7 +1125,7 @@ export default {
     vVideoList:[
       [{
       img_url: '/design/images/default/video.png',
-      title: '产品名称',
+      title: '视频名称',
       new_price: '120',
       old_price: '169',
       sales: '122',
@@ -1134,7 +1134,7 @@ export default {
     },
       {
         img_url: '/design/images/default/video.png',
-        title: '产品名称',
+        title: '视频名称',
         new_price: '120',
         old_price: '169',
         sales: '122',
