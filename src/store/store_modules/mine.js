@@ -18,6 +18,8 @@ const state = {
   showStylePicker:false,//展开样式
   showIsVIP:false, //VIP组件
   VIPCom:[],//拖拽的VIP组件
+  PackCount:0,//打包次数
+  showDialogPackCount:false,//打包次数
   showBasicSet:false,//基础设置
   showSetDialog:false,//设置开发设置
   showSetDialog2:false,//设置开发设置
@@ -73,8 +75,6 @@ const actions = {
     let url = state.BASE_URL + '/home/page/getAllPageStructures'
     api.mineBaseMsgApi(url,param)
       .then(res => {
-        // console.log(param,"pid");
-        // console.log("action中调用封装后的axios成功",res)
         commit(types.GET_BASE_API, res)
       })
   },
@@ -110,11 +110,7 @@ const getters = {
 
 const mutations = {
   [types.GET_BASE_API](state, res) {
-    // alert("进入mutation");
     state.getMineBaseMsg = { ...state.getMineBaseMsg, alldata:res.data}
-
-    // state.nowData = state.getMineBaseMsg.msg[0].pagedata;
-    // console.log(res.data);
     console.log("进入mutations修改state成功");
   },
   getModuleAlldata(state, res){
@@ -158,9 +154,7 @@ const mutations = {
       .then(res => {
         page.page_id = res.data;
         state.getMineBaseMsg.alldata.pages.push(page);
-        // console.log("action中调用封装后的axios添加页面成功fasong", res,page)
       })
-    // console.log(state.getMineBaseMsg.alldata);
   },
   DELPAGE(state,page_id){
     let url = state.BASE_URL + '/home/page/deletePage'
@@ -174,12 +168,13 @@ const mutations = {
     let url = state.BASE_URL + '/export'
     api.postAPPApi(url,appinfo,state.program_id)
       .then(res => {
-        // console.log(res);
-          if(res.status == '1') {
+        console.log(res);
+          if(res.status === 1) {
             state.showSetDialog2 = false;
             state.showSetDialog3 = true;
             state.download.path = res.path;
             state.download.size = res.size;
+            this.dispatch('getMineBaseApi');
           }else{
             alert(res.message)
           }

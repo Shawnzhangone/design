@@ -20,6 +20,7 @@
     <toast v-show="$store.state.mine.showToast" :toast-option="$store.state.mine.toastOption" ></toast> <!-- 保存-->
     <dialogset1 v-show="$store.state.mine.showIsVIP"></dialogset1> <!-- vip组件提示-->
     <dialogset v-show="$store.state.mine.showBasicSet"></dialogset> <!-- 小程序名称-->
+    <dialogPackCount v-show="$store.state.mine.showDialogPackCount"></dialogPackCount> <!-- 基础版打包提示-->
     <setdialog v-show="$store.state.mine.showSetDialog"></setdialog>
     <setdialog2 v-show="$store.state.mine.showSetDialog2"></setdialog2>
     <setdialog3 v-show="$store.state.mine.showSetDialog3"></setdialog3>
@@ -44,6 +45,7 @@
   import DialogM from './DialogM'
   import dialogset from './dialog/basicSet'
   import dialogset1 from './dialog/dialogset1'
+  import dialogPackCount from './dialog/dialogPackCount'
   import setdialog from './dialog/setDialog'
   import setdialog2 from './dialog/setDialog2'
   import setdialog3 from './dialog/setDialog3'
@@ -108,10 +110,14 @@
             this.$store.state.mine.showBasicSet = true;
           }
         }else{
-          if(!preview){this.saveAllData();}//只是保存
+          if(!preview){//只是保存
+              this.forModule();
+              this.saveAllData();
+          }
           else{
             var nav = this.bottomNav();//判断是否设置底部导航栏链接
             if(!nav) {
+              this.forModule();
               this.saveAllData(preview);
               if(preview == 'build'){//生成查询VIP组件
                 this.checkIsVIP()
@@ -140,51 +146,59 @@
         return flag;
       },
       checkIsVIP(){ //是不是
-        var allStrctureData = this.alldata.pages
+//        var allStrctureData = this.alldata.pages
         var program_module = this.$store.state.mine.program_module
         if(program_module){ //判断模板
           return;
         }else {
             if (!this.$store.state.mine.isVIP) {//不是会员  判断是否有付费组件
-              for (let i = 0; i < allStrctureData.length; i++) {
-                for (let j = 0; j < allStrctureData[i].module.length; j++) {
-                  switch (allStrctureData[i].module[j].type){
-                    case 'vUserCenter':
-                      allStrctureData[i].module[j].widget.hy && this.$store.state.mine.VIPCom.push("个人中心会员功能");
-                      allStrctureData[i].module[j].widget.kqb && this.$store.state.mine.VIPCom.push("个人中心卡券包功能");
-                      allStrctureData[i].module[j].widget.jf && this.$store.state.mine.VIPCom.push("个人中心会员积分功能");
-                      allStrctureData[i].module[j].widget.pt && this.$store.state.mine.VIPCom.push("个人中心我的拼团功能");
-                      allStrctureData[i].module[j].widget.ms && this.$store.state.mine.VIPCom.push("个人中心我的秒杀功能");
-                      allStrctureData[i].module[j].widget.sp && this.$store.state.mine.VIPCom.push("个人中心我的视频功能");
-                      break;
-                    case 'vClassify':
-                      if (allStrctureData[i].module[j].layout == 'vProVideoClassify__1' || allStrctureData[i].module[j].layout == 'vProVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__1' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__3') {
-                        this.$store.state.mine.VIPCom.push("视频类分类列表")
-                      }
-                      break;
-                    case 'vRecommend':
-                      if (allStrctureData[i].module[j].layout == 'vVideoRecommend__1' || allStrctureData[i].module[j].layout == 'vVideoRecommend__2') {
-                        this.$store.state.mine.VIPCom.push("视频类推荐位")
-                      }else if (allStrctureData[i].module[j].layout == 'vSecKillRe') {
-                        this.$store.state.mine.VIPCom.push("秒杀推荐位")
-                      }else if (allStrctureData[i].module[j].layout == 'vCollageRe') {
-                        this.$store.state.mine.VIPCom.push("拼团推荐位")
-                      }
-                      break;
-                    default:
-                      for (let a = 0; a < this.limitData.length; a++) {
-                        allStrctureData[i].module[j].mname == this.limitData[a] && this.$store.state.mine.VIPCom.push(this.limitData[a])
-                      }
-                      break;
-                  }
-                }
-              }
+//              for (let i = 0; i < allStrctureData.length; i++) {
+//                for (let j = 0; j < allStrctureData[i].module.length; j++) {
+//                  switch (allStrctureData[i].module[j].type){
+//                    case 'vUserCenter':
+//                      allStrctureData[i].module[j].widget.hy && this.$store.state.mine.VIPCom.push("个人中心会员功能");
+//                      allStrctureData[i].module[j].widget.kqb && this.$store.state.mine.VIPCom.push("个人中心卡券包功能");
+//                      allStrctureData[i].module[j].widget.jf && this.$store.state.mine.VIPCom.push("个人中心会员积分功能");
+//                      allStrctureData[i].module[j].widget.pt && this.$store.state.mine.VIPCom.push("个人中心我的拼团功能");
+//                      allStrctureData[i].module[j].widget.ms && this.$store.state.mine.VIPCom.push("个人中心我的秒杀功能");
+//                      allStrctureData[i].module[j].widget.sp && this.$store.state.mine.VIPCom.push("个人中心我的视频功能");
+//                      break;
+//                    case 'vClassify':
+//                      if (allStrctureData[i].module[j].layout == 'vProVideoClassify__1' || allStrctureData[i].module[j].layout == 'vProVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__1' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__3') {
+//                        this.$store.state.mine.VIPCom.push("视频类分类列表")
+//                      }
+//                      break;
+//                    case 'vRecommend':
+//                      if (allStrctureData[i].module[j].layout == 'vVideoRecommend__1' || allStrctureData[i].module[j].layout == 'vVideoRecommend__2') {
+//                        this.$store.state.mine.VIPCom.push("视频类推荐位")
+//                      }else if (allStrctureData[i].module[j].layout == 'vSecKillRe') {
+//                        this.$store.state.mine.VIPCom.push("秒杀推荐位")
+//                      }else if (allStrctureData[i].module[j].layout == 'vCollageRe') {
+//                        this.$store.state.mine.VIPCom.push("拼团推荐位")
+//                      }
+//                      break;
+//                    default:
+//                      for (let a = 0; a < this.limitData.length; a++) {
+//                        allStrctureData[i].module[j].mname == this.limitData[a] && this.$store.state.mine.VIPCom.push(this.limitData[a])
+//                      }
+//                      break;
+//                  }
+//                }
+//              }
               if (this.$store.state.mine.VIPCom.length != 0) {
                 this.$store.state.mine.showIsVIP = true;
                 return;
-              } else { //没有付费组件
-                this.$store.state.mine.focusState = true;
-                this.$store.state.mine.showSetDialog = true;
+              } else { //没有付费组件 基础版打包提示
+                this.$axios.post(this.$store.state.mine.BASE_URL+'/home/program/readPackageCount', {credentials: true}).then((res)=>{
+                  var res = res.data
+                  if(res.status === 200 ){
+                    this.$store.state.mine.PackCount = res.data.package_count
+                    this.$store.state.mine.showDialogPackCount = true;
+                  }else{
+                    this.$store.state.mine.showSetDialog = true;
+                    this.$store.state.mine.focusState = true;
+                  }
+                })
               }
             } else { //是VIP
               this.$store.state.mine.showSetDialog = true;
@@ -193,7 +207,42 @@
         }
       },
       forModule(){//循环组件判断order，module_id,vip组件
-
+        this.$store.state.mine.VIPCom = []  //清除保存的vip组件
+        var allStrctureData = this.alldata.pages
+        for (let i = 0; i < allStrctureData.length; i++) {
+          for (let j = 0; j < allStrctureData[i].module.length; j++) {
+            this.alldata.pages[i].module[j].order = j //组件顺序
+            switch (allStrctureData[i].module[j].type){
+              case 'vUserCenter':
+                allStrctureData[i].module[j].widget.hy && this.$store.state.mine.VIPCom.push("个人中心会员功能");
+                allStrctureData[i].module[j].widget.kqb && this.$store.state.mine.VIPCom.push("个人中心卡券包功能");
+                allStrctureData[i].module[j].widget.jf && this.$store.state.mine.VIPCom.push("个人中心会员积分功能");
+                allStrctureData[i].module[j].widget.pt && this.$store.state.mine.VIPCom.push("个人中心我的拼团功能");
+                allStrctureData[i].module[j].widget.ms && this.$store.state.mine.VIPCom.push("个人中心我的秒杀功能");
+                allStrctureData[i].module[j].widget.sp && this.$store.state.mine.VIPCom.push("个人中心我的视频功能");
+                break;
+              case 'vClassify':
+                if (allStrctureData[i].module[j].layout == 'vProVideoClassify__1' || allStrctureData[i].module[j].layout == 'vProVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__1' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__3') {
+                  this.$store.state.mine.VIPCom.push("视频类分类列表")
+                }
+                break;
+              case 'vRecommend':
+                if (allStrctureData[i].module[j].layout == 'vVideoRecommend__1' || allStrctureData[i].module[j].layout == 'vVideoRecommend__2') {
+                  this.$store.state.mine.VIPCom.push("视频类推荐位")
+                }else if (allStrctureData[i].module[j].layout == 'vSecKillRe') {
+                  this.$store.state.mine.VIPCom.push("秒杀推荐位")
+                }else if (allStrctureData[i].module[j].layout == 'vCollageRe') {
+                  this.$store.state.mine.VIPCom.push("拼团推荐位")
+                }
+                break;
+              default:
+                for (let a = 0; a < this.limitData.length; a++) {
+                  allStrctureData[i].module[j].mname == this.limitData[a] && this.$store.state.mine.VIPCom.push(this.limitData[a])
+                }
+                break;
+            }
+          }
+        }
       },
       ...mapActions(['saveAllData',"createPro"])
     },
@@ -207,6 +256,7 @@
       toast,
       dialogset,
       dialogset1,
+      dialogPackCount,
       setdialog,
       setdialog2,
       setdialog3,
