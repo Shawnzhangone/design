@@ -6,11 +6,11 @@ import * as types from "./types.js";
 import Vue from "vue";
 
 const state = {
-  BASE_URL :'https://mps.essocial.win',
+  BASE_URL :'https://mps.essocial.com.cn',
   mobile:'',
-  program_id:'',
+  program_id:'', // 小程序id
   isVIP:false,//是不是VIP用户
-  program_module:null,//行业模板进来
+  program_module:null,//行业模板进来 =case_id
   nowData:"",
   nowPageIndex:0,//当前页
   program_name:'',
@@ -124,12 +124,14 @@ const mutations = {
     }
     console.log("进入saveAllData");
     let saveAllData = state.getMineBaseMsg.alldata
-    if(state.getMineBaseMsg.alldata.top_nav.navigationBarBackgroundColor == ""){
-      state.getMineBaseMsg.alldata.top_nav.navigationBarBackgroundColor = "#000000"
-    }else if(state.getMineBaseMsg.alldata.top_nav.navigationBarTextStyle == ""){
-      state.getMineBaseMsg.alldata.top_nav.navigationBarTextStyle = "white"
-    }
-    let savedata = JSON.stringify(state.getMineBaseMsg.alldata);
+    //nav颜色为空赋值默认颜色  兼容ios
+    saveAllData.top_nav.navigationBarBackgroundColor || (saveAllData.top_nav.navigationBarBackgroundColor = "#000000")
+    saveAllData.top_nav.navigationBarTextStyle || (saveAllData.top_nav.navigationBarTextStyle = "white")
+    saveAllData.bottom_nav.backgroundColor || (saveAllData.bottom_nav.backgroundColor = '#FFFFFF')
+    saveAllData.bottom_nav.color || (saveAllData.bottom_nav.color = '#666666')
+    saveAllData.bottom_nav.selectedColor || (saveAllData.bottom_nav.selectedColor = '#fd7a42')
+
+    let savedata = JSON.stringify(saveAllData);
     let url = state.BASE_URL + '/home/page/saveAllPageStructures'
     api.AllDataApi(url,savedata)
       .then(res => {

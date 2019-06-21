@@ -3,7 +3,7 @@
     <div class="edit-user fl">
       <div id="to-user-center">
         <ul>
-          <li><a href="/home/user/usercenter.php"><span  class="icon iconfont icon-gerenzhongxin" ></span>{{$store.state.mine.program_name}}</a></li>
+          <li><a href="/home/user/usercenter.html"><span  class="icon iconfont icon-gerenzhongxin" ></span>{{$store.state.mine.program_name}}</a></li>
           <li @click="offLine"><i class="icon iconfont icon-tuichu"></i></li>
         </ul>
       </div>
@@ -50,11 +50,23 @@
   import setdialog2 from './dialog/setDialog2'
   import setdialog3 from './dialog/setDialog3'
   import Vue from 'vue'
+  import api from "../fetch/api";
   import {mapState,mapActions} from 'vuex'
   export default{
-      name:'edit-header',
+    name:'edit-header',
+    components:{
+      toast,
+      dialogset,
+      dialogset1,
+      dialogPackCount,
+      setdialog,
+      setdialog2,
+      setdialog3,
+      'v-dialog':DialogM,
+    },
     data(){
       return{
+        timeOut:null,
         showBasicSet:false,
         showDialog: false,
         dialogOption: {
@@ -67,7 +79,6 @@
       }
     },
     methods:{
-
      offLine(){//退出登录
        this.showDialog = true;
        this.$refs.dialog.confirm().then(() => {
@@ -86,12 +97,19 @@
      },
       backEnd(){//去后台管理
         var tempwindow=window.open();
-        this.$axios.post(this.$store.state.mine.BASE_URL+'/home/page/toBackend',{credentials:true}).then((response)=>{
-          if(response.data.status === 0){
-            alert(response.data.message);
-            return;
-          }else{
-            tempwindow.location = response.data.data
+        api.choosePro(this.$store.state.mine.BASE_URL+'/home/page/chooseProgram',this.$store.state.mine.program_id).then((res) => {
+          if (res.status == 1) {
+            this.$axios.post(this.$store.state.mine.BASE_URL+'/home/page/toBackend',{credentials:true}).then((response)=>{
+              if(response.data.status === 0){
+                alert(response.data.message);
+                return;
+              }else{
+                tempwindow.location.href = '/cms/'
+              }
+            })
+          } else if (res.data.status == -1)  {
+            alert(res.data.message)
+            window.location.href = res.data.url;
           }
         })
       },
@@ -110,11 +128,11 @@
             this.$store.state.mine.showBasicSet = true;
           }
         }else{
+          this.clearAndSetTime()
           if(!preview){//只是保存
               this.forModule();
               this.saveAllData();
-          }
-          else{
+          } else{
             var nav = this.bottomNav();//判断是否设置底部导航栏链接
             if(!nav) {
               this.forModule();
@@ -128,7 +146,7 @@
       },
       helpCenter(){//去帮助中心
         var tempwindow=window.open();
-        tempwindow.location = this.$store.state.mine.BASE_URL+'/help/index.php'
+        tempwindow.location = this.$store.state.mine.BASE_URL+'/home/help/index.html'
       },
       bottomNav(){//判断底部导航栏链接是否填写
         var navlist = this.alldata.bottom_nav.list;  //必选底部导航栏链接
@@ -146,45 +164,11 @@
         return flag;
       },
       checkIsVIP(){ //是不是
-//        var allStrctureData = this.alldata.pages
         var program_module = this.$store.state.mine.program_module
         if(program_module){ //判断模板
           return;
         }else {
             if (!this.$store.state.mine.isVIP) {//不是会员  判断是否有付费组件
-//              for (let i = 0; i < allStrctureData.length; i++) {
-//                for (let j = 0; j < allStrctureData[i].module.length; j++) {
-//                  switch (allStrctureData[i].module[j].type){
-//                    case 'vUserCenter':
-//                      allStrctureData[i].module[j].widget.hy && this.$store.state.mine.VIPCom.push("个人中心会员功能");
-//                      allStrctureData[i].module[j].widget.kqb && this.$store.state.mine.VIPCom.push("个人中心卡券包功能");
-//                      allStrctureData[i].module[j].widget.jf && this.$store.state.mine.VIPCom.push("个人中心会员积分功能");
-//                      allStrctureData[i].module[j].widget.pt && this.$store.state.mine.VIPCom.push("个人中心我的拼团功能");
-//                      allStrctureData[i].module[j].widget.ms && this.$store.state.mine.VIPCom.push("个人中心我的秒杀功能");
-//                      allStrctureData[i].module[j].widget.sp && this.$store.state.mine.VIPCom.push("个人中心我的视频功能");
-//                      break;
-//                    case 'vClassify':
-//                      if (allStrctureData[i].module[j].layout == 'vProVideoClassify__1' || allStrctureData[i].module[j].layout == 'vProVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__1' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__2' || allStrctureData[i].module[j].layout == 'vShowVideoClassify__3') {
-//                        this.$store.state.mine.VIPCom.push("视频类分类列表")
-//                      }
-//                      break;
-//                    case 'vRecommend':
-//                      if (allStrctureData[i].module[j].layout == 'vVideoRecommend__1' || allStrctureData[i].module[j].layout == 'vVideoRecommend__2') {
-//                        this.$store.state.mine.VIPCom.push("视频类推荐位")
-//                      }else if (allStrctureData[i].module[j].layout == 'vSecKillRe') {
-//                        this.$store.state.mine.VIPCom.push("秒杀推荐位")
-//                      }else if (allStrctureData[i].module[j].layout == 'vCollageRe') {
-//                        this.$store.state.mine.VIPCom.push("拼团推荐位")
-//                      }
-//                      break;
-//                    default:
-//                      for (let a = 0; a < this.limitData.length; a++) {
-//                        allStrctureData[i].module[j].mname == this.limitData[a] && this.$store.state.mine.VIPCom.push(this.limitData[a])
-//                      }
-//                      break;
-//                  }
-//                }
-//              }
               if (this.$store.state.mine.VIPCom.length != 0) {
                 this.$store.state.mine.showIsVIP = true;
                 return;
@@ -206,7 +190,7 @@
             }
         }
       },
-      forModule(){//循环组件判断order，module_id,vip组件
+      forModule(){//循环组件判断组件顺序order，组件module_id,vip组件
         this.$store.state.mine.VIPCom = []  //清除保存的vip组件
         var allStrctureData = this.alldata.pages
         for (let i = 0; i < allStrctureData.length; i++) {
@@ -244,6 +228,20 @@
           }
         }
       },
+      setTimeSave(){
+          if(this.timeOut == null){
+            this.timeOut = setTimeout(() => {
+              this.save(); //隔5分钟自动保存
+            }, 300000);
+          }
+      },
+      clearAndSetTime(){
+        if(this.timeOut){
+          clearTimeout(this.timeOut)
+        }
+        this.timeOut = null
+        this.setTimeSave()
+      },
       ...mapActions(['saveAllData',"createPro"])
     },
     computed:{
@@ -252,16 +250,10 @@
         nowPageIndex: state => state.mine.nowPageIndex
       })
     },
-    components:{
-      toast,
-      dialogset,
-      dialogset1,
-      dialogPackCount,
-      setdialog,
-      setdialog2,
-      setdialog3,
-      'v-dialog':DialogM,
-    }
+    created(){
+      this.clearAndSetTime()
+    },
+
   }
 </script>
 <style >

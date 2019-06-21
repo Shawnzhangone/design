@@ -1084,6 +1084,7 @@ export default {
         ]},//default
     ],
     vUserCenter:[
+      //电商
       {img:"/design/images/default/userCenter.jpg",
         items:[
           {
@@ -1103,7 +1104,10 @@ export default {
             title:'退换货'
           },
         ],
-      },{img:"/design/images/travel/userCenter1.png",
+      },
+      // 预约版本
+      {
+      img:"/design/images/travel/userCenter1.png",
         items:[{
           icon:'icon-pay',
           title:'待付款'
@@ -1117,7 +1121,29 @@ export default {
           icon:'icon-refund',
           title:'已退出'
         }],
-      }
+      },
+      //到店
+      {
+      img:"/design/images/travel/userCenter.png",
+        items:[{
+          icon:'icon-pay',
+          title:'待付款'
+        },{
+          icon:'icon-send',
+          title:'待确认'
+        },{
+          icon:'icon-comment',
+          title:'已确认'
+        },{
+          icon:'icon-comment',
+          title:'已完成'
+        },{
+          icon:'icon-refund',
+          title:'已取消'
+        }
+        ],
+      },
+
     ],
     vVideo:[
       [{imgUrl:'/design/images/default/video.png',text:'标题标题标题'},{imgUrl:'/design/images/default/video.png',text:'标题标题标题'},{imgUrl:'/design/images/default/video.png',text:'标题标题标题'}]
@@ -1209,9 +1235,44 @@ export default {
       }
       ],
     ],
-    vForm:[{imgUrl:'/design/images/default/formBank.png',text:'兴业银行申请表单'}]
+    vForm:[{imgUrl:'/design/images/default/formBank.png',text:'兴业银行申请表单'}],
 
-  }
+    vUserCenterNow:{img:"/design/images/default/userCenter.jpg",
+      items:[
+        {
+          icon:'icon-pay',
+          title:'待付款'
+        },{
+          icon:'icon-send',
+          title:'待发货'
+        },{
+          icon:'icon-deliver',
+          title:'待收货'
+        },{
+          icon:'icon-comment',
+          title:'待评价'
+        },{
+          icon:'icon-refund',
+          title:'退换货'
+        },
+      ],
+    },
+
+  },
+  // caseData:[
+  //   {caseID:1,
+  //     module: {
+  //       text:[{
+  //
+  //       }],
+  //     }
+  //   },
+  // ],
+  // let ind = this.pData.ind ? this.pData.ind : 0 ,
+//          module = this.pData.caseId ?
+//            this.$store.state.caseData.case.find(caseID => caseID.id === this.pData.caseId).module :
+//            this.$store.state.defaultData;
+//          return module.vClassify[ind]
 }
 
 

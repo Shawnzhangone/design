@@ -29,7 +29,6 @@
               color: "#fd7a42",
               borderBottom: "3px solid #fd7a42",
             },
-//    :style="{nowStyle:nowClassify == index}"
         }
     },
     computed: {

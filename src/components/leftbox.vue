@@ -314,14 +314,13 @@
         this.$axios.post(this.$store.state.mine.BASE_URL+'/home/page/getPerssion', {credentials: true}).then((response) => {
             let rdata = response.data;
             if (rdata.status === 1) {
-                if(rdata.program_id == 0){
+                if(!rdata.program_id){
                     this.$store.state.mine.program_module = rdata.case_id; //行业模板进来id
                     this.$store.dispatch('getModuleData',rdata.case_id);
                 }else{
-//                  this.$store.state.mine.program_id = rdata.program_id;
+                  this.$store.state.mine.program_id = rdata.program_id;
                   this.$store.state.mine.program_name = rdata.program_name;
                   this.$store.state.mine.mobile = rdata.mobile;
-//                  this.$store.dispatch('getMineBaseApi', rdata.program_id);
                   this.$store.dispatch('getMineBaseApi');
                 }
             }else { //去登陆

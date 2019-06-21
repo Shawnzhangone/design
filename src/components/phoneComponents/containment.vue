@@ -1441,7 +1441,7 @@
                          this.$store.state.rightTemplet.myTemData.splice(j,1);
                        }
                    }
-                   this.$store.state.mine.temStatus = true;//拖拽为模板撤销模板
+                   this.$store.state.mine.temStatus = true;//拖拽为模板显示撤销模板
                    this.$store.state.rightTemplet.myTemData.unshift(this.$store.state.rightTemplet.module[0].item[i]);//我的模板数据,全部模板和templet顺序保持一致
                  }
              }

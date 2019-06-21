@@ -73,5 +73,9 @@ export default {
   //创建小程序
   createPro(url,name){
     return fetch(url,{program_name:name});
+  },
+  //选择小程序去后台
+  choosePro(url,id){
+    return fetch(url,{program_id:id});
   }
 }

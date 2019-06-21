@@ -1,11 +1,12 @@
 <template>
   <div id="userCenter">
-    <img :src="$store.state.defaultData.vUserCenter[imgdata].img" alt="">
+    <img :src="centerData.img" alt="">
+    <!--<img :src="$store.state.defaultData.vUserCenter[imgdata].img" alt="">-->
     <!--<div v-show="alldata.pages[nowPageIndex].module[0].widget.czk" class="card">储值卡余额(元) <span class="fr leftitem"><span class="red">0.00  </span> >  </span> </div>-->
     <div class="allorder"><i class="iconfont icon-74wodedingdan"></i>我的订单 <span class="fr leftitem">查看全部订单  > </span> </div>
     <div class="orderstate clearfloat">
       <ul>
-        <li v-for="item in $store.state.defaultData.vUserCenter[imgdata].items" class="fl itemli" :style="{width:Liwidth}"><i class="iconfont" :class="item.icon"></i>{{item.title}}</li>
+        <li v-for="item in centerData.items" class="fl itemli" :style="{width:Liwidth}"><i class="iconfont" :class="item.icon"></i>{{item.title}}</li>
       </ul>
     </div>
     <div class="itembox">
@@ -33,16 +34,19 @@
           }
       },
     computed:{
-      imgdata(){
-        return this.pData.ind ? this.pData.ind : 0;
+      centerData(){
+        let ind = this.pData.ind ? this.pData.ind : 0;
+        return this.vUserCenter[ind]
+//        console.log(this.pData.ind,this.alldata.pages[this.nowPageIndex].module[0].ind)
       },
       Liwidth(){
-          return (100/this.$store.state.defaultData.vUserCenter[this.imgdata].items.length)+'%';
+          return (100/this.centerData.items.length)+'%';
       },
       ...mapState({
         alldata : state => state.mine.getMineBaseMsg.alldata,
         nowPageIndex: state => state.mine.nowPageIndex,
-        seleIndex: state => state.chooseBox.selectItem
+        vUserCenterNow: state => state.defaultData.vUserCenterNow,
+        vUserCenter: state => state.defaultData.vUserCenter,
       })
     },
 

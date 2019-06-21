@@ -2,6 +2,12 @@
   <div class="leftbox-widget">
     <div class="page-widget rightlayout" v-show="!$store.state.chooseBox.isShow">
       <div class="chooselaout_title">
+        选择个人中心版本;
+        <ul>
+          <li v-for="(item,index) in versions"><input type="radio" name="version" :value="index" v-model="choosedVersion" @change="ChangeVersion">{{item}}</li>
+        </ul>
+      </div>
+      <div class="chooselaout_title">
         固定组件：
         <ul>
         <li v-for="item in items">{{item}}</li>
@@ -54,10 +60,16 @@
     data(){
       return{
         items:[ '我的订单','地址管理','待付款','待发货','待收货','待评价','退换货'],
+        versions:['电商','预约','到店'],
+        choosedVersion:0
       }
     },
     methods:{
+      ChangeVersion(){
 
+        this.alldata.pages[this.nowPageIndex].module[0].ind = this.choosedVersion
+        console.log(this.alldata.pages[this.nowPageIndex].module[0].ind)
+      }
     },
     computed:{
       ...mapState({
@@ -101,5 +113,8 @@
     text-align: center;
     color:#fff;
     background-color: #ffd200;
+  }
+  input[type="radio"]{
+    margin: -1px 2px 0 3px;
   }
 </style>

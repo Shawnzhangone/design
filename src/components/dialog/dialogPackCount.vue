@@ -6,7 +6,8 @@
       <p class="text text1">基础版用户最多可以打包生成5次小程序代码。您已经打包 <span>{{$store.state.mine.PackCount}}</span>次，还剩余<span>{{5 - $store.state.mine.PackCount}}</span>次。</p>
       <div class="btn-group">
         <div class="btn" @click="cancel">取消</div>
-        <div class="btn" @click="confireSet">打包</div>
+        <div v-if='$store.state.mine.PackCount < 5' class="btn" @click="confireSet">打包</div>
+        <div v-else class="btn" @click="confireSet1">去升级</div>
       </div>
       <div class="del" @click="$store.state.mine.showDialogPackCount = false">
         <i class="iconfont">X</i>
@@ -38,6 +39,10 @@
         this.$store.state.mine.focusState = true;
         this.$store.state.mine.showSetDialog = true
         this.$store.state.mine.showDialogPackCount = false
+      },
+      confireSet1(){
+        this.$store.state.mine.showDialogPackCount = false
+        window.open("/home/product.html?in=2#pro");
       },
       // 取消,将promise断定为reject状态
       cancel() {

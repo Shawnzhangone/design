@@ -36,7 +36,7 @@
       //确定,将promise断定为完成态
       confireSet() {
         this.$store.state.mine.showIsVIP = false
-        window.open("/home/product.php?in=2#pro");
+        window.open("/home/product.html?in=2#pro");
         this.$store.state.mine.VIPCom = []
       },
       // 取消,将promise断定为reject状态
